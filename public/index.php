@@ -1,7 +1,6 @@
 <?php
 //Constante para contraseña
-define('PASSWORD', "futuroswinners");
-define('KEY_SESION', "inicializada");
+require_once('php/accesos.php');
 
 session_start(['cookie_lifetime' => 86400]);
 
