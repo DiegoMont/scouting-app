@@ -1,10 +1,12 @@
 <?php
-require_once('php/accesos.php');
+require_once('accesos.php');
 
-if(session_id() === '')
-  session_start(['cookie_lifetime' => 86400]);
-
-if (!isset($_SESSION["sesion"]) || $_SESSION["sesion"] !== KEY_SESION){
-  header("Location:index.php");
-  exit;
+$is_password_correct = isset($_POST['contrasena']) && $_POST['contrasena'] === PASSWORD;
+if(!$is_password_correct)
+    header("Location:../iniciar-sesion.php?error=password");
+else {
+    session_start(['cookie_lifetime' => SESSION_COOKIE_LIFETIME]);
+    $_SESSION[KEY_SESION] = 4010;
+    header("Location:../menu.php");
 }
+exit;
