@@ -1,5 +1,5 @@
 <?php
-require "php/iniciar-sesion.php";
+require_once('php/security_post.php');
 ?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
