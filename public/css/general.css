@@ -29,6 +29,7 @@
 :root {
   --amarillo: #f0e332;
   --negro-claro: #272727;
+  --gris: #b5b5b4;
 }
 
 * {
@@ -46,6 +47,10 @@ header {
 
 h3 {
   font-weight: 500;
+}
+
+option {
+  color: var(--gris-texto);
 }
 
 .btn-nav {
