@@ -1,0 +1,4 @@
+<?php
+define("KEY_SESION", "r4nd0m.K3y");
+define("PASSWORD", "new_password");
+define("SESSION_COOKIE_LIFETIME", 86400);
