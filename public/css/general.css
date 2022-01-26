@@ -28,6 +28,7 @@
 
 :root {
   --amarillo: #f0e332;
+  --negro-claro: #272727;
 }
 
 * {
@@ -36,7 +37,7 @@
 }
 
 body {
-  background-color: #272727;
+  background-color: #000;
 }
 
 header {

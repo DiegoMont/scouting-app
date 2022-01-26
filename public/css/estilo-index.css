@@ -16,22 +16,24 @@ label {
 
 h1.login, label.login, input[type="password"].login {
   color: var(--amarillo);
-  background-color: #000;
+  background-color: var(--negro-claro);
 }
 
 div.login {
-  background-color: #000;
+  background-color: var(--negro-claro);
+  box-sizing: border-box;
   margin: 0 auto;
   width: 30vw;
-  min-width: 210px;
+  min-width: 300px;
   padding: 3.5vw 7.5vw;
   border-radius: 1rem;
 }
 
 input[type="password"].login {
   font-size: 1rem;
-  width: 90%;
+  box-sizing: border-box;
+  width: 99%;
   border-bottom: 1px solid var(--amarillo);
   padding-top: 1rem;
-  margin: 0.75rem 1rem 1.1rem 1rem;
+  margin: 0.75rem auto 1.1rem 0;
 }

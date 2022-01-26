@@ -10,9 +10,7 @@ require_once('php/security_post.php');
     <title>Scouting | Men&uacute;</title>
     <link rel="stylesheet" type="text/css" href="css/Reset.css">
     <link rel="stylesheet" type="text/css" href="css/general.css">
-    <!--<link rel="stylesheet" type="text/css" href="css/estilo-index.css">-->
     <link rel="icon" type="image/png" href="img/nautilus.png">
-    <!--<script src="js/seguridad-index.js" charset="utf-8" defer></script>-->
   </head>
   <body style="background-color: #000;">
     <header>
