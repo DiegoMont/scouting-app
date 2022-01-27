@@ -1,3 +1,8 @@
+:root {
+  --verde: #148f12;
+  --rojo-stop: #e11610;
+}
+
 section {
   padding: 1rem 0;
   margin: 0;
@@ -8,6 +13,7 @@ h6, p {
 }
 
 p {
+  font-weight: 400;
   margin-left: 0;
 }
 
@@ -75,22 +81,6 @@ p {
   grid-area: 5 / 1 / span 1 / span 3;
 }
 
-.checkbox-texto div {
-  background-color: var(--amarillo);
-  width: 5rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 0.5rem;
-}
-
-.checkbox-texto div:hover {
-  opacity: 1;
-}
-
-.checkbox-texto label {
-  color: #000;
-  margin-left: 0.25rem;
-}
-
 .img-opc {
   margin: 0.5rem;
 }
@@ -110,22 +100,35 @@ p {
   max-width: 7rem;
 }
 
+.checkbox-texto label {
+  background-color: var(--amarillo);
+  display: block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.checkbox-texto label:hover {
+  opacity: 1;
+}
+
+.checkbox-texto label {
+  color: #000;
+  margin-left: 0.25rem;
+}
+
 .checkbox-imagenes label, .radio-imagenes label {
   width: 12.5%;
   min-width: 100px;
 }
 
-.checkbox-texto div {
-  margin-bottom: 0.5rem;
+.habitats label {
+  padding: 0.4rem 0;
 }
 
 .info-match label {
   display: block;
   margin-bottom: 0.25rem;
-}
-
-.habitats label {
-  padding: 0.4rem 0;
 }
 
 .input-texto input {
@@ -138,8 +141,24 @@ p {
   grid-area: 1 / 1 / 1 / 3;
 }
 
+img[src="img/cancel.svg"] {
+  background-color: var(--rojo-stop);
+}
+
+img[src="img/tick.svg"] {
+  background-color: var(--verde);
+}
+
 section.info-match {
   margin: 0.5rem 0;
+}
+
+input[type=checkbox] + label, input[type=radio] + label {
+  opacity: 0.6;
+}
+
+input[type=checkbox]:checked + label, input[type=radio]:checked + label {
+  opacity: 1;
 }
 
 #comments {

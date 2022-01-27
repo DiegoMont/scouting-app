@@ -1,48 +1,12 @@
 //Variables
 let valoresContadores  = document.getElementsByClassName("cifra-contador");
-let labelRadioImg = document.getElementsByClassName("img-opc");
 let divsSeleccionHabitats = document.getElementsByClassName("habitats");
-let labelImgCheckbox = document.getElementsByClassName("img-check");
-let divBtnBool = document.getElementsByClassName("btn-bool");
-let opcionesCheckboxTexto = document.getElementsByClassName("checkbox-texto");
+
 
 //Funciones
 function agregarOpacar(arregloElementos) {
   for (let i = 0; i < arregloElementos.length; i++) {
     arregloElementos[i].classList.add("opacar");
-  }
-}
-
-function destacarDivSiChecked(divElement) {
-  const input = divElement.querySelector("input");
-  if (input.checked) {
-    divElement.classList.remove("opacar");
-  } else {
-    divElement.classList.add("opacar");
-  }
-}
-
-function destacarDivsSiChecked(arregloDivs){
-  //El div debe contener unicamente un label y un input
-  agregarOpacar(arregloDivs);
-  for (let i = 0; i < arregloDivs.length; i++) {
-    destacarDivSiChecked(arregloDivs[i]);
-  }
-}
-
-function destacarLabelsSiChecked(arregloLabels) {
-  agregarOpacar(arregloLabels);
-  for (let i = 0; i < arregloLabels.length; i++) {
-    destacarLabelSiChecked(arregloLabels[i]);
-  }
-}
-
-function destacarLabelSiChecked(labelElement) {
-  let inputLigado = labelElement.querySelector("input");
-  if (inputLigado.checked) {
-    labelElement.classList.remove("opacar");
-  } else {
-    labelElement.classList.add("opacar");
   }
 }
 
@@ -69,16 +33,6 @@ if (valoresContadores.length > 0) {
   }
 }
 
-//Funcionamiento para preguntas de botones radio con imagenes
-if (labelRadioImg.length > 0) {
-  destacarLabelsSiChecked(labelRadioImg);
-  for (let i = 0; i < labelRadioImg.length; i++) {
-    labelRadioImg[i].addEventListener("click", function() {
-      destacarLabelsSiChecked(labelRadioImg);
-    });
-  }
-}
-
 //Funcionamiento para selector de nivel de habitat en Deep Space
 if (divsSeleccionHabitats.length > 0) {
   for (let i = 0; i < divsSeleccionHabitats.length; i++) {
@@ -96,42 +50,6 @@ if (divsSeleccionHabitats.length > 0) {
         for (let k = 0; k < 2; k++) {
           habitatLevels[k].classList.remove("opacar");
         }
-      });
-    }
-  }
-}
-
-//Funcionamiento para preguntas de checkbox con imagenes
-if (labelImgCheckbox.length > 0) {
-  agregarOpacar(labelImgCheckbox);
-  for (let i = 0; i < labelImgCheckbox.length; i++) {
-    labelImgCheckbox[i].addEventListener("click", function() {
-      destacarLabelSiChecked(labelImgCheckbox[i]);
-    });
-  }
-}
-
-//Funcionamiento para botones booleanos
-if (divBtnBool.length > 0) {
-  for (let i = 0; i < divBtnBool.length; i++) {
-    let labelsBotones = divBtnBool[i].getElementsByTagName("label");
-    destacarLabelsSiChecked(labelsBotones);
-    for (let j = 0; j < labelsBotones.length; j++) {
-      labelsBotones[j].addEventListener("click", function() {
-        destacarLabelsSiChecked(labelsBotones);
-      });
-    }
-  }
-}
-
-//Funcionamiento para checkbox o radio con texto
-if (opcionesCheckboxTexto.length > 0) {
-  for(let i = 0; i < opcionesCheckboxTexto.length; i++){
-    let divOpciones = opcionesCheckboxTexto[i].getElementsByTagName("div");
-    destacarDivsSiChecked(divOpciones);
-    for(let j = 0; j < divOpciones.length; j++){
-      divOpciones[j].addEventListener("click", function() {
-        destacarDivsSiChecked(divOpciones);
       });
     }
   }
