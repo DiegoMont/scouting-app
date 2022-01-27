@@ -114,7 +114,7 @@ p {
 
 .checkbox-texto label {
   color: #000;
-  margin-left: 0.25rem;
+  text-align: center;
 }
 
 .checkbox-imagenes label, .radio-imagenes label {
@@ -154,7 +154,7 @@ section.info-match {
 }
 
 input[type=checkbox] + label, input[type=radio] + label {
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 input[type=checkbox]:checked + label, input[type=radio]:checked + label {
