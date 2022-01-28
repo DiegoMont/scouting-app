@@ -161,7 +161,7 @@ input[type=checkbox]:checked + label, input[type=radio]:checked + label {
   opacity: 1;
 }
 
-#comments {
+textarea, #comments {
   color: var(--negro-texto);
   display: block;
   box-sizing: border-box;
