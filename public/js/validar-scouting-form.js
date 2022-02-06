@@ -3,7 +3,8 @@ const seccionErrores = document.querySelector('#errores');
 
 form.addEventListener('submit', function(e) {
     clearErrorMessages();
-    if(!validar())
+    validar();
+    if(seccionErrores.innerText != "")
         e.preventDefault();
 });
 
@@ -11,9 +12,9 @@ const clearErrorMessages = function(){
     seccionErrores.innerHTML = '';
 }
 
-const addError = function(error_msg){
+const addError = function(errorMsg){
     const error = document.createElement('p')
     error.classList.add('error');
-    error.innerText = error_msg;
+    error.innerText = errorMsg;
     seccionErrores.appendChild(error);
 }

@@ -1,4 +1,4 @@
 const validar = function(){
     // TODO: Implementar función
-    return false;
+    addError("No se ha implementado la función");
 }
