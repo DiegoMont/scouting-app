@@ -16,7 +16,19 @@ function modificarValueInput(elemento, operacion = 1) {
   elemento.value = valorNumerico;
 }
 
-//Funcionamiento de contadores numericos
+// Funcionamiento opciones regional
+const addRegionalOptions = function(){
+  const regionalSelect = document.getElementById('regional');
+  for (const regionalValues of REGIONALES) {
+    const option = document.createElement('option');
+    option.value = regionalValues[0];
+    option.innerText = regionalValues[1];
+    regionalSelect.appendChild(option);
+  }
+}
+addRegionalOptions();
+
+// Funcionamiento de contadores numericos
 if (valoresContadores.length > 0) {
   let botonesAumentar = document.getElementsByClassName("aumentar");
   let botonesRestar = document.getElementsByClassName("restar");
@@ -33,7 +45,7 @@ if (valoresContadores.length > 0) {
   }
 }
 
-//Funcionamiento para selector de nivel de habitat en Deep Space
+// Funcionamiento para selector de nivel de habitat en Deep Space
 if (divsSeleccionHabitats.length > 0) {
   for (let i = 0; i < divsSeleccionHabitats.length; i++) {
     let habitatLevels = divsSeleccionHabitats[i].getElementsByTagName("label");
