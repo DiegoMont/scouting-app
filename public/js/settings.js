@@ -1,0 +1,3 @@
+const REGIONALES = [
+    ['monterrey', 'Monterrey']
+];
