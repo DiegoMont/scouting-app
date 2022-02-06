@@ -1,0 +1,110 @@
+header {
+  background-color: #fafafa;
+  padding: 0 0 1rem;
+}
+
+#logo {
+  display: inline-block;
+  width: auto;
+  height: 6vh;
+  min-height: 30px;
+  margin-right: 0.5rem;
+}
+
+h3 {
+  display: inline-block;
+  color: #000;
+  text-align: left;
+  padding: 1.2rem 0 0;
+  margin: auto;
+}
+
+.active, .btn-display:hover {
+  color: #3d3d3d;
+  border-color: #fafafa #fafafa #3d3d3d !important;
+}
+
+.btn-display {
+  background-color: #fafafa;
+  border: 3px solid #fafafa;
+  padding: 0 0.25rem;
+}
+
+.seccion {
+  background-color: #fafafa;
+  margin: 0.5rem auto;
+  padding: 0 0.5rem;
+}
+
+.tabla {
+  box-sizing: border-box;
+  padding: 1.5rem 0;
+  overflow-x: auto;
+}
+
+table * {
+  color: #3d3d3d;
+}
+
+table {
+  background-color: #3d3d3d;
+}
+
+th, td {
+  background-color: #fafafa;
+}
+
+th, td {
+  padding: 0 0.25rem;
+}
+
+.comentarios {
+  padding: 0 10rem;
+}
+
+.marca-temporal{
+  min-width: 10rem;
+}
+
+.teams * {
+  color: #3d3d3d;
+}
+
+.teams {
+  background-color: #000;
+}
+
+h4, h5 {
+  text-align: left;
+}
+
+h4 {
+  margin: 1rem 0;
+}
+
+h5 {
+  margin: 0.75rem 0;
+}
+
+.estadisticas {
+  margin: 1rem;
+}
+
+.imagencita {
+  max-width: 8rem;
+}
+
+.team {
+  background-color: #fafafa;
+  width: 85%;
+  margin: 0 auto !important;
+  border-radius: 20px;
+  padding: 1rem;
+}
+
+.mitad {
+  display: inline-block;
+  width: 49%;
+  min-width: 320px;
+  margin: 0;
+}

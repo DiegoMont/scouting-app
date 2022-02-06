@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scouting | Match</title>
+    <link rel="stylesheet" type="text/css" href="css/Reset.css">
+    <link rel="stylesheet" type="text/css" href="css/general.css">
+    <link rel="stylesheet" type="text/css" href="css/estiloEncuesta.css">
+    <script src="js/interactividad.js" charset="utf-8" defer></script>
+  </head>
+  <body>
+    <form action="guardar_info.php" method="POST" onsubmit="return verificar()">
+        <div class="centre" id="header">
+          <div class="flexbox" id="info-match">
+            <div>
+              <label for="Regional" class="light-font">Regional</label>
+              <select class="" id="Regional" name="zona-regional">
+                <option value="monterrey">Monterrey</option>
+                <option value="sacramento">Sacramento</option>
+              </select>
+            </div>
+            <div>
+              <label for="Team-Number" class="light-font">Equipo</label>
+              <input type="number" name="nombre-equipo" id="Team-Number" placeholder="4010">
+            </div>
+            <div>
+              <label for="Match-Number" class="light-font">Match</label>
+              <input type="number" name="numero-match" id="Match-Number" placeholder="1">
+            </div>
+          </div>
+        </div>
+
+        <div class="centre" id="autonomous">
+          <h3>Autonomous</h3>
+
+          <!-- Colocar divs con tipos de preguntas -->
+
+          <h5>Sale de la Initiation Line?</h5>
+          <div class="btn-bool flexbox">
+            <label class="btn" style="width: 25%; max-width: 7rem;">
+              <img src="img/tick.svg" alt="Si"  class="btn-symbol"  style="background-color: #148f12;">
+              <input type="radio" name="moves" value="1" class="ocultar">
+            </label>
+            <label class="btn" style="width: 25%; max-width: 7rem;">
+              <img src="img/cancel.svg" alt="No" class="btn-symbol"  style="background-color: #e11610;">
+              <input type="radio" name="moves" value="2" class="ocultar">
+            </label>
+          </div>
+
+          <h5>Power Port</h5>
+          <h6>Outer/Inner Port</h6>
+          <div class="flexbox contador">
+            <button type="button" class="restar btn-symbol">
+              <img src="img/minus.svg">
+            </button>
+            <input type="number" name="autonomous-outer" id="auto-outer" value="0" class="cifra-contador">
+            <button type="button" class="aumentar btn-symbol">
+              <img src="img/add.svg">
+            </button>
+          </div>
+          <h6>Bottom Port</h6>
+          <div class="flexbox contador">
+            <button type="button" class="restar btn-symbol">
+              <img src="img/minus.svg">
+            </button>
+            <input type="number" name="autonomous-bottom" id="auto-abajo" value="0" class="cifra-contador"><button type="button" class="aumentar btn-symbol">
+              <img src="img/add.svg">
+            </button>
+          </div>
+
+          <h5>Recoge Power Cells?</h5>
+          <div class="btn-bool flexbox">
+            <label class="btn" style="width: 25%; max-width: 7rem;">
+              <img src="img/tick.svg" alt="Si"  class="btn-symbol"  style="background-color: #148f12;">
+              <input type="radio" name="auto-retrieve" value="1" class="ocultar">
+            </label>
+            <label class="btn" style="width: 25%; max-width: 7rem;">
+              <img src="img/cancel.svg" alt="No" class="btn-symbol"  style="background-color: #e11610;">
+              <input type="radio" name="auto-retrieve" value="2" class="ocultar">
+            </label>
+          </div>
+
+        </div>
+        <div class="centre" id="driver-controlled">
+          <h3>Driver-Controlled</h3>
+
+          <!-- Colocar divs con tipos de preguntas -->
+
+          <h5>Power Port</h5>
+          <h6>Outer/Inner Port</h6>
+          <div class="flexbox contador">
+            <button type="button" class="restar btn-symbol">
+              <img src="img/minus.svg">
+            </button>
+            <input type="number" name="teleop-outer" id="teleop-target" value="0" class="cifra-contador">
+            <button type="button" class="aumentar btn-symbol">
+              <img src="img/add.svg">
+            </button>
+          </div>
+          <h6>Bottom Port</h6>
+          <div class="flexbox contador">
+            <button type="button" class="restar btn-symbol">
+              <img src="img/minus.svg">
+            </button>
+            <input type="number" name="teleop-bottom" id="teleop-abajo" value="0" class="cifra-contador">
+            <button type="button" class="aumentar btn-symbol">
+              <img src="img/add.svg">
+            </button>
+          </div>
+
+          <h5>Fouls</h5>
+          <div class="flexbox contador">
+            <button type="button" class="restar btn-symbol">
+              <img src="img/minus.svg">
+            </button>
+            <input type="number" name="fouls" id="faltas" value="0" class="cifra-contador">
+            <button type="button" class="aumentar btn-symbol">
+              <img src="img/add.svg">
+            </button>
+          </div>
+
+          <h5>Rotation Control</h5>
+          <div class="radio-imagenes flexbox">
+            <label class="img-opc btn">
+              <img src="img/control-panel.jpg" alt="Rotation Control task">
+              <input type="radio" name="rotation-control" value="1" class="ocultar">
+            </label>
+            <label class="img-opc btn">
+              <img src="img/robot-roto.jpg" alt="No puede">
+              <input type="radio" name="rotation-control" value="0" class="ocultar">
+            </label>
+          </div>
+
+          <h5>Position Control</h5>
+          <div class="radio-imagenes flexbox">
+            <label class="img-opc btn">
+              <img src="img/control-panel.jpg" alt="PositionControl task">
+              <input type="radio" name="position-control" value="1" class="ocultar">
+            </label>
+            <label class="img-opc btn">
+              <img src="img/robot-roto.jpg" alt="No puede">
+              <input type="radio" name="position-control" value="0" class="ocultar">
+            </label>
+          </div>
+
+          <h5>Enfoque en Endgame:</h5>
+          <div class="checkbox-texto">
+            <div>
+              <input type="radio" name="endgame" value="1" id="estacionarse">
+              <label for="estacionarse">Estacionarse</label>
+            </div>
+            <div>
+              <input type="radio" name="endgame" value="2" id="colgarse">
+              <label for="colgarse">Colgarse</label>
+            </div>
+            <div>
+              <input type="radio" name="endgame" value="3" id="lanzar">
+              <label for="lanzar">Score Power Cells</label>
+            </div>
+          </div>
+
+          <h5>Hanging from the Generator Switch</h5>
+          <div class="radio-imagenes flexbox">
+            <label class="img-opc btn">
+              <img src="img/shield-generator.jpg" alt="Hanging from the Generator Switch">
+              <input type="radio" name="shield-generator" value="1" class="ocultar">
+            </label>
+            <label class="img-opc btn">
+              <img src="img/robot-roto.jpg" alt="Getting to Rendezvous Point">
+              <input type="radio" name="shield-generator" value="0" class="ocultar">
+            </label>
+          </div>
+
+        </div>
+
+        <!--Todo debe estar antes del area de comentarios y submit-->
+
+        <div class="centre">
+
+          <h5 style="text-align: center;">Comentarios</h5>
+          <textarea name="comentarios" id="comments"></textarea>
+
+          <!-- Seccion para colocar errores -->
+          <p class="error ocultar">*El n&uacute;mero de equipo no es v&aacute;lido</p>
+          <p class="error ocultar">*El n&uacute;mero de match no es v&aacute;lido</p>
+          <p class="error ocultar">*El n&uacute;mero de Power Cells de un Port es demasiado peque&ntilde;o</p>
+          <p class="error ocultar">*No has seleccionado si el robot completa el Rotation Control</p>
+          <p class="error ocultar">*No has seleccionado si el robot se cuelga del Switch</p>
+          <p class="error ocultar">*No has seleccionado si el robot completa el Position Control</p>
+          <p class="error ocultar">*El n&uacute;mero de Fouls no es v&aacute;lido</p>
+          <p class="error ocultar">*Selecciona si el robot deja la Initiation Line</p>
+          <p class="error ocultar">*Selecciona si el robot recoge Power Cells durante el aut&oacute;nomo</p>
+          <p class="error ocultar">*Elige el enfoque del robot durante el Endgame</p>
+
+          <button type="submit" value="Enviar" id="btn-submit">Enviar</button>
+        </div>
+    </form>
+    <script src="js/comprobar.js" charset="utf-8"></script>
+    <div style="font-size: 0.5rem; color: #3e3e3e;">Icons made by <a href="https://www.flaticon.com/authors/hanan" title="Hanan" style="font-size: 0.5rem; color: #3e3e3e;">Hanan</a> from <a href="https://www.flaticon.com/" title="Flaticon" style="font-size: 0.5rem; color: #3e3e3e;">www.flaticon.com </a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"                 title="Creative Commons BY 3.0" target="_blank" style="font-size: 0.5rem; color: #3e3e3e;">CC 3.0 BY</a></div>
+    <div class="centre firma flexbox">
+      <a href="https://github.com/DiegoMont" class="firma">&lt;/&gt; with <span id="corazon" class="firma">&#9829;</span> by <span class="firma">DiegoMont</span></a>
+    </div>
+  </body>
+</html>

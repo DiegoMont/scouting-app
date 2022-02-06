@@ -1,0 +1,30 @@
+/*
+amarillo: #foe332
+negro: #040000
+gris: #b4b3b3
+corbel, arial, sans-serif
+border level 2: outset
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+* {
+  color: #b4b3b3;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: #000;
+}
+
+h1 {
+  margin: 1.2rem 0;
+}
+
+.opacar {
+  opacity: 0.35;
+}
+
+div.firma {
+  border-right: 0.5rem solid #000;
+}

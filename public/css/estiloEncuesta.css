@@ -1,0 +1,186 @@
+form {
+  width: 100%;
+}
+
+h5, h6 {
+  text-align: left;
+  margin: 1rem 0;
+}
+
+h6, h3, h4, h5 {
+  color: #fafafa;
+}
+
+textarea {
+  box-sizing: border-box;
+  padding: 1rem;
+  width: 100%;
+  max-width: 35rem;
+  height: 4.5rem;
+}
+
+.aumentar, .cifra-contador, .restar, .btn-symbol {
+  display: inline-block;
+}
+
+.aumentar, .restar {
+  background-color: #f0e332;
+  width: 5rem;
+  height: 5rem;
+}
+
+.btn-symbol {
+  box-sizing: border-box;
+  padding: 1.3rem;
+  border-radius: 50%;
+}
+
+.centre {
+  max-width: 700px;
+  padding: 2rem 1rem;
+  margin: 0 auto;
+}
+
+.checkbox-imagenes {
+  justify-content: space-around;
+}
+
+.cifra-contador {
+  font-size: 2.5rem;
+  text-align: center;
+  width: 3ch;
+}
+
+.contador {
+  max-width: 23rem;
+  margin: 0 auto;
+}
+
+.habitats {
+  padding: 0 0.5rem;
+  display: grid;
+  grid-template: repeat(5, 1fr) / repeat(3, 1fr);
+}
+
+.habitat-niv-1 {
+  background-color: rgb(233, 176, 1);
+  grid-area: 3 / 1 / span 2 / span 3;
+}
+
+.habitat-niv-2 {
+  background-color: rgb(112, 219, 1);
+}
+
+.habitat-niv-left {
+  grid-area: 2 / 1 / span 1 / span 1;
+}
+
+.habitat-niv-right {
+  grid-area: 2 / 3 / span 1 / span 1;
+}
+
+.habitat-niv-3 {
+  background-color: rgb(1, 207, 207);
+  grid-area: 1 / 2 / span 2 / span 1;
+}
+
+.habitat-niv-0 {
+  background-color: #999;
+  grid-area: 5 / 1 / span 1 / span 3;
+}
+
+.img-opc {
+  margin: 0.5rem;
+}
+
+.input-texto {
+  margin: 1rem 0;
+}
+
+.radio-imagenes {
+  justify-content: space-evenly;
+}
+
+.checkbox-imagenes label, .radio-imagenes label {
+  width: 24%;
+  min-width: 150px;
+}
+
+.checkbox-texto div {
+  margin-bottom: 0.5rem;
+}
+
+.habitats label {
+  color: #fafafa;
+  text-align: center;
+  padding: 0.4rem 0;
+}
+
+.input-texto label {
+  font-size: 1.2rem;
+  font-weight: bolder;
+  color: #fafafa;
+  display: inline-block;
+  margin: 0 0.4rem 0.4rem 0;
+}
+
+.input-texto input {
+  display: inline-block;
+}
+
+#autonomous {
+  background-color: #003974;
+}
+
+#btn-submit {
+  color: #3d3d3d;
+  background-color: #f0e332;
+  display: block;
+  width: 70%;
+  min-width: 6rem;
+  padding: 0.75rem 0;
+  margin: 0.5rem auto 0;
+}
+
+#comments {
+  color: #3d3d3d;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 5rem;
+}
+
+#driver-controlled {
+  background-color: #202124;
+}
+
+#header {
+  padding: 1rem;
+}
+
+#Match-Number {
+  width: 5ch;
+}
+
+#Team-Number {
+  width: 6ch;
+}
+
+#info-match div {
+  margin: 0.5rem 0;
+}
+
+#info-match label {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+@media screen and (min-width: 2016px) {
+  .centre {
+    max-width: 1400px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+
+}

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scouting | Pit</title>
+    <link rel="stylesheet" type="text/css" href="css/Reset.css">
+    <link rel="stylesheet" type="text/css" href="css/general.css">
+    <link rel="stylesheet" type="text/css" href="css/estiloEncuesta.css">
+    <script src="js/interactividad.js" charset="utf-8" defer></script>
+    <script src="js/interactividad-pit.js" charset="utf-8" defer></script>
+    <style media="screen">
+    .texto-adicional {
+      margin: 0.75rem 0 1rem;
+    }
+
+    .texto-adicional label {
+      display: inline-block;
+      margin-right: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .texto-adicional input {
+      display: inline-block;
+      width: 10rem;
+    }
+    </style>
+  </head>
+  <body>
+    <form action="guardar_info_pit.php" method="POST" onsubmit="return verificar()">
+        <div class="centre" id="header">
+          <div class="flexbox" id="info-match">
+            <div>
+              <label for="Regional" class="light-font">Regional</label>
+              <select class="" id="Regional" name="zona-regional">
+                <option value="monterrey">Monterrey</option>
+                <option value="sacramento">Sacramento</option>
+              </select>
+            </div>
+            <div>
+              <label for="Team-Number" class="light-font">Equipo</label>
+              <input type="number" name="nombre-equipo" id="Team-Number" placeholder="4010">
+            </div>
+          </div>
+        </div>
+
+        <div class="centre">
+
+          <h5>Tiene recolectores?</h5>
+          <div class="btn-bool flexbox">
+            <label class="btn" style="width: 25%; max-width: 7rem;">
+              <img src="img/tick.svg" alt="Si"  class="btn-symbol"  style="background-color: #148f12;">
+              <input type="radio" name="collectors" value="1" class="ocultar">
+            </label>
+            <label class="btn" style="width: 25%; max-width: 7rem;">
+              <img src="img/cancel.svg" alt="No" class="btn-symbol"  style="background-color: #e11610;">
+              <input type="radio" name="collectors" value="2" class="ocultar">
+            </label>
+          </div>
+
+          <h5>Cu&aacute;ntos Power Cells puede almacenar?</h5>
+          <div class="flexbox contador">
+            <button type="button" class="restar btn-symbol">
+              <img src="img/minus.svg">
+            </button>
+            <input type="number" name="power-cell-storage" id="almacenamiento-power-cell" value="0" class="cifra-contador">
+            <button type="button" class="aumentar btn-symbol">
+              <img src="img/add.svg">
+            </button>
+          </div>
+
+          <h5>Cu&aacute;l es el tipo del drivetrain?</h5>
+          <div class="radio-imagenes flexbox">
+            <label class="img-opc btn">
+              <img src="img/Mecanum.jpg" alt="Mecanum drivetrain">
+              <input type="radio" name="drivetrain" value="1" class="ocultar">
+            </label>
+            <label class="img-opc btn">
+              <img src="img/West_Coast.jpg" alt="West Coast drivetrain">
+              <input type="radio" name="drivetrain" value="2" class="ocultar">
+            </label>
+            <label class="img-opc btn">
+              <img src="img/Omni.jpg" alt="Omni drivetrain">
+              <input type="radio" name="drivetrain" value="3" class="ocultar">
+            </label>
+            <label class="img-opc btn">
+              <img src="img/High_Traction.jpg" alt="High traction drivetrain">
+              <input type="radio" name="drivetrain" value="4" class="ocultar">
+            </label>
+            <label class="img-opc btn">
+              <img src="img/Confused-Robot.jpg" alt="Otro">
+              <input type="radio" name="drivetrain" value="5" class="ocultar">
+            </label>
+          </div>
+
+          <div class="texto-adicional ocultar" id="drivetrain-adicional">
+            <label for="">Especificar otro tipo de drivetrain:</label>
+            <input type="text" name="other-drivetrain" value="" id="otro-drivetrain">
+          </div>
+
+          <h5>Hanging from the Generator Switch</h5>
+          <div class="radio-imagenes flexbox">
+            <label class="img-opc btn">
+              <img src="img/shield-generator.jpg" alt="Hanging from the Generator Switch">
+              <input type="radio" name="shield-generator" value="1" class="ocultar">
+            </label>
+            <label class="img-opc btn">
+              <img src="img/robot-roto.jpg" alt="Getting to Rendezvous Point">
+              <input type="radio" name="shield-generator" value="0" class="ocultar">
+            </label>
+          </div>
+
+          <div id="switch-adicional" class="ocultar">
+            <h6>En que posiciones se cuelga:</h6>
+            <div class="checkbox-texto">
+              <div>
+                <input type="radio" name="position-switch" value="1" id="ambos-lados">
+                <label for="ambos-lados">Ambos lados</label>
+              </div>
+              <div>
+                <input type="radio" name="position-switch" value="2" id="lado-centro">
+                <label for="lado-centro">Centro</label>
+              </div>
+              <div>
+                <input type="radio" name="position-switch" value="3" id="cualquier">
+                <label for="cualquier">Cualquier parte</label>
+              </div>
+            </div>
+
+            <h6>Puede cargar a otro robot?</h6>
+            <div class="btn-bool flexbox">
+              <label class="btn" style="width: 25%; max-width: 7rem;">
+                <img src="img/tick.svg" alt="Si"  class="btn-symbol"  style="background-color: #148f12;">
+                <input type="radio" name="carry" value="1" class="ocultar">
+              </label>
+              <label class="btn" style="width: 25%; max-width: 7rem;">
+                <img src="img/cancel.svg" alt="No" class="btn-symbol"  style="background-color: #e11610;">
+                <input type="radio" name="carry" value="2" class="ocultar">
+              </label>
+            </div>
+          </div>
+
+          <h5>En que se especializa?</h5>
+          <textarea name="specialty" id="especialidad"></textarea>
+
+          <h5>Qu&eacute; buscan en alianza?</h5>
+          <textarea name="needs-ally" id="necesidad-alianza"></textarea>
+
+          <h5>En qu&eacute; Ports puede anotar?</h5>
+          <div class="checkbox-texto">
+            <div>
+              <input type="radio" name="ports" value="1" id="inner-port">
+              <label for="inner-port">Inner Port</label>
+            </div>
+            <div>
+              <input type="radio" name="ports" value="2" id="outer-port">
+              <label for="outer-port">Outer Port</label>
+            </div>
+            <div>
+              <input type="radio" name="ports" value="3" id="bottom-port">
+              <label for="bottom-port">Solo Bottom Port</label>
+            </div>
+          </div>
+
+          <h5>Usa visi&oacute;n para localizar los Power Ports?</h5>
+          <div class="btn-bool flexbox">
+            <label class="btn" style="width: 25%; max-width: 7rem;">
+              <img src="img/tick.svg" alt="Si"  class="btn-symbol"  style="background-color: #148f12;">
+              <input type="radio" name="vision-enabled" value="1" class="ocultar">
+            </label>
+            <label class="btn" style="width: 25%; max-width: 7rem;">
+              <img src="img/cancel.svg" alt="No" class="btn-symbol"  style="background-color: #e11610;">
+              <input type="radio" name="vision-enabled" value="0" class="ocultar">
+            </label>
+          </div>
+
+          <h5>Interact&uacute;a con el Control Panel</h5>
+          <div class="radio-imagenes flexbox">
+            <label class="img-opc btn">
+              <img src="img/control-panel.jpg" alt="Control Panel">
+              <input type="radio" name="control-panel" value="1" class="ocultar">
+            </label>
+            <label class="img-opc btn">
+              <img src="img/robot-roto.jpg" alt="No puede">
+              <input type="radio" name="control-panel" value="2" class="ocultar">
+            </label>
+          </div>
+
+          <div id="pregunta-rotation">
+            <h6>Hace el Position Control? (Elegir el color)</h6>
+            <div class="btn-bool flexbox">
+              <label class="btn" style="width: 25%; max-width: 7rem;">
+                <img src="img/tick.svg" alt="Si"  class="btn-symbol"  style="background-color: #148f12;">
+                <input type="radio" name="position-control" value="1" class="ocultar">
+              </label>
+              <label class="btn" style="width: 25%; max-width: 7rem;">
+                <img src="img/cancel.svg" alt="No" class="btn-symbol"  style="background-color: #e11610;">
+                <input type="radio" name="position-control" value="2" class="ocultar">
+              </label>
+            </div>
+          </div>
+
+          <div class="input-texto">
+            <label for="cadencia">Cu&aacute;nto tiempo tarda en lanzar un Power Cell(s)?</label>
+            <input type="number" step="0.05" name="fire-rate"  style="width: 4rem;" id="cadencia" placeholder="300">
+          </div>
+
+          <div class="input-texto">
+            <label for="peso">Peso(lbs):</label>
+            <input type="number" step="0.05" name="weight" placeholder="125" style="width: 4rem;" id="peso">
+          </div>
+
+          <div class="input-texto">
+            <label for="altura">Altura(in):</label>
+            <input type="number" step="0.05" name="height" placeholder="45" style="width: 4rem;" id="altura">
+          </div>
+
+        </div>
+
+        <!--Todo debe estar antes del area de comentarios y submit-->
+
+        <div class="centre">
+          <h6 style="text-align: center;">Comentarios</h6>
+          <textarea name="comentarios" id="comments"></textarea>
+
+          <!-- Seccion para colocar errores -->
+          <p class="error ocultar">*Falta el n&uacute;mero de equipo</p>
+          <p class="error ocultar">*El robot tiene recolector para los Power Cells?</p>
+          <p class="error ocultar">*El n&uacute;mero de Power Cells que almacena el robot no cumple con la regla G6. No more than five (5) POWER CELLS at a time</p>
+          <p class="error ocultar">*No has elegido el tipo de drivetrain del robot</p>
+          <p class="error ocultar">*Especifica otro tipo de drivetrain</p>
+          <p class="error ocultar">*No has seleccionado si el robot se cuelga del Switch</p>
+          <p class="error ocultar">*Selecciona al menos una posicion del Switch en la que se cuelgue el robot</p>
+          <p class="error ocultar">*El robot puede cargar a otro robot?</p>
+          <p class="error ocultar">*En que se especializa el robot?</p>
+          <p class="error ocultar">*Agrega mas detalle en cuanto a en qu&eacute; se especializa el robot</p>
+          <p class="error ocultar">*Que busca el equipo en una alianza?</p>
+          <p class="error ocultar">*Selecciona al menos un Port</p>
+          <p class="error ocultar">*El robot tiene sistema de visi&oacute;n?</p>
+          <p class="error ocultar">*Selecciona si el robot interact&uacute;a con el Control Panel</p>
+          <p class="error ocultar">*Selecciona si el robot completa el Position Control</p>
+          <p class="error ocultar">*El valor del tiempo no es v&aacute;lido</p>
+          <p class="error ocultar">*El peso no cumple con la regla R5.</p>
+          <p class="error ocultar">*La altura no cumple con la regla R3.</p>
+
+          <button type="submit" value="Enviar" id="btn-submit">Enviar</button>
+        </div>
+    </form>
+    <script src="js/comprobar-scouting-pit.js" charset="utf-8"></script>
+    <div style="font-size: 0.5rem; color: #3e3e3e;">Icons made by <a href="https://www.flaticon.com/authors/hanan" title="Hanan" style="font-size: 0.5rem; color: #3e3e3e;">Hanan</a> from <a href="https://www.flaticon.com/" title="Flaticon" style="font-size: 0.5rem; color: #3e3e3e;">www.flaticon.com </a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"                 title="Creative Commons BY 3.0" target="_blank" style="font-size: 0.5rem; color: #3e3e3e;">CC 3.0 BY</a></div>
+    <div class="centre firma flexbox">
+      <a href="https://github.com/DiegoMont" class="firma">&lt;/&gt; with <span id="corazon" class="firma">&#9829;</span> by <span class="firma">DiegoMont</span></a>
+    </div>
+  </body>
+</html>
