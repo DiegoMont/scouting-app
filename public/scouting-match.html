@@ -12,8 +12,7 @@
     <link rel="icon" type="image/png" href="img/nautilus.png">
   </head>
   <body>
-    <!--<form action="guardar_info_pit.php" method="POST" onsubmit="return verificar()">-->
-      <form action="" method="POST">
+    <form action="guardar_info_pit.php" method="POST">
 
         <!-- Seccion para colocar la info basica de la encuesta -->
         <section class="info-match">
@@ -68,12 +67,14 @@
           <div class="centre">
             <h6 class="comentarios">Comentarios</h6>
             <textarea name="comentarios" id="comments"></textarea>
+            <div id="errores"></div>
             <button type="submit" value="Enviar" id="btn-submit">Enviar</button>
           </div>
         </section>
     </form>
     <script src="js/interactividad.js" charset="utf-8"></script>
-    <!--<script src="js/comprobar-scouting-pit.js" charset="utf-8"></script>-->
+    <script src="js/validar-scouting-match.js" charset="utf-8"></script>
+    <script src="js/validar-scouting-form.js" charset="utf-8"></script>
     <footer>
       <div style="font-size: 0.5rem; color: #3e3e3e;">Icons made by <a href="https://www.flaticon.com/authors/hanan" title="Hanan" style="font-size: 0.5rem; color: #3e3e3e;">Hanan</a> from <a href="https://www.flaticon.com/" title="Flaticon" style="font-size: 0.5rem; color: #3e3e3e;">www.flaticon.com </a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"                 title="Creative Commons BY 3.0" target="_blank" style="font-size: 0.5rem; color: #3e3e3e;">CC 3.0 BY</a></div>
     </footer>
