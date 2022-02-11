@@ -3,7 +3,7 @@ class Router {
     pages;
 
     constructor(){
-        this._pages = {
+        this.pages = {
             formSubmittedPage: document.getElementById('form-submitted'),
             loginPage: document.getElementById('login'),
             matchScoutingPage: document.getElementById('scouting-match'),
@@ -14,39 +14,38 @@ class Router {
     }
 
     closePages(){
-        for (const page in this.pages) {
-            page.classList.remove('mostrar');
-        }
+        for (const pageName in this.pages)
+            this.pages[pageName].classList.remove('mostrar');
     }
 
     openFormSubmitted(){
         this.closePages();
-        this._pages.formSubmittedPage.classList.add('mostrar');
+        this.pages.formSubmittedPage.classList.add('mostrar');
     }
 
     openLogin(){
         this.closePages();
-        this._pages.loginPage.classList.add('mostrar');
+        this.pages.loginPage.classList.add('mostrar');
     }
 
     openMatchScouting(){
         this.closePages();
-        this._pages.matchScoutingPage.classList.add('mostrar');
+        this.pages.matchScoutingPage.classList.add('mostrar');
     }
 
     openMenu(){
         this.closePages();
-        this._pages.menuPage.classList.add('mostrar');
+        this.pages.menuPage.classList.add('mostrar');
     }
 
     openPitScouting(){
         this.closePages();
-        this._pages.pitScoutingPage.classList.add('mostrar');
+        this.pages.pitScoutingPage.classList.add('mostrar');
     }
 
     openResults(){
         this.closePages();
-        this._pages.resultsPage.classList.add('mostrar');
+        this.pages.resultsPage.classList.add('mostrar');
     }
 
 }

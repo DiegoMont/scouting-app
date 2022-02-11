@@ -163,7 +163,7 @@ section {
 }
 
 a.firma, span.firma {
-    color: #ddd;
+    color: var(--gris);
 }
 
 a.firma {
