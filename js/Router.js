@@ -20,26 +20,32 @@ class Router {
     }
 
     openFormSubmitted(){
+        this.closePages();
         this._pages.formSubmittedPage.classList.add('mostrar');
     }
 
     openLogin(){
+        this.closePages();
         this._pages.loginPage.classList.add('mostrar');
     }
 
     openMatchScouting(){
+        this.closePages();
         this._pages.matchScoutingPage.classList.add('mostrar');
     }
 
     openMenu(){
+        this.closePages();
         this._pages.menuPage.classList.add('mostrar');
     }
 
     openPitScouting(){
+        this.closePages();
         this._pages.pitScoutingPage.classList.add('mostrar');
     }
 
     openResults(){
+        this.closePages();
         this._pages.resultsPage.classList.add('mostrar');
     }
 
