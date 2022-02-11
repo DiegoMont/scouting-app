@@ -1,0 +1,87 @@
+* {
+    padding: 0;
+    border: none;
+    margin: 0;
+    text-decoration: none;
+}
+
+html {
+    font-size: 18px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    margin: 0 auto;
+}
+
+h4, h5, h6 {
+    font-weight: 400;
+}
+
+p, a, input, button, li, textarea, select, datalist, td, th {
+    font-size: 1rem;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-size: 1.35rem;
+}
+
+h6 {
+    font-size: 1.2rem;
+}
+
+img, video {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+}
+
+header, footer, section, nav {
+    width: 100%;
+}
+
+ol, ul {
+    list-style-position: inside;
+}
+
+textarea {
+    resize: none;
+}
+
+/*Quitar botones para modificar valor a inputs type numeric*/
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+button, .btn {
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    display: block;
+    margin: 0 auto;
+}
