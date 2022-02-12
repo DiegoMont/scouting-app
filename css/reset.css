@@ -24,6 +24,10 @@ header, footer, section, nav {
     width: 100%;
 }
 
+label {
+    display: block;
+}
+
 ol, ul {
     list-style-position: inside;
 }

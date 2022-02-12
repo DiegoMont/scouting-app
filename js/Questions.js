@@ -2,6 +2,7 @@ class BigTextArea extends Question {
     constructor(question, name, minLength, error='Ingresa más información'){
         super('', name, error);
         this.questionContainer = document.createElement('div');
+        this.questionContainer.classList.add('big-text-question');
         const input = this.getInput(name);
         const label = this.getLabel(question, name);
         this.inputs.push(input);
@@ -87,7 +88,7 @@ class NumericText extends Question {
 
     getLabel(labelTxt){
         const label = document.createElement('label');
-        label.for = this.name;
+        label.htmlFor = this.name;
         label.innerText = labelTxt;
         return label;
     }
