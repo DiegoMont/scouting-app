@@ -1,3 +1,30 @@
+class BigTextArea extends Question {
+    constructor(question, name, minLength, error='Ingresa más información'){
+        super('', name, error);
+        this.questionContainer = document.createElement('div');
+        const input = this.getInput(name);
+        const label = this.getLabel(question, name);
+        this.inputs.push(input);
+        this.questionContainer.appendChild(label);
+        this.questionContainer.appendChild(input);
+    }
+
+    getInput(name){
+        const input = document.createElement('textarea');
+        input.name = name;
+        input.id = name;
+        return input;
+    }
+
+    getLabel(question, name){
+        const label = document.createElement('label');
+        label.htmlFor = name;
+        label.innerText = question;
+        return label;
+    }
+}
+
+
 class NumericCounter extends Question {
     constructor(question, name, minValue, maxValue){
         super(question, name, '');
@@ -184,6 +211,36 @@ class RegionalSelector extends Question {
             select.appendChild(regionalOption);
         }
         return select;
+    }
+}
+
+
+class TextInput extends Question {
+    constructor(question, name, placeholder, error='El campo está vacío'){
+        super('', name, error);
+        this.questionContainer = document.createElement('div');
+        this.questionContainer.classList.add('input-texto');
+        const label = this.getLabel(question, name);
+        const input = this.getInput(name, placeholder);
+        this.inputs.push(input);
+        this.questionContainer.appendChild(label);
+        this.questionContainer.appendChild(input);
+    }
+
+    getLabel(questionTxt, name){
+        const label = document.createElement('label');
+        label.htmlFor = name;
+        label.innerText = questionTxt;
+        return label;
+    }
+
+    getInput(name, placeholder){
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.name = name;
+        input.id = name;
+        input.placeholder = placeholder;
+        return input;
     }
 }
 
