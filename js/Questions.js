@@ -4,7 +4,6 @@ class NumericCounter extends Question {
         this.questionContainer = document.createElement('div');
         this.questionContainer.classList.add('flexbox', 'contador');
         this.setInput();
-        console.log(this.inputs);
         const addBtn = this.getButton('aumentar', 'add');
         const substractBtn = this.getButton('restar', 'minus');
         const aux = this.inputs[0];
@@ -114,6 +113,40 @@ class RadioWithImages extends Question {
 }
 
 
+class RadioWithText extends Question {
+    constructor(question, name, error='Debes seleccionar una opción'){
+        super(question, name, error);
+        this.questionContainer = document.createElement('div');
+        this.questionContainer.classList.add('checkbox-texto');
+    }
+
+    addInput(inputData){
+        const input = this.getInput(inputData);
+        const label = this.getLabel(inputData);
+        this.inputs.push(input);
+        this.questionContainer.appendChild(input);
+        this.questionContainer.appendChild(label);
+    }
+
+    getInput(inputData){
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = this.name;
+        input.id = inputData.id;
+        input.value = inputData.value;
+        return input;
+    }
+
+    getLabel(labelData){
+        const label = document.createElement('label');
+        label.classList.add('btn');
+        label.htmlFor = labelData.id;
+        label.innerText = labelData.value;
+        return label;
+    }
+}
+
+
 class RegionalSelector extends Question {
 
     static REGIONALES = [
@@ -187,5 +220,17 @@ class TrueFalseButtons extends RadioWithImages {
         const label = super.getLabel(labelData);
         label.classList.add('btn-bool');
         return label;
+    }
+}
+
+class CheckboxWithText extends RadioWithText {
+    constructor(question, name, error='Debes seleccionar al menos una opción'){
+        super(question, name, error);
+    }
+
+    getInput(inputData){
+        const input = super.getInput(inputData);
+        input.type = 'checkbox';
+        return input;
     }
 }

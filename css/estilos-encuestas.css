@@ -2,7 +2,7 @@
     background-color: var(--amarillo);
     width: 5rem;
     height: 5rem;
-  }
+}
 
 .autonomous-info {
     background-color: rgb(13, 17, 23);
@@ -22,7 +22,7 @@
 .contador {
     max-width: 23rem;
     margin: 0 auto
-  }
+}
 
 .form-centre {
     max-width: 1000px;
@@ -46,12 +46,22 @@
     box-sizing: border-box;
     padding: 1.3rem;
     border-radius: 50%;
-  }
+}
+
+.checkbox-texto label {
+    color: var(--negro);
+    background-color: var(--amarillo);
+    text-align: center;
+    display: block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+}
 
 .image-label-container label {
     width: 12.5%;
     min-width: 100px;
-  }
+}
 
 .info-match label {
     display: block;
@@ -64,11 +74,11 @@ input[type=radio], input[type=checkbox] {
 
 img[src="img/cancel.svg"] {
     background-color: var(--rojo-stop);
-  }
+}
   
-  img[src="img/tick.svg"] {
+img[src="img/tick.svg"] {
     background-color: var(--verde);
-  }
+}
 
 input[type=number] {
     text-align: center;
@@ -78,11 +88,11 @@ input[type=number] {
 input[type=checkbox] + label, input[type=radio] + label {
     margin: 0.5rem;
     opacity: 0.5;
-  }
+}
   
-  input[type=checkbox]:checked + label, input[type=radio]:checked + label {
+input[type=checkbox]:checked + label, input[type=radio]:checked + label {
     opacity: 1;
-  }
+}
 
 @media screen and (max-width: 1016px) {
     .form-centre {
