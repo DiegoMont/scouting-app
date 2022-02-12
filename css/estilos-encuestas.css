@@ -1,19 +1,8 @@
-input[type=radio], input[type=checkbox] {
-    display: none;
-}
-
-img[src="img/cancel.svg"] {
-    background-color: var(--rojo-stop);
+.aumentar, .restar {
+    background-color: var(--amarillo);
+    width: 5rem;
+    height: 5rem;
   }
-  
-  img[src="img/tick.svg"] {
-    background-color: var(--verde);
-  }
-
-input[type=number] {
-    text-align: center;
-    width: 5.3ch;
-}
 
 .autonomous-info {
     background-color: rgb(13, 17, 23);
@@ -23,6 +12,17 @@ input[type=number] {
     width: 20%;
     max-width: 7rem;
 }
+
+.cifra-contador {
+    font-size: 2.5rem;
+    text-align: center;
+    width: 3ch !important;
+  }
+
+.contador {
+    max-width: 23rem;
+    margin: 0 auto
+  }
 
 .form-centre {
     max-width: 1000px;
@@ -42,7 +42,7 @@ input[type=number] {
     background-color: var(--negro-claro);
 }
 
-.btn-bool img {
+.btn-bool img, .btn-symbol {
     box-sizing: border-box;
     padding: 1.3rem;
     border-radius: 50%;
@@ -56,6 +56,23 @@ input[type=number] {
 .info-match label {
     display: block;
     margin-bottom: 0.25rem;
+}
+
+input[type=radio], input[type=checkbox] {
+    display: none;
+}
+
+img[src="img/cancel.svg"] {
+    background-color: var(--rojo-stop);
+  }
+  
+  img[src="img/tick.svg"] {
+    background-color: var(--verde);
+  }
+
+input[type=number] {
+    text-align: center;
+    width: 5.3ch;
 }
 
 input[type=checkbox] + label, input[type=radio] + label {

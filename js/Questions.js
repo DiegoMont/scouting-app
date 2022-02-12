@@ -1,3 +1,49 @@
+class NumericCounter extends Question {
+    constructor(question, name, minValue, maxValue){
+        super(question, name, '');
+        this.questionContainer = document.createElement('div');
+        this.questionContainer.classList.add('flexbox', 'contador');
+        this.setInput();
+        console.log(this.inputs);
+        const addBtn = this.getButton('aumentar', 'add');
+        const substractBtn = this.getButton('restar', 'minus');
+        const aux = this.inputs[0];
+        addBtn.addEventListener('click', function() {
+            let num = Number(aux.value);
+            num++;
+            aux.value = Math.min(num, maxValue);
+        });
+        substractBtn.addEventListener('click', function() {
+            let num = Number(aux.value);
+            num--;
+            aux.value = Math.max(num, minValue);
+        });
+        this.questionContainer.appendChild(substractBtn);
+        this.questionContainer.appendChild(this.inputs[0]);
+        this.questionContainer.appendChild(addBtn);
+    }
+
+    getButton(className, imgName){
+        const btn = document.createElement('button');
+        btn.classList.add('btn-symbol', className);
+        btn.type = 'button';
+        const img = document.createElement('img');
+        img.src = `img/${imgName}.svg`;
+        btn.appendChild(img);
+        return btn;
+    }
+
+    setInput(){
+        this.inputs[0] = document.createElement('input');
+        this.inputs[0].type = 'number';
+        this.inputs[0].name = this.name;
+        this.inputs[0].id = this.name;
+        this.inputs[0].value = 0;
+        this.inputs[0].classList.add('cifra-contador');
+    }
+}
+
+
 class NumericText extends Question {
     constructor(question, name, error, placeholder, minValue, maxValue){
         super('', name, error);
