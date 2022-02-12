@@ -9,6 +9,7 @@ class ScoutingForm {
         this.sections.generalInfo = new ScoutingFormSection('info-match');
         this.addFormSpecificSections();
         this.sections.generalInfo.addQuestion(new RegionalSelector());
+        this.sections.generalInfo.addQuestion(new NumericText('Equipo', 'team-number', '', '4010'));
         this.sections.comments = new ScoutingFormSection('comments-submit');
     }
 
@@ -27,6 +28,7 @@ class MatchScoutingForm extends ScoutingForm {
 
     constructor(form){
         super(form);
+        this.sections.generalInfo.addQuestion(new NumericText('Match', 'match-number', '', '1'));
     }
 
     addFormSpecificSections(){
