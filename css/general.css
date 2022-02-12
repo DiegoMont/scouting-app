@@ -44,11 +44,13 @@
     --amarillo: #f0e332;
     --negro-claro: #272727;
     --gris: #b5b5b4;
+    --verde: #148f12;
+  --rojo-stop: #e11610;
     --text-width: 39rem;
 }
 
 * {
-    color: var(--negro-texto);
+    color: var(--blanco-texto);
     font-family: 'Roboto', Helvetica, Arial, sans-serif;
     font-weight: 300;
 }
@@ -84,7 +86,7 @@ body {
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 h2 {
@@ -126,7 +128,7 @@ section {
     font-size: 0.95rem;;
 }
 
-.flexbox {
+.flexbox, .info-match {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -215,6 +217,10 @@ span#corazon {
     .centre {
         margin: 0 1rem;
     }
+
+    .form-centre {
+        padding: 0 1rem;
+    }
 }
 
 @media screen and (min-width: 2016px) {
@@ -222,7 +228,7 @@ span#corazon {
         font-size: 36px;
     }
 
-    .centre {
+    .centre, .form-centre {
         max-width: 2000px;
     }
 }

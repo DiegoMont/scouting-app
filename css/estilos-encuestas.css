@@ -1,0 +1,22 @@
+.autonomous-info {
+    background-color: rgb(13, 17, 23);
+}
+
+.form-centre {
+    max-width: 1000px;
+    padding: 1rem 0;
+    margin: 0 auto;
+}
+
+.scouting-section {
+    padding: 1rem 0;
+}
+
+.teleop-info {
+    background-color: var(--negro-claro);
+}
+
+.info-match label {
+    display: block;
+    margin-bottom: 0.25rem;
+}
