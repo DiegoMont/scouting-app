@@ -217,10 +217,6 @@ span#corazon {
     .centre {
         margin: 0 1rem;
     }
-
-    .form-centre {
-        padding: 0 1rem;
-    }
 }
 
 @media screen and (min-width: 2016px) {
@@ -228,7 +224,7 @@ span#corazon {
         font-size: 36px;
     }
 
-    .centre, .form-centre {
+    .centre {
         max-width: 2000px;
     }
 }

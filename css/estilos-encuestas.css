@@ -1,11 +1,37 @@
+input[type=radio], input[type=checkbox] {
+    display: none;
+}
+
+img[src="img/cancel.svg"] {
+    background-color: var(--rojo-stop);
+  }
+  
+  img[src="img/tick.svg"] {
+    background-color: var(--verde);
+  }
+
+input[type=number] {
+    text-align: center;
+    width: 5.3ch;
+}
+
 .autonomous-info {
     background-color: rgb(13, 17, 23);
+}
+
+.btn-bool {
+    width: 20%;
+    max-width: 7rem;
 }
 
 .form-centre {
     max-width: 1000px;
     padding: 1rem 0;
     margin: 0 auto;
+}
+
+.image-label-container {
+    justify-content: space-evenly;
 }
 
 .scouting-section {
@@ -16,7 +42,33 @@
     background-color: var(--negro-claro);
 }
 
+.btn-bool img {
+    box-sizing: border-box;
+    padding: 1.3rem;
+    border-radius: 50%;
+  }
+
+.image-label-container label {
+    width: 12.5%;
+    min-width: 100px;
+  }
+
 .info-match label {
     display: block;
     margin-bottom: 0.25rem;
+}
+
+input[type=checkbox] + label, input[type=radio] + label {
+    margin: 0.5rem;
+    opacity: 0.5;
+  }
+  
+  input[type=checkbox]:checked + label, input[type=radio]:checked + label {
+    opacity: 1;
+  }
+
+@media screen and (max-width: 1016px) {
+    .form-centre {
+        padding: 1rem;
+    }
 }
