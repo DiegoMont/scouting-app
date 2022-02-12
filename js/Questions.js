@@ -1,68 +1,6 @@
-class ScoutingFormElement {
-    addToContainer(){
-        throw Error;
-    }
-}
-
-class Question extends ScoutingFormElement {
-
-    _error;
-    _inputs;
-    _question;
-    _questionContainer;
-
-    constructor(questionTxt, error){
-        super();
-        this.error = error;
-        this._inputs = new Array();
-        this.question = questionTxt;
-    }
-
-    get error(){
-        return this._error;
-    }
-
-    set error(errorMsg){
-        this._error = document.createElement('p');
-        this._error.classList.add('ocultar', 'error');
-        this._error.innerText = errorMsg;
-    }
-
-    get inputs(){
-        return this._inputs;
-    }
-
-    get question(){
-        return this._question;
-    }
-
-    set question(question){
-        this._question = document.createElement('p');
-        this._question.innerText = question;
-    }
-
-    get questionContainer(){
-        return this._questionContainer;
-    }
-
-    set questionContainer(container){
-        this._questionContainer = container;
-    }
-
-    addInput(){
-        throw Error();
-    }
-
-    addToContainer(container){
-        container.appendChild(this.question);
-        container.appendChild(this.error);
-        container.appendChild(this.questionContainer);
-    }
-}
-
 class RadioWithImages extends Question {
-    constructor(question, error='Debes seleccionar una opción'){
-        super(question, error);
+    constructor(question, name, error='Debes seleccionar una opción'){
+        super(question, name, error);
         this.questionContainer = document.createElement('div');
         this.questionContainer.classList.add('radio-imagenes', 'flexbox');
     }
@@ -79,7 +17,7 @@ class RadioWithImages extends Question {
         const input = document.createElement('input');
         input.classList.add(ocultar);
         input.type = 'radio';
-        input.name = inputData.id;
+        input.name = this.name;
         input.id = inputData.id;
         input.value = inputData.value;
         return input;
@@ -93,5 +31,45 @@ class RadioWithImages extends Question {
         img.src = labelData.img;
         label.appendChild(img);
         return label;
+    }
+}
+
+class RegionalSelector extends Question {
+
+    static REGIONALES = [
+        ['monterrey', 'Monterrey']
+    ];
+
+    constructor(){
+        super('', 'regional', '');
+        this.questionContainer = document.createElement('div');
+        this.inputs[0] = this.getSelect();
+        const label = this.getLabel();
+        this.questionContainer.appendChild(label);
+        this.questionContainer.appendChild(this.inputs[0]);
+    }
+
+    addToContainer(container){
+        container.appendChild(this.questionContainer);
+    }
+
+    getLabel(){
+        const label = document.createElement('label');
+        label.for = this.name;
+        label.innerText = 'Regional';
+        return label;
+    }
+
+    getSelect(){
+        const select = document.createElement('select');
+        select.name = this.name;
+        select.id = this.name;
+        for (const regional of RegionalSelector.REGIONALES) {
+            const regionalOption = document.createElement('option');
+            regionalOption.value = regional[0];
+            regionalOption.innerText = regional[1];
+            select.appendChild(regionalOption);
+        }
+        return select;
     }
 }
