@@ -2,8 +2,13 @@ class ScoutingForm {
 
     form;
     sections;
+    submitBtn;
 
     constructor(formSelector){
+        this.submitBtn = document.createElement('button');
+        this.submitBtn.type = 'submit';
+        this.submitBtn.classList.add('submit-btn');
+        this.submitBtn.innerText = 'Enviar';
         this.form = document.querySelector(formSelector);
         this.sections = {};
         this.sections.generalInfo = new ScoutingFormSection('info-match');
@@ -11,6 +16,7 @@ class ScoutingForm {
         this.sections.generalInfo.addQuestion(new RegionalSelector());
         this.sections.generalInfo.addQuestion(new NumericText('Equipo', 'team-number', '', '4010'));
         this.sections.comments = new ScoutingFormSection('comments-submit');
+        this.sections.comments.addQuestion(new BigTextArea('Comentarios', 'comments'));
     }
 
     renderSections(){
@@ -19,6 +25,7 @@ class ScoutingForm {
             section.renderQuestions();
             this.form.appendChild(section.container);
         }
+        this.sections.comments.container.appendChild(this.submitBtn);
     }
 
     addFormSpecificSections(){}

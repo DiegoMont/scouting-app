@@ -57,6 +57,22 @@ form p, .big-text-question label {
     padding: 1rem 0;
 }
 
+.submit-btn {
+    color: #000;
+    background-color: var(--amarillo);
+    width: 50%;
+    min-width: 6rem;
+    border: 2px solid var(--amarillo);
+    border-radius: 2px;
+    padding: 0.75rem 0;
+    margin: 0.5rem auto 0;
+}
+
+.submit-btn:hover {
+    color: var(--amarillo);
+    background-color: var(--negro);
+}
+
 .teleop-info {
     background-color: var(--negro-claro);
 }
