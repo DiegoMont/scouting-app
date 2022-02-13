@@ -1,6 +1,12 @@
 class BigTextArea extends Question {
+
+    minValueLength;
+    errorMinLength;
+
     constructor(question, name, minLength, error='Ingresa más información'){
         super('', name, error);
+        this.minValueLength = minLength;
+        this.errorMinLength = error;
         this.questionContainer = document.createElement('div');
         this.questionContainer.classList.add('big-text-question');
         const input = this.getInput(name);
@@ -22,6 +28,20 @@ class BigTextArea extends Question {
         label.htmlFor = name;
         label.innerText = question;
         return label;
+    }
+
+    validate(){
+        const textLength = this.inputs[0].value.length;
+        if(textLength < this.minValueLength)
+            this.error.innerText = this.errorMinLength;
+        else if(textLength > 255)
+            this.error.innerText = 'Resume la información un poco más';
+        else {
+            this.hideError();
+            return true;
+        }
+        this.showError();
+        return false;
     }
 }
 
@@ -68,12 +88,22 @@ class NumericCounter extends Question {
         this.inputs[0].value = 0;
         this.inputs[0].classList.add('cifra-contador');
     }
+
+    validate(){
+        return true;
+    }
 }
 
 
 class NumericText extends Question {
-    constructor(question, name, error, placeholder, minValue, maxValue){
+
+    maxValue;
+    minValue;
+
+    constructor(question, name, placeholder, minValue, maxValue, error='Valor no válido'){
         super('', name, error);
+        this.maxValue = maxValue;
+        this.minValue = minValue;
         this.questionContainer = document.createElement('div');
         this.inputs[0] = this.getInput(placeholder);
         const label = this.getLabel(question);
@@ -101,6 +131,17 @@ class NumericText extends Question {
         numericInput.placeholder = placeholder;
         numericInput.inputMode = 'numeric';
         return numericInput;
+    }
+
+    validate(){
+        const num = Number(this.inputs[0].value);
+        if(num < this.minValue || num > this.maxValue){
+            this.showError();
+            return false;
+        } else {
+            this.hideError();
+            return true;
+        }
     }
 }
 
@@ -138,6 +179,15 @@ class RadioWithImages extends Question {
         label.appendChild(img);
         return label;
     }
+
+    validate(){
+        const isAnyInputSelected = this.inputs.some(input => input.checked);
+        if(isAnyInputSelected)
+            this.hideError();
+        else
+            this.showError();
+        return isAnyInputSelected;
+    }
 }
 
 
@@ -172,13 +222,22 @@ class RadioWithText extends Question {
         label.innerText = labelData.value;
         return label;
     }
+
+    validate(){
+        const isAnyInputSelected = this.inputs.some(input => input.checked);
+        if(isAnyInputSelected)
+            this.hideError();
+        else
+            this.showError();
+        return isAnyInputSelected;
+    }
 }
 
 
 class RegionalSelector extends Question {
 
     static REGIONALES = [
-        ['monterrey', 'Monterrey']
+        'Monterrey'
     ];
 
     constructor(){
@@ -207,18 +266,29 @@ class RegionalSelector extends Question {
         select.id = this.name;
         for (const regional of RegionalSelector.REGIONALES) {
             const regionalOption = document.createElement('option');
-            regionalOption.value = regional[0];
-            regionalOption.innerText = regional[1];
+            regionalOption.value = regional;
+            regionalOption.innerText = regional;
             select.appendChild(regionalOption);
         }
         return select;
+    }
+    validate(){
+        return true;
     }
 }
 
 
 class TextInput extends Question {
-    constructor(question, name, placeholder, error='El campo está vacío'){
+
+    MAX_LENGTH_VALUE = 40;
+
+    minValueLength;
+    errorMinLength;
+
+    constructor(question, name, placeholder, minAnswerLength, error='Esta respuesta es muy corta'){
         super('', name, error);
+        this.minValueLength = minAnswerLength;
+        this.errorMinLength = error;
         this.questionContainer = document.createElement('div');
         this.questionContainer.classList.add('input-texto');
         const label = this.getLabel(question, name);
@@ -242,6 +312,20 @@ class TextInput extends Question {
         input.id = name;
         input.placeholder = placeholder;
         return input;
+    }
+
+    validate(){
+        const text = this.inputs[0].value;
+        if(text.length < this.minValueLength)
+            this.error.innerText = this.errorMinLength;
+        else if(text.length > this.MAX_LENGTH_VALUE)
+            this.error.innerText = 'Resume la información un poco más';
+        else {
+            this.hideError();
+            return true;
+        }
+        this.showError();
+        return false;
     }
 }
 

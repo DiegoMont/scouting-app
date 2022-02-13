@@ -65,7 +65,20 @@ class Question extends ScoutingFormElement {
 
     addToContainer(container){
         container.appendChild(this.question);
-        container.appendChild(this.error);
         container.appendChild(this.questionContainer);
+        container.appendChild(this.error);
+    }
+
+    validate(){
+        console.error('Method not implemented');
+        return true;
+    }
+
+    hideError(){
+        this.error.classList.add('ocultar');
+    }
+
+    showError(){
+        this.error.classList.remove('ocultar');
     }
 }
