@@ -76,6 +76,11 @@ class PitScoutingForm extends ScoutingForm {
     constructor(form){
         super(form);
     }
+
+    addFormSpecificSections(){
+        this.sections.engineering = new ScoutingFormSection('autonomous-info', 'Ingeniería');
+        this.sections.team = new ScoutingFormSection('teleop-info', 'Finanzas y comunicación');
+    }
 }
 
 class ScoutingFormSection {
