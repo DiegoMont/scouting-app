@@ -5,18 +5,10 @@ class ScoutingForm {
     submitBtn;
 
     constructor(formSelector){
-        this.submitBtn = document.createElement('button');
-        this.submitBtn.type = 'submit';
-        this.submitBtn.classList.add('submit-btn');
-        this.submitBtn.innerText = 'Enviar';
         this.form = document.querySelector(formSelector);
-        this.sections = {};
-        this.sections.generalInfo = new ScoutingFormSection('info-match');
-        this.addFormSpecificSections();
-        this.sections.generalInfo.addQuestion(new RegionalSelector());
-        this.sections.generalInfo.addQuestion(new NumericText('Equipo', 'team-number', '', '4010'));
-        this.sections.comments = new ScoutingFormSection('comments-submit');
-        this.sections.comments.addQuestion(new BigTextArea('Comentarios', 'comments'));
+        this.setSubmitBtn();
+        this.setSectionsAndQuestions();
+        this.addFormHandler();
     }
 
     renderSections(){
@@ -29,13 +21,49 @@ class ScoutingForm {
     }
 
     addFormSpecificSections(){}
+
+    setSubmitBtn(){
+        this.submitBtn = document.createElement('button');
+        this.submitBtn.type = 'submit';
+        this.submitBtn.classList.add('submit-btn');
+        this.submitBtn.innerText = 'Enviar';
+    }
+
+    setSectionsAndQuestions(){
+        this.sections = {};
+        this.sections.generalInfo = new ScoutingFormSection('info-match');
+        this.addFormSpecificSections();
+        this.sections.generalInfo.addQuestion(new RegionalSelector());
+        this.sections.generalInfo.addQuestion(new NumericText('Equipo', 'team-number', '4010', 1000, 30000, 'El número de equipo no es válido'));
+        this.sections.comments = new ScoutingFormSection('comments-submit');
+        this.sections.comments.addQuestion(new BigTextArea('Comentarios', 'comments'), 0);
+    }
+
+    addFormHandler(){
+        const pointerToThis = this;
+        this.form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let areAllQuestionsValid = true;
+            for (const sectionName in pointerToThis.sections){
+                const section = pointerToThis.sections[sectionName];
+                for(const sectionQuestion of section.questions){
+                    const isQuestionValid = sectionQuestion.validate();
+                    areAllQuestionsValid = areAllQuestionsValid && isQuestionValid;
+                }
+            }
+            if(!areAllQuestionsValid)
+                return;
+            const data = new FormData(e.target);
+            console.log(data);
+        });
+    }
 }
 
 class MatchScoutingForm extends ScoutingForm {
 
     constructor(form){
         super(form);
-        this.sections.generalInfo.addQuestion(new NumericText('Match', 'match-number', '', '1'));
+        this.sections.generalInfo.addQuestion(new NumericText('Match', 'match-number', '1', 1, 99, 'El número de match no es válido'));
     }
 
     addFormSpecificSections(){
