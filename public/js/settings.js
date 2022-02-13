@@ -1,3 +1,0 @@
-const REGIONALES = [
-    ['monterrey', 'Monterrey']
-];
