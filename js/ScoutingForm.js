@@ -56,8 +56,16 @@ class ScoutingForm {
                 return;
             const submittedForm = new FormData(e.target);
             const scoutingData = {};
-            for (const input of submittedForm.entries())
-                scoutingData[input[0]] = input[1];
+            for (const input of submittedForm.entries()){
+                const key = input[0];
+                const keyLastChar = key.charAt(key.length-1);
+                if(keyLastChar === ']') {
+                    if(!scoutingData.hasOwnProperty(key))
+                        scoutingData[key] = new Array();
+                    scoutingData[key].push(input[1]);
+                } else 
+                    scoutingData[key] = input[1];
+            }
             db.collection(`${Season.SEASON_NAME}-${pointerToThis.typeData}`).add(scoutingData).then(docRef => {
                 checkoutPage.loadSuccessPage();
             }).catch(error => {

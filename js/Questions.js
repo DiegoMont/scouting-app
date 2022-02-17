@@ -332,7 +332,7 @@ class TextInput extends Question {
 
 class CheckboxWithImages extends RadioWithImages {
     constructor(question, name, error='Debes seleccionar al menos una opción'){
-        super(question, name, error);
+        super(question, name + '[]', error);
     }
 
     getInput(inputData){
@@ -367,7 +367,7 @@ class TrueFalseButtons extends RadioWithImages {
 
 class CheckboxWithText extends RadioWithText {
     constructor(question, name, error='Debes seleccionar al menos una opción'){
-        super(question, name, error);
+        super(question, name + '[]', error);
     }
 
     getInput(inputData){
