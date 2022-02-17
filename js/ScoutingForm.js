@@ -1,5 +1,6 @@
 class ScoutingForm {
 
+    errorFooter;
     form;
     sections;
     submitBtn;
@@ -7,6 +8,7 @@ class ScoutingForm {
 
     constructor(formSelector){
         this.form = document.querySelector(formSelector);
+        this.setErrorFooter();
         this.setSubmitBtn();
         this.setSectionsAndQuestions();
         this.addFormHandler();
@@ -18,10 +20,17 @@ class ScoutingForm {
             section.renderQuestions();
             this.form.appendChild(section.container);
         }
+        this.sections.comments.container.appendChild(this.errorFooter);
         this.sections.comments.container.appendChild(this.submitBtn);
     }
 
     addFormSpecificSections(){}
+
+    setErrorFooter(){
+        this.errorFooter = document.createElement('p');
+        this.errorFooter.classList.add('ocultar', 'error');
+        this.errorFooter.innerText = "Hay errores en algunas preguntas";
+    }
 
     setSubmitBtn(){
         this.submitBtn = document.createElement('button');
@@ -45,6 +54,7 @@ class ScoutingForm {
         this.form.addEventListener('submit', function(e) {
             e.preventDefault();
             let areAllQuestionsValid = true;
+            pointerToThis.errorFooter.classList.add('ocultar');
             for (const sectionName in pointerToThis.sections){
                 const section = pointerToThis.sections[sectionName];
                 for(const sectionQuestion of section.questions){
@@ -52,8 +62,10 @@ class ScoutingForm {
                     areAllQuestionsValid = areAllQuestionsValid && isQuestionValid;
                 }
             }
-            if(!areAllQuestionsValid)
+            if(!areAllQuestionsValid){
+                pointerToThis.errorFooter.classList.remove('ocultar');
                 return;
+            }
             const submittedForm = new FormData(e.target);
             const scoutingData = {};
             for (const input of submittedForm.entries()){
@@ -67,6 +79,8 @@ class ScoutingForm {
                     scoutingData[key] = input[1];
             }
             db.collection(`${Season.SEASON_NAME}-${pointerToThis.typeData}`).add(scoutingData).then(docRef => {
+                pointerToThis.errorFooter.classList.add('ocultar');
+                e.target.reset();
                 checkoutPage.loadSuccessPage();
             }).catch(error => {
                 checkoutPage.loadFailPage();
