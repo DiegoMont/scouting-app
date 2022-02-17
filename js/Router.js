@@ -46,6 +46,7 @@ class Router {
     openResults(){
         this.closePages();
         this.pages.resultsPage.classList.add('mostrar');
+        fetchResults();
     }
 
 }

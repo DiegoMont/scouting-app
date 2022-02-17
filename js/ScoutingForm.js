@@ -78,11 +78,13 @@ class ScoutingForm {
                 } else 
                     scoutingData[key] = input[1];
             }
+            scoutingData['createdAt'] = Date.now();
             db.collection(`${Season.SEASON_NAME}-${pointerToThis.typeData}`).add(scoutingData).then(docRef => {
                 pointerToThis.errorFooter.classList.add('ocultar');
                 e.target.reset();
                 checkoutPage.loadSuccessPage();
             }).catch(error => {
+                console.log(error);
                 checkoutPage.loadFailPage();
             });
         });
