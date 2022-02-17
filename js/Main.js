@@ -7,7 +7,7 @@ const checkoutPage = new FormCheckout(router);
 addListenersToBtns();
 createMatchForm();
 createPitForm();
-router.openMatchScouting();
+router.openMenu();
 
 
 function addListenersToBtns() {
