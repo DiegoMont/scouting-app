@@ -7,20 +7,24 @@ class FormCheckout {
 
     title;
     img;
+    router;
 
-    constructor(){
+    constructor(router){
         this.title = document.querySelector('#form-submitted h1');
         this.img = document.querySelector('#form-submitted img');
+        this.router = router;
     }
 
     loadSuccessPage(){
         this.title.innerText = this.SUCCESS_MSG;
         this.img.src = this.SUCCESS_IMG;
+        this.router.openFormSubmitted();
     }
 
     loadFailPage(){
         this.title.innerText = this.FAIL_MSG;
         this.img.src = this.FAIL_IMG;
+        this.router.openFormSubmitted();
     }
 
 }

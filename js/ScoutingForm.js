@@ -3,6 +3,7 @@ class ScoutingForm {
     form;
     sections;
     submitBtn;
+    typeData;
 
     constructor(formSelector){
         this.form = document.querySelector(formSelector);
@@ -53,8 +54,15 @@ class ScoutingForm {
             }
             if(!areAllQuestionsValid)
                 return;
-            const data = new FormData(e.target);
-            console.log(data);
+            const submittedForm = new FormData(e.target);
+            const scoutingData = {};
+            for (const input of submittedForm.entries())
+                scoutingData[input[0]] = input[1];
+            db.collection(`${Season.SEASON_NAME}-${pointerToThis.typeData}`).add(scoutingData).then(docRef => {
+                checkoutPage.loadSuccessPage();
+            }).catch(error => {
+                checkoutPage.loadFailPage();
+            });
         });
     }
 }
@@ -64,6 +72,7 @@ class MatchScoutingForm extends ScoutingForm {
     constructor(form){
         super(form);
         this.sections.generalInfo.addQuestion(new NumericText('Match', 'match-number', '1', 1, 99, 'El número de match no es válido'));
+        this.typeData = 'matches';
     }
 
     addFormSpecificSections(){
@@ -75,6 +84,7 @@ class MatchScoutingForm extends ScoutingForm {
 class PitScoutingForm extends ScoutingForm {
     constructor(form){
         super(form);
+        this.typeData = 'teams';
     }
 
     addFormSpecificSections(){
