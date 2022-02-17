@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/general.css">
     <link rel="stylesheet" type="text/css" href="css/estilos-menu.css">
     <link rel="stylesheet" type="text/css" href="css/estilos-encuestas.css">
+    <link rel="stylesheet" type="text/css" href="css/estilos-checkout.css">
     <link rel="icon" type="image/png" href="img/nautilus.png">
   </head>
   <body>
@@ -39,6 +40,15 @@
     </section>
 
     <section id="form-submitted">
+      <div class="centre">
+        <h1></h1>
+        <img src="">
+        <div class="flexbox">
+          <button id="return-to-match-btn">Scouting match</button>
+          <button id="to-statistics-btn">Estadísticas</button>
+          <button id="return-to-pit-btn">Scouting pit</button>
+        </div>
+      </div>
     </section>
 
     <section id="results">
@@ -53,7 +63,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="js/firebase.js" type="module"></script>
+    <script src="js/Season.js"></script>
     <script src="js/Router.js"></script>
+    <script src="js/FormCheckout.js"></script>
     <script src="js/QuestionInterface.js"></script>
     <script src="js/Questions.js"></script>
     <script src="js/ScoutingForm.js"></script>
