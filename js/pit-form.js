@@ -73,11 +73,11 @@ function createPitForm() {
     pitForm.sections.engineering.addQuestion(elementTypes);
     pitForm.sections.engineering.addQuestion(vision);
     pitForm.sections.engineering.addQuestion(sensors);
-    pitForm.sections.engineering.addQuestion(projects);
-    pitForm.sections.engineering.addQuestion(socialNetworks);
-    pitForm.sections.engineering.addQuestion(characteristics);
-    pitForm.sections.engineering.addQuestion(sponsors);
-    pitForm.sections.engineering.addQuestion(funding);
+    pitForm.sections.team.addQuestion(projects);
+    pitForm.sections.team.addQuestion(socialNetworks);
+    pitForm.sections.team.addQuestion(characteristics);
+    pitForm.sections.team.addQuestion(sponsors);
+    pitForm.sections.team.addQuestion(funding);
     // Add your code above
     pitForm.renderSections();
 }
