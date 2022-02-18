@@ -94,7 +94,7 @@ function createMatchForm() {
         img: 'img/robot-roto.jpg'
     });
 
-    const barriers = new CheckboxWithText('Para llegar al Warehouse. Selecciona las que apliquen');
+    const barriers = new CheckboxWithText('Para llegar al Warehouse. Selecciona las que apliquen', 'barriers');
     barriers.addInput({
         id: 'barriers-low',
         value: 'Pasa sobre las barreras'
