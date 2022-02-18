@@ -38,4 +38,6 @@ const addChangeListener = function() {
 
 const updateResults = function(teamNumber){
     // TODO: Implement method
+    console.log(teams[teamNumber]);
+    console.log(teamMatches[teamNumber]);
 }
