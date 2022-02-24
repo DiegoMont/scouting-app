@@ -46,7 +46,8 @@ class ResultForm {
     
         this.searchBtn.addEventListener('click', function(e) {
             console.log(':D')
-            console.log(document.getElementById('team-number').value)
+            const teamNumber = document.querySelector('#results #team-number').value
+            console.log(teamNumber)
         });
 
         
