@@ -21,6 +21,10 @@ form p, .big-text-question label {
     background-color: rgb(13, 17, 23);
 }
 
+.team-info {
+    background-color: rgb(13, 17, 23);
+}
+
 .btn-bool {
     width: 20%;
     max-width: 7rem;
@@ -101,6 +105,11 @@ form p, .big-text-question label {
 }
 
 .info-match label {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.info-team label {
     display: block;
     margin-bottom: 0.25rem;
 }

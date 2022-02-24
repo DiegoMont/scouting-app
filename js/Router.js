@@ -17,7 +17,7 @@ class Router {
         for (const pageName in this.pages)
             this.pages[pageName].classList.remove('mostrar');
     }
-
+    
     openFormSubmitted(){
         this.closePages();
         this.pages.formSubmittedPage.classList.add('mostrar');
