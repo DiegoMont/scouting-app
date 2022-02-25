@@ -7,6 +7,7 @@ const checkoutPage = new FormCheckout(router);
 addListenersToBtns();
 createMatchForm();
 createPitForm();
+formatResultTables();
 router.openLogin();
 
 

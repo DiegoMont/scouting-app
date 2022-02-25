@@ -32,6 +32,11 @@ ol, ul {
     list-style-position: inside;
 }
 
+table {
+    border-collapse: collapse;
+    display: block;
+}
+
 textarea {
     resize: none;
 }
