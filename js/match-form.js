@@ -63,7 +63,7 @@ function createMatchForm() {
 
     const levelThree = new NumericCounter('Level 3 Shipping Hub', 'level-three', 0, Season.TOTAL_FREIGHT_IN_FIELD);
 
-    const sharedHub = new NumericCounter('Shared Hub', 'level-three', 0, Season.TOTAL_FREIGHT_IN_FIELD);
+    const sharedHub = new NumericCounter('Shared Hub', 'shared-hub', 0, Season.TOTAL_FREIGHT_IN_FIELD);
 
     const duckEnd = new RadioWithImages('Delivers Duck', 'duck-delivery-end');
     duckEnd.addInput({
@@ -108,7 +108,7 @@ function createMatchForm() {
         value: 'Pasa entre el espacio libre y las barreras'
     });
 
-    const intakeControl = new CheckboxWithText('Eficiencia agarrando los objetos');
+    const intakeControl = new CheckboxWithText('Eficiencia agarrando los objetos', 'driver-ability');
     intakeControl.addInput({
         id: 'eficiencia-agarre-1',
         value: 'Toma objetos en el primer intento'

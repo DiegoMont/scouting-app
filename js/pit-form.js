@@ -40,7 +40,7 @@ function createPitForm() {
         value: 'No tiene'
     });
 
-    const elementTypes = new RadioWithText('Puede tomar Cargos y Boxes');
+    const elementTypes = new RadioWithText('Puede tomar Cargos y Boxes', 'cargo');
     elementTypes.addInput({
         id: 'box-only',
         value: 'Solo boxes'
