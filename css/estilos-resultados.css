@@ -13,3 +13,80 @@
     color: var(--amarillo);
     background-color: var(--negro);
 }
+
+.image-label-container {
+    margin: auto;
+    width: 150px;
+    height: auto;
+}
+
+.delivers-duck-auto-container {
+    margin: auto;
+    width: 150px;
+    height: auto;
+}
+
+.delivers-duck-end-container {
+    margin: auto;
+    width: 150px;
+    height: auto;
+}
+
+.capping-container {
+    margin: auto;
+    width: 150px;
+    height: auto;
+}
+
+.intake-text {
+    margin: auto;
+    text-align: center;
+}
+
+.vision-text {
+    margin: auto;
+    text-align: center;
+}
+
+.boxes-text {
+    margin: auto;
+    text-align: center;
+}
+
+.sensores-text {
+    margin: auto;
+    text-align: center;
+}
+
+.barcode-text {
+    margin: auto;
+    text-align: center;
+}
+
+.parking-text {
+    margin: auto;
+    text-align: center;
+}
+
+.preloaded-freight-text {
+    margin: auto;
+    text-align: center;
+}
+
+.objetos-text {
+    margin: auto;
+    text-align: center;
+}
+
+.barreras-text {
+    margin: auto;
+    text-align: center;
+}
+
+.team-info {
+    background-color: rgb(13, 17, 23);
+}
+
+.matches-info {
+    background-color: var(--negro-claro);
+}

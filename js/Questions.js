@@ -342,6 +342,7 @@ class CheckboxWithImages extends RadioWithImages {
     }
 }
 
+
 class TrueFalseButtons extends RadioWithImages {
     constructor(question, name, trueVal, falseVal, error){
         super(question, name, error);
@@ -365,6 +366,7 @@ class TrueFalseButtons extends RadioWithImages {
     }
 }
 
+
 class CheckboxWithText extends RadioWithText {
     constructor(question, name, error='Debes seleccionar al menos una opción'){
         super(question, name + '[]', error);
@@ -376,3 +378,35 @@ class CheckboxWithText extends RadioWithText {
         return input;
     }
 }
+
+// Parte para los results
+class ResultText extends Question {
+    constructor(question, name, classDiv, error=''){
+        super(question, name, error);
+        this.questionContainer = document.createElement('div');
+        this.questionContainer.classList.add(classDiv);
+        this.questionContainer.innerText = '';
+    }
+}
+
+class ResultsWithImages extends Question {
+    constructor(question, name, classL, error='Debes seleccionar una opción'){
+        super(question, name, error);
+        this.questionContainer = document.createElement('div');
+        this.questionContainer.classList.add(classL, 'flexbox');
+    }
+
+    addInput(inputData){
+        const input = this.getImg(inputData);
+        this.inputs.push(input);
+        this.questionContainer.appendChild(input);
+    }
+
+    getImg(labelData){
+        const img = document.createElement('img');
+        img.src = labelData.img;
+
+        return img
+    }
+}
+

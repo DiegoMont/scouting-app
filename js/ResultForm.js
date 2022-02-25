@@ -40,18 +40,18 @@ class ResultForm {
         this.sections.comments = new ResultFormSection('fetch-results');
         this.addFormSpecificSections();
         this.sections.generalInfo.addQuestion(new NumericText('Equipo', 'team-number', '4010', 1000, 30000, 'El número de equipo no es válido'));
+        this.sections.generalInfo.addQuestion(new NumericText('Match', 'team-matches', '0', 1000, 30000, ''));
     }
 
     addFormHandler(){
-    
         this.searchBtn.addEventListener('click', function(e) {
-            console.log(':D')
-            const teamNumber = document.querySelector('#results #team-number').value
-            console.log(teamNumber)
-        });
+            console.log(':D');
+            const teamNumber = document.querySelector('#results #team-number').value;
+            const teamN_Matches = document.querySelector('#results #team-matches').value;
 
-        
-        
+            updateResults(teamNumber, teamN_Matches);
+
+        });
     }
 }
 
@@ -62,10 +62,14 @@ class ResultingForm extends ResultForm {
     }
 
     addFormSpecificSections(){
-        this.sections.autonomous = new ResultFormSection('autonomous-info', 'Team');
+        // A cambiar
+        this.sections.team_information = new ResultFormSection('team-info', 'Team');
+        this.sections.team_matches = new ResultFormSection('matches-info', 'Match');
+        
     }
 }
 
+// A cambiar
 class ResultFormSection {
 
     container;
