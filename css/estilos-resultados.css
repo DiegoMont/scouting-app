@@ -8,3 +8,15 @@
 .results-table td {
     border: 1px solid var(--amarillo);
 }
+
+#results-table {
+  display: none;
+}
+
+#results-switch:checked ~ #results-table{
+  display: block;
+}
+
+#results-switch:checked ~ #result-cards {
+  display: none;
+}
