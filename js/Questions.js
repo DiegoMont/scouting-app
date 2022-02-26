@@ -237,6 +237,7 @@ class RadioWithText extends Question {
 class RegionalSelector extends Question {
 
     static REGIONALES = [
+        'Toluca',
         'Monterrey'
     ];
 
