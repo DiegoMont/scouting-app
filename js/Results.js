@@ -1,8 +1,10 @@
 let resultsListenerAdded = false;
 const teams = {};
 const teamMatches = {};
-const table = document.querySelector('#results-table tbody');
-const tableHeaders = ['team-number', 'match-number', 'auto-park', 'barcode', 'barriers[]', 'capping', 'driver-ability[]', 'duck-delivery-auto', 'duck-delivery-end', 'level-one', 'level-two', 'level-three', 'storage-freight', 'shared-hub', 'preloaded-freight', 'comments', 'regional'];
+const matchTableBody = document.querySelector('#match-table tbody');
+const pitTableBody = document.querySelector('#pit-table tbody');
+const matchTableHeaders = ['team-number', 'match-number', 'auto-park', 'barcode', 'barriers[]', 'capping', 'driver-ability[]', 'duck-delivery-auto', 'duck-delivery-end', 'level-one', 'level-two', 'level-three', 'storage-freight', 'shared-hub', 'preloaded-freight', 'comments', 'regional'];
+const pitTableHeaders = ['team-number', 'chasis', 'intake', 'cargo', 'vision', 'sensores', 'proyecto-social', 'redes-sociales', 'caracteristicas', 'patrocinadores', 'finanzas', 'comments', 'regional'];
 
 const fetchResults = function() {
     if(resultsListenerAdded)
@@ -19,6 +21,7 @@ const addChangeListener = function() {
                 const teamInfo = change.doc.data();
                 const teamNumber = teamInfo['team-number'];
                 teams[teamNumber] = teamInfo;
+                fillPitTable(teamInfo);
                 updateResults(teamNumber);
             }
         });
@@ -32,7 +35,7 @@ const addChangeListener = function() {
                 if(!teamMatches.hasOwnProperty(teamNumber))
                     teamMatches[teamNumber] = new Array();
                 teamMatches[teamNumber].push(matchInfo);
-                fillTable(matchInfo);
+                fillMatchTable(matchInfo);
                 updateResults(teamNumber);
             }
         });
@@ -40,14 +43,22 @@ const addChangeListener = function() {
 }
 
 const formatResultTables = function() {
-    const headerRow = getRow(tableHeaders);
-    document.querySelector('#results-table thead').appendChild(headerRow);
+    const matchHeaderRow = getRow(matchTableHeaders);
+    document.querySelector('#match-table thead').appendChild(matchHeaderRow);
+    const pitHeaderRow = getRow(pitTableHeaders);
+    document.querySelector('#pit-table thead').appendChild(pitHeaderRow);
 }
 
-const fillTable = function(match) {
-    const values = tableHeaders.map(key => match[key]);
+const fillMatchTable = function(match) {
+    const values = matchTableHeaders.map(key => match[key]);
     const matchRow = getRow(values);
-    table.appendChild(matchRow);
+    matchTableBody.appendChild(matchRow);
+}
+
+const fillPitTable = function(pit) {
+    const values = pitTableHeaders.map(key => pit[key]);
+    const pitRow = getRow(values);
+    pitTableBody.appendChild(pitRow);
 }
 
 const updateResults = function(teamNumber){

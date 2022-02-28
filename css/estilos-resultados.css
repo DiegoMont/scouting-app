@@ -9,11 +9,11 @@
     border: 1px solid var(--amarillo);
 }
 
-#results-table {
+#results-tables {
   display: none;
 }
 
-#results-switch:checked ~ #results-table{
+#results-switch:checked ~ #results-tables {
   display: block;
 }
 
