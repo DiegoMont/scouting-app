@@ -3,6 +3,7 @@ const teams = {};
 const teamMatches = {};
 const matchTableBody = document.querySelector('#match-table tbody');
 const pitTableBody = document.querySelector('#pit-table tbody');
+const resultCardsContainer = document.querySelector('#result-cards');
 const matchTableHeaders = ['team-number', 'match-number', 'auto-park', 'barcode', 'barriers[]', 'capping', 'driver-ability[]', 'duck-delivery-auto', 'duck-delivery-end', 'level-one', 'level-two', 'level-three', 'storage-freight', 'shared-hub', 'preloaded-freight', 'comments', 'regional'];
 const pitTableHeaders = ['team-number', 'chasis', 'intake', 'cargo', 'vision', 'sensores', 'proyecto-social', 'redes-sociales', 'caracteristicas', 'patrocinadores', 'finanzas', 'comments', 'regional'];
 
@@ -21,6 +22,7 @@ const addChangeListener = function() {
                 const teamInfo = change.doc.data();
                 const teamNumber = teamInfo['team-number'];
                 teams[teamNumber] = teamInfo;
+                teamMatches[teamNumber] = new Array();
                 fillPitTable(teamInfo);
                 updateResults(teamNumber);
             }
@@ -63,7 +65,10 @@ const fillPitTable = function(pit) {
 
 const updateResults = function(teamNumber){
     const teamStats = new TeamStats(teams[teamNumber], teamMatches[teamNumber]);
-    console.log(teamStats);
+    const oldCard = document.getElementById(`card-${teamNumber}`);
+    if(oldCard != undefined)
+        oldCard.remove();
+    resultCardsContainer.appendChild(teamStats.getCard());
 }
 
 const getRow = function(list){
