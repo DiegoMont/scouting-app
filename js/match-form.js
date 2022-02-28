@@ -30,20 +30,12 @@ function createMatchForm() {
 
     const autoParking = new RadioWithText('Parking', 'auto-park');
     autoParking.addInput({
-        id: 'auto-park-complete-storage',
-        value: 'Completely in storage'
-    });
-    autoParking.addInput({
         id: 'auto-park-storage',
-        value: 'In storage'
-    });
-    autoParking.addInput({
-        id: 'auto-park-complete-warehouse',
-        value: 'Completely in warehouse'
+        value: 'Parks in storage'
     });
     autoParking.addInput({
         id: 'auto-park-warehouse',
-        value: 'In warehouse'
+        value: 'Parks in warehouse'
     });
     autoParking.addInput({
         id: 'auto-park-no',
