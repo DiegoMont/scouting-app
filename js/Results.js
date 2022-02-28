@@ -62,9 +62,8 @@ const fillPitTable = function(pit) {
 }
 
 const updateResults = function(teamNumber){
-    // TODO: Implement method
-    console.log(teams[teamNumber]);
-    console.log(teamMatches[teamNumber]);
+    const teamStats = new TeamStats(teams[teamNumber], teamMatches[teamNumber]);
+    console.log(teamStats);
 }
 
 const getRow = function(list){
