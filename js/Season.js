@@ -11,4 +11,5 @@ class Season {
     static REGIONALES = [
         'Monterrey'
     ];
+    static MAX_CARGO_PER_HUB = 50;
 }
