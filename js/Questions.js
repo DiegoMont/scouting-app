@@ -34,7 +34,7 @@ class BigTextArea extends Question {
         const textLength = this.inputs[0].value.length;
         if(textLength < this.minValueLength)
             this.error.innerText = this.errorMinLength;
-        else if(textLength > 255)
+        else if(textLength > 300)
             this.error.innerText = 'Resume la información un poco más';
         else {
             this.hideError();
