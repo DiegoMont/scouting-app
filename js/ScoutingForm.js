@@ -6,11 +6,11 @@ class ScoutingForm {
     submitBtn;
     typeData;
 
-    constructor(formSelector){
-        this.form = document.querySelector(formSelector);
+    constructor(formQuerySelector, formType){
+        this.form = document.querySelector(formQuerySelector);
         this.setErrorFooter();
         this.setSubmitBtn();
-        this.setSectionsAndQuestions();
+        this.setSectionsAndQuestions(formType);
         this.addFormHandler();
     }
 
@@ -39,14 +39,14 @@ class ScoutingForm {
         this.submitBtn.innerText = 'Enviar';
     }
 
-    setSectionsAndQuestions(){
+    setSectionsAndQuestions(formType){
         this.sections = {};
         this.sections.generalInfo = new ScoutingFormSection('info-match');
         this.addFormSpecificSections();
-        this.sections.generalInfo.addQuestion(new RegionalSelector());
-        this.sections.generalInfo.addQuestion(new NumericText('Equipo', 'team-number', '4010', 1000, 30000, 'El número de equipo no es válido'));
+        this.sections.generalInfo.addQuestion(new RegionalSelector(`regional-${formType}`));
+        this.sections.generalInfo.addQuestion(new NumericText('Equipo', `team-number-${formType}`, '4010', 1000, 30000, 'El número de equipo no es válido'));
         this.sections.comments = new ScoutingFormSection('comments-submit');
-        this.sections.comments.addQuestion(new BigTextArea('Comentarios', 'comments'), 0);
+        this.sections.comments.addQuestion(new BigTextArea('Comentarios', `comments-${formType}`), 0);
     }
 
     addFormHandler(){
@@ -94,7 +94,7 @@ class ScoutingForm {
 class MatchScoutingForm extends ScoutingForm {
 
     constructor(form){
-        super(form);
+        super(form, 'match');
         this.sections.generalInfo.addQuestion(new NumericText('Match', 'match-number', '1', 1, 99, 'El número de match no es válido'));
         this.typeData = 'matches';
     }
@@ -107,7 +107,7 @@ class MatchScoutingForm extends ScoutingForm {
 
 class PitScoutingForm extends ScoutingForm {
     constructor(form){
-        super(form);
+        super(form, 'pit');
         this.typeData = 'teams';
     }
 

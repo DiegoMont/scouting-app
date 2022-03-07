@@ -236,15 +236,11 @@ class RadioWithText extends Question {
 
 class RegionalSelector extends Question {
 
-    static REGIONALES = [
-        'Monterrey'
-    ];
-
-    constructor(){
+    constructor(id){
         super('', 'regional', '');
         this.questionContainer = document.createElement('div');
-        this.inputs[0] = this.getSelect();
-        const label = this.getLabel();
+        this.inputs[0] = this.getSelect(id);
+        const label = this.getLabel(id);
         this.questionContainer.appendChild(label);
         this.questionContainer.appendChild(this.inputs[0]);
     }
@@ -253,18 +249,18 @@ class RegionalSelector extends Question {
         container.appendChild(this.questionContainer);
     }
 
-    getLabel(){
+    getLabel(id){
         const label = document.createElement('label');
-        label.for = this.name;
+        label.for = id;
         label.innerText = 'Regional';
         return label;
     }
 
-    getSelect(){
+    getSelect(id){
         const select = document.createElement('select');
         select.name = this.name;
-        select.id = this.name;
-        for (const regional of RegionalSelector.REGIONALES) {
+        select.id = id;
+        for (const regional of Season.REGIONALES) {
             const regionalOption = document.createElement('option');
             regionalOption.value = regional;
             regionalOption.innerText = regional;
