@@ -1,3 +1,12 @@
+.team-card {
+    background-color: var(--negro-claro);
+    box-sizing: border-box;
+    min-width: 370px;
+    padding: 2.5rem 1.5rem;
+    border-radius: 20px;
+    margin: 1rem;
+}
+
 .results-table {
     box-sizing: border-box;
     padding: 1.5rem 0;
@@ -6,11 +15,29 @@
   }
 
 .results-table td {
+    color: var(--negro-texto);
+    padding: 0.5rem 0.35rem;
+    border: 1px solid var(--negro);
+}
+
+.team-card td, .team-card th {
     border: 1px solid var(--amarillo);
+    padding: 0.25rem;
+}
+
+.team-card .title {
+    color: var(--amarillo);
+    text-align: center;
+    font-weight: 400;
+}
+
+.results-table thead td {
+    font-weight: 400;
 }
 
 #results-table {
   display: none;
+  background-color: #fff;
 }
 
 #results-switch:checked ~ #results-table{
