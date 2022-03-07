@@ -1,4 +1,4 @@
-const PASS = '';
+const PASS = 'control-award';
 const AUTH_KEY = 'bNJqFAQfrW';
 const AUTH_VALUE = 'TuUaweAjxK';
 
