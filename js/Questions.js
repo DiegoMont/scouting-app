@@ -1,5 +1,6 @@
 class BigTextArea extends Question {
 
+    maxValueLength;
     minValueLength;
     errorMinLength;
 
@@ -7,6 +8,7 @@ class BigTextArea extends Question {
         super('', name, error);
         this.minValueLength = minLength;
         this.errorMinLength = error;
+        this.maxValueLength = 300;
         this.questionContainer = document.createElement('div');
         this.questionContainer.classList.add('big-text-question');
         const input = this.getInput(name);
@@ -34,7 +36,7 @@ class BigTextArea extends Question {
         const textLength = this.inputs[0].value.length;
         if(textLength < this.minValueLength)
             this.error.innerText = this.errorMinLength;
-        else if(textLength > 300)
+        else if(textLength > this.maxValueLength)
             this.error.innerText = 'Resume la información un poco más';
         else {
             this.hideError();
@@ -369,6 +371,25 @@ class CheckboxWithText extends RadioWithText {
     getInput(inputData){
         const input = super.getInput(inputData);
         input.type = 'checkbox';
+        return input;
+    }
+}
+
+
+class ScoutName extends BigTextArea {
+    constructor(name='scout-name'){
+        super('Hecho por', name, 3, "Indica tu nombre");
+        this.maxValueLength = 15;
+        this.questionContainer.classList.remove("big-text-question");
+    }
+
+    getInput(name){
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.placeholder = 'Nombre';
+        input.name = name;
+        input.id = name;
+        input.classList.add('scout-name');
         return input;
     }
 }
