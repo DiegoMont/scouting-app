@@ -16,23 +16,7 @@ function createMatchForm() {
 
     const lowerCargoLaunchPad = new NumericCounter('Cargo shot from below Lower Hub', 'lower-cargo-launch-pad', 0, Season.MAX_CARGO_PER_HUB);
 
-    const launchingZones = new CheckboxWithText('Elige las zonas desde donde hace disparos', 'launching-zones');
-    launchingZones.addInput({
-        id: "a",
-        value: "A"
-    });
-    launchingZones.addInput({
-        id: "b",
-        value: "B"
-    });
-    launchingZones.addInput({
-        id: "c",
-        value: "C"
-    });
-    launchingZones.addInput({
-        id: "d",
-        value: "D"
-    });
+    const launchingZones = new FieldZones("Elige las zonas desde donde hace disparos", 'launching-zones', ['A', 'B', 'C', 'D'], 'img/rapid-react-field-zones.png');
 
     const lowerCargoTarmac = new NumericCounter('Cargo shot from Tarmac to Lower Hub', 'lower-cargo-tarmac', 0, Season.MAX_CARGO_PER_HUB);
     const hangar = new CheckboxWithText('Engaging with Hangar', 'hangar-engaging');
