@@ -376,6 +376,36 @@ class CheckboxWithText extends RadioWithText {
 }
 
 
+class FieldZones extends CheckboxWithText {
+
+    fieldImg;
+
+    constructor(question, name, zones, fieldMap, error='Elige al menos una zona'){
+        super(question, name, error);
+        this.setFieldImg(fieldMap);
+        this.addInputs(zones);
+    }
+
+    addToContainer(container){
+        container.appendChild(this.fieldImg);
+        super.addToContainer(container);
+    }
+
+    addInputs(zones){
+        for (const zone of zones)
+            this.addInput({
+                id: `${this.name}-${zone}`,
+                value: zone
+            });
+    }
+
+    setFieldImg(src){
+        this.fieldImg = document.createElement('img');
+        this.fieldImg.src = src;
+    }
+}
+
+
 class ScoutName extends BigTextArea {
     constructor(name='scout-name'){
         super('Hecho por', name, 3, "Indica tu nombre");
