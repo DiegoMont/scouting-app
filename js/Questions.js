@@ -401,6 +401,7 @@ class FieldZones extends CheckboxWithText {
 
     setFieldImg(src){
         this.fieldImg = document.createElement('img');
+        this.fieldImg.classList.add('field-img');
         this.fieldImg.src = src;
     }
 }

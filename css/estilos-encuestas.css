@@ -37,6 +37,10 @@ form p, .big-text-question label {
     margin: 0 auto
 }
 
+.field-img {
+    margin-top: 2rem;
+}
+
 .form-centre {
     max-width: 1000px;
     padding: 1rem 0;
