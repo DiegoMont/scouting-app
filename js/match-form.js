@@ -2,26 +2,11 @@ function createMatchForm() {
     // Add your code below
     const taxi = new TrueFalseButtons('Leaves tarmac mission', 'taxi', 'Se mueve fuera del tarmac', 'No se mueve');
 
-    const autoCargo = new RadioWithText('Score preloaded cargo', 'autonomous-cargo');
-    autoCargo.addInput({
-        id: 'auto-cargo-upper',
-        value: 'Upper Hub'
-    });
-    autoCargo.addInput({
-        id: 'auto-cargo-low',
-        value: 'Lower Hub'
-    });
-    autoCargo.addInput({
-        id: 'auto-cargo-no',
-        value: 'No'
-    });
-
     const autoUpper = new NumericCounter('Upper Hub Cargo', 'auto-upper-cargo', 0, Season.MAX_CARGO_PER_HUB);
 
     const autoLower = new NumericCounter('Lower Hub Cargo', 'auto-lower-cargo', 0, Season.MAX_CARGO_PER_HUB);
 
     matchForm.sections.autonomous.addQuestion(taxi);
-    matchForm.sections.autonomous.addQuestion(autoCargo);
     matchForm.sections.autonomous.addQuestion(autoUpper);
     matchForm.sections.autonomous.addQuestion(autoLower);
 
@@ -29,7 +14,7 @@ function createMatchForm() {
     const upperCargoLaunchPad = new NumericCounter('Cargo shot from Launch Pad to Upper Hub', 'upper-cargo-launch-pad', 0, Season.MAX_CARGO_PER_HUB);
     const upperCargoOther = new NumericCounter('Cargo shot from other field zone to Upper Hub', 'upper-cargo-other-zone', 0, Season.MAX_CARGO_PER_HUB);
 
-    const lowerCargoLaunchPad = new NumericCounter('Cargo shot from Launch Pad to Lower Hub', 'lower-cargo-launch-pad', 0, Season.MAX_CARGO_PER_HUB);
+    const lowerCargoLaunchPad = new NumericCounter('Cargo shot from below Lower Hub', 'lower-cargo-launch-pad', 0, Season.MAX_CARGO_PER_HUB);
 
     const launchingZones = new CheckboxWithText('Elige las zonas desde donde hace disparos', 'launching-zones');
     launchingZones.addInput({
