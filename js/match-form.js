@@ -61,16 +61,6 @@ function createMatchForm() {
         value: 'Se cayó en el intento'
     });
 
-    const allianceColor = new RadioWithText('Color de alianza', 'alliance');
-    allianceColor.addInput({
-        id: "blue-alliance",
-        value: "Azul"
-    });
-    allianceColor.addInput({
-        id: "red-alliance",
-        value: "Roja"
-    });
-    
     matchForm.sections.teleop.addQuestion(upperCargoLaunchPad);
     matchForm.sections.teleop.addQuestion(upperCargoTarmac);
     matchForm.sections.teleop.addQuestion(upperCargoOther);
@@ -78,7 +68,6 @@ function createMatchForm() {
     matchForm.sections.teleop.addQuestion(lowerCargoTarmac);
     matchForm.sections.teleop.addQuestion(launchingZones);
     matchForm.sections.teleop.addQuestion(hangar);
-    matchForm.sections.teleop.addQuestion(allianceColor);
     // Add your code above
     matchForm.renderSections();
 }
