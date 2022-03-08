@@ -1,7 +1,8 @@
 function createMatchForm() {
     // Add your code below
-    const taxi = new TrueFalseButtons('Leaves tarmac mission', 'taxi', '', 'Se mueve fuera del tarmac', 'No se mueve');
-    const autoCargo = new RadioWithText('Score cargo', 'autonomous-cargo');
+    const taxi = new TrueFalseButtons('Leaves tarmac mission', 'taxi', 'Se mueve fuera del tarmac', 'No se mueve');
+
+    const autoCargo = new RadioWithText('Score preloaded cargo', 'autonomous-cargo');
     autoCargo.addInput({
         id: 'auto-cargo-upper',
         value: 'Upper Hub'
@@ -15,12 +16,41 @@ function createMatchForm() {
         value: 'No'
     });
 
+    const autoUpper = new NumericCounter('Upper Hub Cargo', 'auto-upper-cargo', 0, Season.MAX_CARGO_PER_HUB);
+
+    const autoLower = new NumericCounter('Lower Hub Cargo', 'auto-lower-cargo', 0, Season.MAX_CARGO_PER_HUB);
+
     matchForm.sections.autonomous.addQuestion(taxi);
     matchForm.sections.autonomous.addQuestion(autoCargo);
+    matchForm.sections.autonomous.addQuestion(autoUpper);
+    matchForm.sections.autonomous.addQuestion(autoLower);
 
-    const upperCargo = new NumericCounter('Upper Hub Cargo', 'upper-cargo', 0, Season.MAX_CARGO_PER_HUB);
-    const lowerCargo = new NumericCounter('Lower Hub Cargo', 'lower-cargo', 0, Season.MAX_CARGO_PER_HUB);
-    const hangar = new RadioWithText('Engaging with Hangar', 'hangar-engaging');
+    const upperCargoTarmac = new NumericCounter('Cargo shot from Tarmac to Upper Hub', 'upper-cargo-tarmac', 0, Season.MAX_CARGO_PER_HUB);
+    const upperCargoLaunchPad = new NumericCounter('Cargo shot from Launch Pad to Upper Hub', 'upper-cargo-launch-pad', 0, Season.MAX_CARGO_PER_HUB);
+    const upperCargoOther = new NumericCounter('Cargo shot from other field zone to Upper Hub', 'upper-cargo-other-zone', 0, Season.MAX_CARGO_PER_HUB);
+
+    const lowerCargoLaunchPad = new NumericCounter('Cargo shot from Launch Pad to Lower Hub', 'lower-cargo-launch-pad', 0, Season.MAX_CARGO_PER_HUB);
+
+    const launchingZones = new CheckboxWithText('Elige las zonas desde donde hace disparos', 'launching-zones');
+    launchingZones.addInput({
+        id: "a",
+        value: "A"
+    });
+    launchingZones.addInput({
+        id: "b",
+        value: "B"
+    });
+    launchingZones.addInput({
+        id: "c",
+        value: "C"
+    });
+    launchingZones.addInput({
+        id: "d",
+        value: "D"
+    });
+
+    const lowerCargoTarmac = new NumericCounter('Cargo shot from Tarmac to Lower Hub', 'lower-cargo-tarmac', 0, Season.MAX_CARGO_PER_HUB);
+    const hangar = new CheckboxWithText('Engaging with Hangar', 'hangar-engaging');
     hangar.addInput({
         id: 'hangar-low',
         value: 'Low Rung'
@@ -46,24 +76,24 @@ function createMatchForm() {
         value: 'Se cayó en el intento'
     });
 
-    const tiros = new CheckboxWithText('Desde que parte de la cancha hace tiros', 'field-shooting');
-    tiros.addInput({
-        id: 'shooting-tarmac',
-        value: 'En el Tarmac'
+    const allianceColor = new RadioWithText('Color de alianza', 'alliance');
+    allianceColor.addInput({
+        id: "blue-alliance",
+        value: "Azul"
     });
-    tiros.addInput({
-        id: 'shooting-launch-pad',
-        value: 'Launch pad'
-    });
-    tiros.addInput({
-        id: 'shooting-other',
-        value: 'Otro lugar'
+    allianceColor.addInput({
+        id: "red-alliance",
+        value: "Roja"
     });
     
-    matchForm.sections.teleop.addQuestion(upperCargo);
-    matchForm.sections.teleop.addQuestion(lowerCargo);
-    matchForm.sections.teleop.addQuestion(tiros);
+    matchForm.sections.teleop.addQuestion(upperCargoLaunchPad);
+    matchForm.sections.teleop.addQuestion(upperCargoTarmac);
+    matchForm.sections.teleop.addQuestion(upperCargoOther);
+    matchForm.sections.teleop.addQuestion(lowerCargoLaunchPad);
+    matchForm.sections.teleop.addQuestion(lowerCargoTarmac);
+    matchForm.sections.teleop.addQuestion(launchingZones);
     matchForm.sections.teleop.addQuestion(hangar);
+    matchForm.sections.teleop.addQuestion(allianceColor);
     // Add your code above
     matchForm.renderSections();
 }
