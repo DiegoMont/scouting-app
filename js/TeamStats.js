@@ -23,6 +23,13 @@ class TeamStats {
         <p class="title">${this.name} ${this.teamNumber}</p>`
         // Card HTML code goes below
 
+        //Remove the next code if you don't need it
+        const tableGrid = document.createElement('div');
+        tableGrid.classList.add('card-grid');
+        card.appendChild(tableGrid);
+        // Append NumericStats HTML tables to display tables nicely in two columns
+        // tableGrid.appendChild(new NumericStats([1, 2, 3]).getHTMLTable('Any title'));
+
         // Card HTML code goes above
         return card;
     }

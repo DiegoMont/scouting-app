@@ -1,7 +1,14 @@
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+}
+
 .team-card {
     background-color: var(--negro-claro);
     box-sizing: border-box;
-    width: 30%;
+    width: 22.5rem;
     min-width: 320px;
     padding: 2.5rem 1.5rem;
     border-radius: 20px;
@@ -13,7 +20,12 @@
     padding: 1.5rem 0;
     overflow-x: auto;
     margin: 0 1rem;
-  }
+}
+
+.card-grid td, .card-grid th {
+    border: 1px solid var(--amarillo);
+    padding: 0.25rem;
+}
 
 .results-table td {
     color: var(--negro-texto);
@@ -37,22 +49,24 @@
 }
 
 #results-table {
-  display: none;
-  background-color: #fff;
+    display: none;
+    background-color: #fff;
 }
 
 #results-switch:checked ~ #results-table{
-  display: block;
+    display: block;
 }
 
 #results-switch:checked ~ #result-cards {
-  display: none;
+    display: none;
 }
 
 @media screen and (max-width: 425px) {
     .team-card {
         width: 100%;
-        min-width: none;
+        min-width: auto;
         border-radius: 0;
+        padding: 1.5rem 0.75rem;
+        margin: 1rem 0;
     }
 }
