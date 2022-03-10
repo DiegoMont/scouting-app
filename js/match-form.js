@@ -12,11 +12,11 @@ function createMatchForm() {
 
     const upperCargoTarmac = new NumericCounter('Cargo shot from Tarmac to Upper Hub', 'upper-cargo-tarmac', 0, Season.MAX_CARGO_PER_HUB);
     const upperCargoLaunchPad = new NumericCounter('Cargo shot from Launch Pad to Upper Hub', 'upper-cargo-launch-pad', 0, Season.MAX_CARGO_PER_HUB);
-    const upperCargoOther = new NumericCounter('Cargo shot from other field zone to Upper Hub', 'upper-cargo-other-zone', 0, Season.MAX_CARGO_PER_HUB);
+    const upperCargoOther = new NumericCounter('Cargo shot from other field zone to Upper Hub - Llenar mapa de zonas abajo', 'upper-cargo-other-zone', 0, Season.MAX_CARGO_PER_HUB);
 
     const lowerCargoLaunchPad = new NumericCounter('Cargo shot from below Lower Hub', 'lower-cargo-launch-pad', 0, Season.MAX_CARGO_PER_HUB);
 
-    const launchingZones = new FieldZones("Elige las zonas desde donde hace disparos", 'launching-zones', ['A', 'B', 'C', 'D'], 'img/rapid-react-field-zones.png');
+    const launchingZones = new FieldZones("Elige las zonas desde donde hace disparos", 'launching-zones', ['A', 'B', 'C', 'D', 'No aplica'], 'img/rapid-react-field-zones.png');
 
     const lowerCargoTarmac = new NumericCounter('Cargo shot from Tarmac to Lower Hub', 'lower-cargo-tarmac', 0, Season.MAX_CARGO_PER_HUB);
     const hangar = new CheckboxWithText('Engaging with Hangar', 'hangar-engaging');

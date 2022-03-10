@@ -88,8 +88,10 @@ class TeamStats {
         for (const match of matches){
             if(match['upper-cargo-tarmac'] > 0 || match['lower-cargo-tarmac'] > 0)
                 this.areaDensity[TeamStats.FIELD_AREAS['Tarmac']]++;
-            for (const zone of match['launching-zones[]'])
-                this.areaDensity[TeamStats.FIELD_AREAS[zone]]++;
+            for (const zone of match['launching-zones[]']){
+                if(zone !== 'No aplica')
+                    this.areaDensity[TeamStats.FIELD_AREAS[zone]]++;
+            }
         }
         const divisor = Math.max(this.totalMatches+1, 1);
         for (let i = 0; i < this.areaDensity.length; i++)
