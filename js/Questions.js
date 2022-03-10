@@ -49,10 +49,13 @@ class BigTextArea extends Question {
 
 
 class NumericCounter extends Question {
+    minValue;
+
     constructor(question, name, minValue, maxValue){
         super(question, name, '');
         this.questionContainer = document.createElement('div');
         this.questionContainer.classList.add('flexbox', 'contador');
+        this.minValue = minValue;
         this.setInput();
         const addBtn = this.getButton('aumentar', 'add');
         const substractBtn = this.getButton('restar', 'minus');
@@ -87,11 +90,13 @@ class NumericCounter extends Question {
         this.inputs[0].type = 'number';
         this.inputs[0].name = this.name;
         this.inputs[0].id = this.name;
-        this.inputs[0].value = 0;
+        this.inputs[0].value = this.minValue;
         this.inputs[0].classList.add('cifra-contador');
     }
 
     validate(){
+        if(typeof this.inputs[0].value !== 'number')
+            this.inputs[0].value = this.minValue;
         return true;
     }
 }
