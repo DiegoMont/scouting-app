@@ -95,7 +95,8 @@ class NumericCounter extends Question {
     }
 
     validate(){
-        if(typeof this.inputs[0].value !== 'number')
+        this.inputs[0].value = Number(this.inputs[0].value);
+        if (isNaN(this.inputs[0].value))
             this.inputs[0].value = this.minValue;
         return true;
     }
