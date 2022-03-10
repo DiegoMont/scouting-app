@@ -3,22 +3,31 @@ class TeamStats {
     static FIELD_AREAS = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'Tarmac': 4};
 
     areaDensity;
+    autoLowerCargo;
+    autoUpperCargo;
+    intake;
     name;
+    tarmac;
     teamNumber;
     chasisType;
     cargoCapacity;
     lowerHubCargo;
     upperHubCargo;
     totalMatches;
+    vision;
 
     constructor(teamInfo, matches) {
         try {
             this.teamNumber = teamInfo['team-number-pit'];
             this.chasisType = teamInfo['chasis'];
+            this.cargoCapacity = teamInfo['cargo-capacity'];
+            this.intake = teamInfo['intake'];
+            this.vision = teamInfo['vision'];
         } catch(error) {
             if(this.teamNumber == undefined)
                 this.teamNumber = matches[0]['team-number-match']
         }
+        this.tarmac = matches.some(match => match['taxi'] == 'Se mueve fuera del tarmac');
         this.name = TEAM_NAMES[this.teamNumber];
         this.totalMatches = matches.length;
         this.setHubStats(matches);
@@ -31,7 +40,25 @@ class TeamStats {
         card.id = `card-${this.teamNumber}`;
         card.innerHTML = `
         <p class="title">${this.name} ${this.teamNumber}</p>
-        <p>Chasis: ${this.chasisType}</p>`
+        <p>Chasis: ${this.chasisType}</p>
+        <p>${this.intake}</p>
+        <p>${this.vision}</p>
+        <p>Cargo the robot can store: ${this.cargoCapacity}</p>
+        <p>AUTONOMOUS</p>`;
+        if(this.tarmac)
+            card.innerHTML += '<p>Makes Tarmac mission</p>';
+        const autoCargoTables = document.createElement('div');
+        autoCargoTables.classList.add('card-grid');
+        autoCargoTables.appendChild(this.autoLowerCargo.getHTMLTable('Lower Cargo'));
+        autoCargoTables.appendChild(this.autoUpperCargo.getHTMLTable('Upper Cargo'));
+        card.appendChild(autoCargoTables);
+        card.innerHTML += `
+        <p>Total cargo during match</p>`;
+        const tableGrid = document.createElement('div');
+        tableGrid.classList.add('card-grid');
+        card.appendChild(tableGrid);
+        tableGrid.appendChild(this.upperHubCargo.getHTMLTable('Upper Hub Cargo'));
+        tableGrid.appendChild(this.lowerHubCargo.getHTMLTable('Lower Hub Cargo'));
         card.appendChild(this.getFieldZones());
         return card;
     }
@@ -39,7 +66,12 @@ class TeamStats {
     setHubStats(matches){
         const upperHubCargos = [];
         const lowerHubCargos = [];
+        const autoLower = [];
+        const autoUpper = [];
+        
         for (const match of matches) {
+            autoLower.push(match['auto-lower-cargo']);
+            autoUpper.push(match['auto-upper-cargo']);
             const upperCargo = match['auto-upper-cargo'] +
              match['upper-cargo-launch-pad'] + match['upper-cargo-other-zone'] + match['upper-cargo-tarmac'];
             upperHubCargos.push(upperCargo);
@@ -48,6 +80,8 @@ class TeamStats {
         }
         this.upperHubCargo = new NumericStats(upperHubCargos);
         this.lowerHubCargo = new NumericStats(lowerHubCargos);
+        this.autoLowerCargo = new NumericStats(autoLower);
+        this.autoUpperCargo = new NumericStats(autoUpper);
     }
 
     setAreaDensity(matches){
