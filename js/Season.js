@@ -46,7 +46,7 @@ const TEAM_NAMES = {
 };
 
 class Season {
-    static SEASON_NAME = '';
+    static SEASON_NAME = 'rapid-react';
     static REGIONALES = [
         'Monterrey'
     ];
