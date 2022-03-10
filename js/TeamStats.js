@@ -67,16 +67,16 @@ class TeamStats {
         const field = document.createElement('div');
         field.classList.add('team-main-zones');
         field.innerHTML = `<img src="img/rapid-react-field-zones.png"></img>
-        <div class="field-density red-a" style="background-color: rgba(32, 110, 56, ${this.areaDensity[0]})"></div>
-        <div class="field-density blue-a" style="background-color: rgba(32, 110, 56, ${this.areaDensity[0]})"></div>
-        <div class="field-density red-b" style="background-color: rgba(32, 110, 56, ${this.areaDensity[1]})"></div>
-        <div class="field-density blue-b" style="background-color: rgba(32, 110, 56, ${this.areaDensity[1]})"></div>
-        <div class="field-density red-c" style="background-color: rgba(32, 110, 56, ${this.areaDensity[2]})"></div>
-        <div class="field-density blue-c" style="background-color: rgba(32, 110, 56, ${this.areaDensity[2]})"></div>
-        <div class="field-density red-d" style="background-color: rgba(32, 110, 56, ${this.areaDensity[3]})"></div>
-        <div class="field-density blue-d" style="background-color: rgba(32, 110, 56, ${this.areaDensity[3]})"></div>
-        <div class="field-density red-tarmac" style="background-color: rgba(32, 110, 56, ${this.areaDensity[4]})"></div>
-        <div class="field-density blue-tarmac" style="background-color: rgba(32, 110, 56, ${this.areaDensity[4]})"></div>
+        <div class="field-density red-a" style="opacity: ${this.areaDensity[0]}"></div>
+        <div class="field-density blue-a" style="opacity: ${this.areaDensity[0]}"></div>
+        <div class="field-density red-b" style="opacity: ${this.areaDensity[1]}"></div>
+        <div class="field-density blue-b" style="opacity: ${this.areaDensity[1]}"></div>
+        <div class="field-density red-c" style="opacity: ${this.areaDensity[2]}"></div>
+        <div class="field-density blue-c" style="opacity: ${this.areaDensity[2]}"></div>
+        <div class="field-density red-d" style="opacity: ${this.areaDensity[3]}"></div>
+        <div class="field-density blue-d" style="opacity: ${this.areaDensity[3]}"></div>
+        <div class="field-density red-tarmac" style="opacity: ${this.areaDensity[4]}"></div>
+        <div class="field-density blue-tarmac" style="opacity: ${this.areaDensity[4]}"></div>
         `;
         return field;
     }
