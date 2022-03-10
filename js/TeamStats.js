@@ -72,10 +72,9 @@ class TeamStats {
         for (const match of matches) {
             autoLower.push(match['auto-lower-cargo']);
             autoUpper.push(match['auto-upper-cargo']);
-            const upperCargo = match['auto-upper-cargo'] +
-             match['upper-cargo-launch-pad'] + match['upper-cargo-other-zone'] + match['upper-cargo-tarmac'];
+            const upperCargo = Number(match['auto-upper-cargo']) + Number(match['upper-cargo-launch-pad']) + Number(match['upper-cargo-other-zone']) + Number(match['upper-cargo-tarmac']);
             upperHubCargos.push(upperCargo);
-            const lowerCargo = match['auto-lower-cargo'] + match['lower-cargo-launch-pad'] + match['lower-cargo-tarmac'];
+            const lowerCargo = Number(match['auto-lower-cargo']) + Number(match['lower-cargo-launch-pad']) + Number(match['lower-cargo-tarmac']);
             lowerHubCargos.push(lowerCargo);
         }
         this.upperHubCargo = new NumericStats(upperHubCargos);
