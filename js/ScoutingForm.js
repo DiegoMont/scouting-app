@@ -2,15 +2,17 @@ class ScoutingForm {
 
     errorFooter;
     form;
+    formType;
     sections;
     submitBtn;
     typeData;
 
     constructor(formQuerySelector, formType){
         this.form = document.querySelector(formQuerySelector);
+        this.formType = formType;
         this.setErrorFooter();
         this.setSubmitBtn();
-        this.setSectionsAndQuestions(formType);
+        this.setSectionsAndQuestions();
         this.addFormHandler();
     }
 
@@ -39,14 +41,14 @@ class ScoutingForm {
         this.submitBtn.innerText = 'Enviar';
     }
 
-    setSectionsAndQuestions(formType){
+    setSectionsAndQuestions(){
         this.sections = {};
         this.sections.generalInfo = new ScoutingFormSection('info-match');
         this.addFormSpecificSections();
-        this.sections.generalInfo.addQuestion(new RegionalSelector(`regional-${formType}`));
-        this.sections.generalInfo.addQuestion(new NumericText('Equipo', `team-number-${formType}`, '4010', 1000, 30000, 'El número de equipo no es válido'));
+        this.sections.generalInfo.addQuestion(new RegionalSelector(`regional-${this.formType}`));
+        this.sections.generalInfo.addQuestion(new NumericText('Equipo', `team-number-${this.formType}`, '4010', 1000, 30000, 'El número de equipo no es válido'));
         this.sections.comments = new ScoutingFormSection('comments-submit');
-        this.sections.comments.addQuestion(new BigTextArea('Comentarios', `comments-${formType}`), 0);
+        this.sections.comments.addQuestion(new BigTextArea('Comentarios', `comments-${this.formType}`), 0);
     }
 
     addFormHandler(){
@@ -79,7 +81,9 @@ class ScoutingForm {
                     scoutingData[key] = input[1];
             }
             scoutingData['createdAt'] = Date.now();
-            db.collection(`${Season.SEASON_NAME}-${pointerToThis.typeData}`).add(scoutingData).then(docRef => {
+            const docId = pointerToThis.getCompositeKey(scoutingData);
+            const firebaseDoc = db.collection(`${Season.SEASON_NAME}-${pointerToThis.typeData}`).doc(docId);
+            firebaseDoc.set(scoutingData).then(() => {
                 pointerToThis.errorFooter.classList.add('ocultar');
                 e.target.reset();
                 checkoutPage.loadSuccessPage();
@@ -88,6 +92,10 @@ class ScoutingForm {
                 checkoutPage.loadFailPage();
             });
         });
+    }
+
+    getCompositeKey(scoutingData){
+        return '';
     }
 }
 
@@ -108,6 +116,12 @@ class MatchScoutingForm extends ScoutingForm {
         this.sections.autonomous = new ScoutingFormSection('autonomous-info', 'Autonomous');
         this.sections.teleop = new ScoutingFormSection('teleop-info', 'Driver-Controlled');
     }
+
+    getCompositeKey(scoutingData){
+        const teamNumber = scoutingData[`team-number-${this.formType}`];
+        const matchNum = scoutingData['match-number'];
+        return `${teamNumber}-${matchNum}`;
+    }
 }
 
 class PitScoutingForm extends ScoutingForm {
@@ -119,6 +133,10 @@ class PitScoutingForm extends ScoutingForm {
     addFormSpecificSections(){
         this.sections.engineering = new ScoutingFormSection('autonomous-info', 'Ingeniería');
         this.sections.team = new ScoutingFormSection('teleop-info', 'Finanzas y comunicación');
+    }
+    getCompositeKey(scoutingData){
+        const teamNumber = scoutingData[`team-number-${this.formType}`];
+        return `${teamNumber}`;
     }
 }
 
