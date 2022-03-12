@@ -5,6 +5,7 @@ class Router {
     constructor(){
         this.pages = {
             formSubmittedPage: document.getElementById('form-submitted'),
+            loadingPage: document.getElementById('loading-wheel'),
             loginPage: document.getElementById('login'),
             matchScoutingPage: document.getElementById('scouting-match'),
             menuPage: document.getElementById('menu'),
@@ -21,6 +22,11 @@ class Router {
     openFormSubmitted(){
         this.closePages();
         this.pages.formSubmittedPage.classList.add('mostrar');
+    }
+
+    openLoadingWheel(){
+        this.closePages();
+        this.pages.loadingPage.classList.add('mostrar');
     }
 
     openLogin(){

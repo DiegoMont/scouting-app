@@ -1,0 +1,23 @@
+.lds-dual-ring {
+    box-sizing: border-box;
+    width: 5rem;
+    height: 5rem;
+    border: 0.4rem solid var(--amarillo);
+    border-color: var(--amarillo) transparent var(--amarillo) transparent;
+    border-radius: 50%;
+    animation: lds-dual-ring 3s linear infinite;
+}
+
+#loading-wheel .flexbox {
+    height: 50vw;
+    max-height: 70vh;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
