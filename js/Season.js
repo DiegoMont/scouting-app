@@ -42,7 +42,40 @@ const TEAM_NAMES = {
     8327: 'Spartans',
     16255: 'Minerva Warriors',
     16388: 'Borrebots',
-    16508: 'Minerva Legion'
+    16508: 'Minerva Legion',
+
+    // FRC
+    100: 'The WildHats',
+    115: 'MVRT',
+    253: 'Boba Bots',
+    973: 'Greybots',
+    1266: 'The Devil Duckies',
+    1323: 'MadTown Robotics',
+    1422: 'The Neon Knights',
+    1661: 'Griffitrons',
+    1671: 'Buchanan Bird Brains',
+    2073: 'EagleForce',
+    2485: 'W.A.R. Lords',
+    2543: 'TitanBot',
+    3189: 'Circuit Breakers',
+    3255: 'SuperNURDs',
+    3257: 'Vortechs',
+    3512: 'Spartatroniks',
+    3598: 'SEStematic Eliminators',
+    3970: 'Duncan Dynamics',
+    4135: 'Iron Patriots',
+    5274: 'Wolverines',
+    5817: 'Uni-Rex',
+    5924: 'Golden Gate Robotics',
+    5940: 'BREAD',
+    6305: 'Stable Circuits',
+    6619: 'GravitechX',
+    6657: 'Arborbotics',
+    6711: 'Millennial Falcons',
+    7528: 'Nuts and Bolts',
+    7539: 'Elev8',
+    7589: 'Lishan Blue Magpie',
+    8768: 'CTEC Titans'
 };
 
 class Season {
