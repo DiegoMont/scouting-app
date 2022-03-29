@@ -81,6 +81,7 @@ const TEAM_NAMES = {
 class Season {
     static SEASON_NAME = 'rapid-react';
     static REGIONALES = [
+        'Fresno',
         'Monterrey'
     ];
     static MAX_CARGO_PER_HUB = 50;
