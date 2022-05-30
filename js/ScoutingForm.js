@@ -7,13 +7,13 @@ class ScoutingForm {
     submitBtn;
     typeData;
 
-    constructor(formQuerySelector, formType){
+    constructor(formQuerySelector, formType, sectionDetails){
         this.form = document.querySelector(formQuerySelector);
         this.formType = formType;
         this.setErrorFooter();
         this.setSubmitBtn();
-        this.setSectionsAndQuestions();
-        this.addFormHandler();
+        this.setSectionsAndQuestions(sectionDetails);
+        this.addFormHandler(); 
     }
 
     renderSections(){
@@ -26,7 +26,11 @@ class ScoutingForm {
         this.sections.comments.container.appendChild(this.submitBtn);
     }
 
-    addFormSpecificSections(){}
+    addFormSpecificSections(senctionDetails){
+        senctionDetails.forEach( (detail) => {
+            this.sections[detail['sectionName']] = new ScoutingFormSection(detail['sectionClass'], detail['sectionTitle']);
+        })  
+    }
 
     setErrorFooter(){
         this.errorFooter = document.createElement('p');
@@ -41,14 +45,15 @@ class ScoutingForm {
         this.submitBtn.innerText = 'Enviar';
     }
 
-    setSectionsAndQuestions(){
+    setSectionsAndQuestions(sectionDetails){
         this.sections = {};
         this.sections.generalInfo = new ScoutingFormSection('info-match');
-        this.addFormSpecificSections();
+        this.addFormSpecificSections(sectionDetails);
         this.sections.generalInfo.addQuestion(new RegionalSelector(`regional-${this.formType}`));
         this.sections.generalInfo.addQuestion(new NumericText('Equipo', `team-number-${this.formType}`, '4010', 1000, 30000, 'El número de equipo no es válido'));
         this.sections.comments = new ScoutingFormSection('comments-submit');
         this.sections.comments.addQuestion(new BigTextArea('Comentarios', `comments-${this.formType}`), 0);
+        
     }
 
     addFormHandler(){
@@ -103,7 +108,11 @@ class ScoutingForm {
 class MatchScoutingForm extends ScoutingForm {
 
     constructor(form){
-        super(form, 'match');
+        super(form,
+             'match',
+              [{sectionName:'autonomous', sectionTitle:'Autonomous', sectionClass: 'autonomous-info' },
+               {sectionName:'teleop', sectionTitle:'Driver-Controlled', sectionClass: 'teleop-info' } 
+            ]);
         this.sections.generalInfo.addQuestion(new NumericText('Match', 'match-number', '1', 1, 99, 'El número de match no es válido'));
         const allianceSelection = new RadioWithText('Allianza', 'alliance-color');
         allianceSelection.addInput({id: "blue-alliance", value: "Azul"});
@@ -111,11 +120,6 @@ class MatchScoutingForm extends ScoutingForm {
         this.sections.generalInfo.addQuestion(new ScoutName());
         this.sections.generalInfo.addQuestion(allianceSelection);
         this.typeData = 'matches';
-    }
-
-    addFormSpecificSections(){
-        this.sections.autonomous = new ScoutingFormSection('autonomous-info', 'Autonomous');
-        this.sections.teleop = new ScoutingFormSection('teleop-info', 'Driver-Controlled');
     }
 
     getCompositeKey(scoutingData){
@@ -127,14 +131,14 @@ class MatchScoutingForm extends ScoutingForm {
 
 class PitScoutingForm extends ScoutingForm {
     constructor(form){
-        super(form, 'pit');
+        super(form,
+             'pit',
+             [{sectionName:'engineering', sectionTitle:'Ingeniería', sectionClass: 'autonomous-info' },
+               {sectionName:'team', sectionTitle:'Finanzas y comunicación', sectionClass: 'teleop-info' } 
+            ]);
         this.typeData = 'teams';
     }
 
-    addFormSpecificSections(){
-        this.sections.engineering = new ScoutingFormSection('autonomous-info', 'Ingeniería');
-        this.sections.team = new ScoutingFormSection('teleop-info', 'Finanzas y comunicación');
-    }
     getCompositeKey(scoutingData){
         const teamNumber = scoutingData[`team-number-${this.formType}`];
         return `${teamNumber}`;
