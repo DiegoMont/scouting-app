@@ -12,7 +12,7 @@ class MatchScoutingForm extends ScoutingForm {
         allianceSelection.addInput({id: "red-alliance", value: "Roja"});
         this.sections.generalInfo.addQuestion(new ScoutName());
         this.sections.generalInfo.addQuestion(allianceSelection);
-        this.typeData = 'matches';
+        this.collectionLabel = 'matches';
     }
 
     getCompositeKey(scoutingData){

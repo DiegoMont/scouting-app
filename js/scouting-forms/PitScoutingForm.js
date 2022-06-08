@@ -5,7 +5,7 @@ class PitScoutingForm extends ScoutingForm {
              [{sectionName:'engineering', sectionTitle:'Ingeniería', sectionClass: 'autonomous-info' },
                {sectionName:'team', sectionTitle:'Finanzas y comunicación', sectionClass: 'teleop-info' } 
             ]);
-        this.typeData = 'teams';
+        this.collectionLabel = 'teams';
     }
 
     getCompositeKey(scoutingData){
