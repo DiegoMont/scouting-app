@@ -1,14 +1,14 @@
 class ScoutingForm {
 
     errorFooter;
-    form;
+    formElement;
     formType;
     sections;
     submitBtn;
-    typeData;
+    collectionLabel;
 
     constructor(formQuerySelector, formType, sectionDetails){
-        this.form = document.querySelector(formQuerySelector);
+        this.formElement = document.querySelector(formQuerySelector);
         this.formType = formType;
         this.setErrorFooter();
         this.setSubmitBtn();
@@ -20,7 +20,7 @@ class ScoutingForm {
         for (const sectionName in this.sections){
             const section = this.sections[sectionName];
             section.renderQuestions();
-            this.form.appendChild(section.container);
+            this.formElement.appendChild(section.container);
         }
         this.sections.comments.container.appendChild(this.errorFooter);
         this.sections.comments.container.appendChild(this.submitBtn);
@@ -58,7 +58,7 @@ class ScoutingForm {
 
     addFormHandler(){
         const pointerToThis = this;
-        this.form.addEventListener('submit', function(e) {
+        this.formElement.addEventListener('submit', function(e) {
             e.preventDefault();
             let areAllQuestionsValid = true;
             pointerToThis.errorFooter.classList.add('ocultar');
@@ -88,7 +88,7 @@ class ScoutingForm {
             }
             scoutingData['createdAt'] = Date.now();
             const docId = pointerToThis.getCompositeKey(scoutingData);
-            const firebaseDoc = db.collection(`${Season.SEASON_NAME}-${pointerToThis.typeData}`).doc(docId);
+            const firebaseDoc = db.collection(`${Season.SEASON_NAME}-${pointerToThis.collectionLabel}`).doc(docId);
             firebaseDoc.set(scoutingData).then(() => {
                 pointerToThis.errorFooter.classList.add('ocultar');
                 e.target.reset();

@@ -1,6 +1,6 @@
 class PitScoutingForm extends ScoutingForm {
-    constructor(form){
-        super(form,
+    constructor(formQuerySelector){
+        super(formQuerySelector,
              'pit',
              [{sectionName:'engineering', sectionTitle:'Ingeniería', sectionClass: 'autonomous-info' },
                {sectionName:'team', sectionTitle:'Finanzas y comunicación', sectionClass: 'teleop-info' } 

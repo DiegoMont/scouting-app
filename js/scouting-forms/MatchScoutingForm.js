@@ -1,7 +1,7 @@
 class MatchScoutingForm extends ScoutingForm {
 
-    constructor(form){
-        super(form,
+    constructor(formQuerySelector){
+        super(formQuerySelector,
              'match',
               [{sectionName:'autonomous', sectionTitle:'Autonomous', sectionClass: 'autonomous-info' },
                {sectionName:'teleop', sectionTitle:'Driver-Controlled', sectionClass: 'teleop-info' } 
