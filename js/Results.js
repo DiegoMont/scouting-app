@@ -25,8 +25,21 @@ const fetchResults = function() {
 
 const addChangeListener = function() {
     const collectionData = [
-        {form: pitForm, teamNumberKey:'team-number-pit', tableBody: pitTableBody, tableHeader: pitTableHeaders, dataHandling: (teamNumber, teamInfo) => teams[teamNumber] = teamInfo},
-        {form: matchForm, teamNumberKey:'team-number-match', tableBody: matchTableBody, tableHeader: matchTableHeaders, dataHandling: (teamNumber, matchInfo) => teamMatches[teamNumber].push(matchInfo)}];
+        {
+            form: pitForm,
+            teamNumberKey:'team-number-pit',
+            tableBody: pitTableBody,
+            tableHeader: pitTableHeaders,
+            dataHandling: (teamNumber, teamInfo) => teams[teamNumber] = teamInfo
+        },
+        {
+            form: matchForm,
+            teamNumberKey:'team-number-match',
+            tableBody: matchTableBody,
+            tableHeader: matchTableHeaders,
+            dataHandling: (teamNumber, matchInfo) => teamMatches[teamNumber].push(matchInfo)
+        }
+    ];
     collectionData.forEach( data =>{
         db.collection(`${Season.SEASON_NAME}-${data['form'].collectionLabel}`).orderBy('createdAt').onSnapshot(snapshot => {
             const changes = snapshot.docChanges();

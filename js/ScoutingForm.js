@@ -13,7 +13,7 @@ class ScoutingForm {
         this.setErrorFooter();
         this.setSubmitBtn();
         this.setSectionsAndQuestions(sectionDetails);
-        this.addFormHandler(); 
+        this.addFormHandler();
     }
 
     renderSections(){
