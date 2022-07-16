@@ -73,7 +73,7 @@ class ScoutingForm {
                 pointerToThis.errorFooter.classList.remove('ocultar');
                 return;
             }
-            router.openLoadingWheel();
+            router.displayPage(router.pages.loading);
             const submittedForm = new FormData(e.target);
             const scoutingData = {};
             for (const input of submittedForm.entries()){
