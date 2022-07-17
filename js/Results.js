@@ -24,33 +24,38 @@ const fetchResults = function() {
 }
 
 const addChangeListener = function() {
-    db.collection(`${Season.SEASON_NAME}-${pitForm.typeData}`).orderBy('createdAt').onSnapshot(snapshot => {
-        const changes = snapshot.docChanges();
-        changes.forEach(change => {
-            if(change.type == 'added' || change.type == 'modified'){
-                const teamInfo = change.doc.data();
-                const teamNumber = teamInfo['team-number-pit'];
-                teams[teamNumber] = teamInfo;
-                teamMatches[teamNumber] = new Array();
-                addRowToTable(pitTableBody, teamInfo, pitTableHeaders);
-                updateResults(teamNumber);
-            }
+    const collectionData = [
+        {
+            form: pitForm,
+            teamNumberKey:'team-number-pit',
+            tableBody: pitTableBody,
+            tableHeader: pitTableHeaders,
+            dataHandling: (teamNumber, teamInfo) => teams[teamNumber] = teamInfo
+        },
+        {
+            form: matchForm,
+            teamNumberKey:'team-number-match',
+            tableBody: matchTableBody,
+            tableHeader: matchTableHeaders,
+            dataHandling: (teamNumber, matchInfo) => teamMatches[teamNumber].push(matchInfo)
+        }
+    ];
+    collectionData.forEach( data =>{
+        db.collection(`${Season.SEASON_NAME}-${data['form'].collectionLabel}`).orderBy('createdAt').onSnapshot(snapshot => {
+            const changes = snapshot.docChanges();
+            changes.forEach(change => {
+                if(change.type == 'added' || change.type == 'modified'){
+                    const info = change.doc.data();
+                    const teamNumber = info[data['teamNumberKey']];
+                    if(!teamMatches.hasOwnProperty(teamNumber))
+                        teamMatches[teamNumber] = new Array();
+                    data.dataHandling(teamNumber, info);
+                    addRowToTable(data['tableBody'], info, data['tableHeader']);
+                    updateResults(teamNumber);
+                }
+            });
         });
-    });
-    db.collection(`${Season.SEASON_NAME}-${matchForm.typeData}`).orderBy('createdAt').onSnapshot(snapshot => {
-        const changes = snapshot.docChanges();
-        changes.forEach(change => {
-            if(change.type == 'added' || change.type == 'modified'){
-                const matchInfo = change.doc.data();
-                const teamNumber = matchInfo['team-number-match'];
-                if(!teamMatches.hasOwnProperty(teamNumber))
-                    teamMatches[teamNumber] = new Array();
-                teamMatches[teamNumber].push(matchInfo);
-                addRowToTable(matchTableBody, matchInfo, matchTableHeaders);
-                updateResults(teamNumber);
-            }
-        });
-    });
+    })
 }
 
 const updateResults = function(teamNumber){

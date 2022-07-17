@@ -10,36 +10,36 @@ addLoginFormHandler();
 createMatchForm();
 createPitForm();
 formatResultTables();
-router.openLogin();
+router.displayPage(router.pages.login);
 grantAccess();
 
 
 function addListenersToBtns() {
     document.getElementById('btn-menu-head').addEventListener('click', function() {
-        router.openMenu();
+        router.displayPage(router.pages.menu);
     });
 
     document.getElementById('to-match-btn').addEventListener('click', function() {
-        router.openMatchScouting();
+        router.displayPage(router.pages.matchScouting);
     });
 
     document.getElementById('to-pit-btn').addEventListener('click', function() {
-        router.openPitScouting();
+        router.displayPage(router.pages.pitScouting);
     });
 
     document.getElementById('to-results-btn').addEventListener('click', function() {
-        router.openResults();
+        router.displayPage(router.pages.results);
     });
 
     document.getElementById('return-to-match-btn').addEventListener('click', function() {
-        router.openMatchScouting();
+        router.displayPage(router.pages.matchScouting);
     });
 
     document.getElementById('return-to-pit-btn').addEventListener('click', function() {
-        router.openPitScouting();
+        router.displayPage(router.pages.pitScouting);
     });
 
     document.getElementById('to-statistics-btn').addEventListener('click', function() {
-        router.openResults();
+        router.displayPage(router.pages.results);
     });
 }

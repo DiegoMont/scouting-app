@@ -4,55 +4,29 @@ class Router {
 
     constructor(){
         this.pages = {
-            formSubmittedPage: document.getElementById('form-submitted'),
-            loadingPage: document.getElementById('loading-wheel'),
-            loginPage: document.getElementById('login'),
-            matchScoutingPage: document.getElementById('scouting-match'),
-            menuPage: document.getElementById('menu'),
-            pitScoutingPage: document.getElementById('scouting-pit'),
-            resultsPage: document.getElementById('results')
+            formSubmitted: {htmlContainer: document.getElementById('form-submitted')},
+            loading: {htmlContainer: document.getElementById('loading-wheel')},
+            login: {htmlContainer: document.getElementById('login')},
+            matchScouting: {htmlContainer: document.getElementById('scouting-match')},
+            menu: {htmlContainer: document.getElementById('menu')},
+            pitScouting: {htmlContainer: document.getElementById('scouting-pit')},
+            results: {
+                htmlContainer: document.getElementById('results'),
+                setupPage: fetchResults
+            }
         }
+    }
+
+    displayPage(page) {
+        this.closePages();
+        page.htmlContainer.classList.add('mostrar');
+        if(page.setupPage)
+            page.setupPage()
     }
 
     closePages(){
         for (const pageName in this.pages)
-            this.pages[pageName].classList.remove('mostrar');
-    }
-
-    openFormSubmitted(){
-        this.closePages();
-        this.pages.formSubmittedPage.classList.add('mostrar');
-    }
-
-    openLoadingWheel(){
-        this.closePages();
-        this.pages.loadingPage.classList.add('mostrar');
-    }
-
-    openLogin(){
-        this.closePages();
-        this.pages.loginPage.classList.add('mostrar');
-    }
-
-    openMatchScouting(){
-        this.closePages();
-        this.pages.matchScoutingPage.classList.add('mostrar');
-    }
-
-    openMenu(){
-        this.closePages();
-        this.pages.menuPage.classList.add('mostrar');
-    }
-
-    openPitScouting(){
-        this.closePages();
-        this.pages.pitScoutingPage.classList.add('mostrar');
-    }
-
-    openResults(){
-        this.closePages();
-        this.pages.resultsPage.classList.add('mostrar');
-        fetchResults();
+            this.pages[pageName].htmlContainer.classList.remove('mostrar');
     }
 
 }

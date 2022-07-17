@@ -17,5 +17,5 @@ const addLoginFormHandler = function() {
 
 const grantAccess = function(){
     if(AUTH_VALUE === localStorage.getItem(AUTH_KEY))
-        router.openMenu();
+        router.displayPage(router.pages.menu)
 }

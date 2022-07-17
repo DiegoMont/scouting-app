@@ -18,13 +18,13 @@ class FormCheckout {
     loadSuccessPage(){
         this.title.innerText = this.SUCCESS_MSG;
         this.img.src = this.SUCCESS_IMG;
-        this.router.openFormSubmitted();
+        this.router.displayPage(router.pages.formSubmitted);
     }
 
     loadFailPage(){
         this.title.innerText = this.FAIL_MSG;
         this.img.src = this.FAIL_IMG;
-        this.router.openFormSubmitted();
+        this.router.displayPage(router.pages.formSubmitted);
     }
 
 }
