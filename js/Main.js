@@ -11,7 +11,6 @@ createMatchForm();
 createPitForm();
 formatResultTables();
 router.displayPage(router.pages.login);
-grantAccess();
 
 
 function addListenersToBtns() {
