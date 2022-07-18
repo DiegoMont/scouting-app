@@ -1,31 +1,39 @@
-input[type=password] {
-    font-size: 1rem;
-    box-sizing: border-box;
-    width: 99%;
-    border-bottom: 1px solid var(--amarillo);
-    padding-top: 1rem;
-    margin: 0.75rem auto 1.1rem 0;
+.google-signin {
+    background-color: var(--g-blue);
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    align-items: center;
+    width: 100%;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.google-signin span {
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.google-signin img {
+    background-color: #fff;
+    padding: 3px;
 }
 
 #login {
     padding-top: 10vh;
 }
 
-input[type=password], #login h1, #login label {
+#login h1 {
     color: var(--amarillo);
     background-color: var(--negro-claro);
-}
-
-#login label {
-    font-size: 1.1rem;
+    margin: 0 auto 2rem;
 }
 
 #login form {
     background-color: var(--negro-claro);
     box-sizing: border-box;
     margin: 0 auto;
-    width: 30vw;
+    width: 32vw;
     min-width: 300px;
-    padding: 3.5vw 7.5vw;
+    padding: 3vw 4.5vw;
     border-radius: 1rem;
 }
