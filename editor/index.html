@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scouting</title>
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../css/general.css">
+    <link rel="stylesheet" type="text/css" href="../css/estilos-login.css">
+    <link rel="icon" type="image/png" href="../img/nautilus.png">
+  </head>
+  <body>
+    <header>
+      <div class="centre flexbox">
+        <button type="button" id="btn-menu-head">
+          <img src="../img/LogoHeader.png" alt="Nautilus 40 10">
+        </button>
+        <button type="button" id="btn-logout">Salir</button>
+      </div>
+    </header>
+
+    <section id="login">
+      <form>
+        <h1>SIGN IN</h1>
+        <button type="submit" class="google-signin">
+          <img src="../img/buttons/google.png"/>
+          <span>Sign in with Google</span>
+        </button>
+      </form>
+    </section>
+    
+    <footer>
+      <div class="centre firma flexbox">
+        <a href="https://github.com/DiegoMont" class="firma">&lt;/&gt; with <span id="corazon" class="firma">&#9829;</span> by <span class="firma">DiegoMont</span></a>
+      </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="../js/firebase.js"></script>
+    <script src="../js/Season.js"></script>
+    <script src="../js/Login.js"></script>
+    <script src="../js/QuestionInterface.js"></script>
+    <script src="../js/scouting-forms/ScoutingForm.js"></script>
+    <script src="../js/questions/BigTextArea.js"></script>
+    <script src="../js/questions/NumericCounter.js"></script>
+    <script src="../js/questions/NumericText.js"></script>
+    <script src="../js/questions/RadioWithImages.js"></script>
+    <script src="../js/questions/RadioWithText.js"></script>
+    <script src="../js/questions/RegionalSelector.js"></script>
+    <script src="../js/questions/TextInput.js"></script>
+    <script src="../js/scouting-forms/MatchScoutingForm.js"></script>
+    <script src="../js/scouting-forms/PitScoutingForm.js"></script>
+    <script src="../js/scouting-forms/ScoutingFormSection.js"></script>
+    <script src="../js/EditorMain.js"></script>
+
+  </body>
+</html>
