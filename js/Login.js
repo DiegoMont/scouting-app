@@ -5,6 +5,17 @@ const AUTH_VALUE = 'TuUaweAjxK';
 const addLoginFormHandler = function() {
     loginForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        // TODO: Login with Google
+        const provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider).catch(error => {
+            console.log(error);
+        });
     });
+}
+
+const handleAuthStatus = function(user) {
+    console.log(user);
+    if(user)
+        router.displayPage(router.pages.menu);
+    else
+        router.displayPage(router.pages.login);
 }

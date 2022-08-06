@@ -10,7 +10,7 @@ addLoginFormHandler();
 createMatchForm();
 createPitForm();
 formatResultTables();
-router.displayPage(router.pages.login);
+auth.onAuthStateChanged(handleAuthStatus);
 
 
 function addListenersToBtns() {
