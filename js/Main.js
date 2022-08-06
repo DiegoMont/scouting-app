@@ -11,6 +11,7 @@ createMatchForm();
 createPitForm();
 formatResultTables();
 auth.onAuthStateChanged(handleAuthStatus);
+logoutBtn.addEventListener('click', () => auth.signOut())
 
 
 function addListenersToBtns() {
