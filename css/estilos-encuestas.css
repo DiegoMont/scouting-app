@@ -61,10 +61,6 @@ form p, .big-text-question label {
     padding: 1rem 0;
 }
 
-.scout-name {
-    width: 10ex;
-}
-
 .submit-btn {
     color: #000;
     background-color: var(--amarillo);
