@@ -10,8 +10,8 @@ addLoginFormHandler();
 createMatchForm();
 createPitForm();
 formatResultTables();
-router.displayPage(router.pages.login);
-grantAccess();
+auth.onAuthStateChanged(handleAuthStatus);
+logoutBtn.addEventListener('click', () => auth.signOut())
 
 
 function addListenersToBtns() {

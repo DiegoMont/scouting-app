@@ -2,20 +2,25 @@ const PASS = '';
 const AUTH_KEY = 'bNJqFAQfrW';
 const AUTH_VALUE = 'TuUaweAjxK';
 
+const logoutBtn = document.querySelector('#btn-logout');
+
 const addLoginFormHandler = function() {
     loginForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        const password = loginForm['password'].value;
-        if(password === PASS){
-            localStorage.setItem(AUTH_KEY, AUTH_VALUE);
-            grantAccess();
-        }
-        else
-            document.querySelector("#login .error").classList.remove('ocultar');
+        const provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider).catch(error => {
+            console.log(error);
+        });
     });
 }
 
-const grantAccess = function(){
-    if(AUTH_VALUE === localStorage.getItem(AUTH_KEY))
-        router.displayPage(router.pages.menu)
+const handleAuthStatus = function(user) {
+    console.log(user);
+    if(user) {
+        router.displayPage(router.pages.menu);
+        logoutBtn.style.visibility = 'visible';
+    } else {
+        router.displayPage(router.pages.login);
+        logoutBtn.style.visibility = 'hidden';
+    }
 }

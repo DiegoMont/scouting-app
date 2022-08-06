@@ -45,7 +45,8 @@
     --negro-claro: #272727;
     --gris: #b5b5b4;
     --verde: #148f12;
-  --rojo-stop: #e11610;
+    --g-blue: #4285F4;
+    --rojo-stop: #e11610;
     --text-width: 39rem;
 }
 
@@ -165,6 +166,10 @@ section {
     opacity: 1;
 }
 
+header .flexbox {
+    justify-content: space-between;
+}
+
 a.firma, span.firma {
     color: var(--gris);
 }
@@ -194,6 +199,13 @@ span#corazon {
     background-color: var(--negro);
     margin: 0;
     margin-top: 0.5rem;
+}
+
+#btn-logout {
+    background-color: var(--negro);
+    color: var(--amarillo);
+    text-decoration: underline;
+    margin: 0;
 }
 
 #btn-menu-head img {

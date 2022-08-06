@@ -46,21 +46,3 @@ class BigTextArea extends Question {
         return false;
     }
 }
-
-class ScoutName extends BigTextArea {
-    constructor(name='scout-name'){
-        super('Hecho por', name, 3, "Indica tu nombre");
-        this.maxValueLength = 15;
-        this.questionContainer.classList.remove("big-text-question");
-    }
-
-    getInput(name){
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.placeholder = 'Nombre';
-        input.name = name;
-        input.id = name;
-        input.classList.add('scout-name');
-        return input;
-    }
-}

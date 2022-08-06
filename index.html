@@ -16,20 +16,21 @@
   </head>
   <body>
     <header>
-      <div class="centre">
-        <button id="btn-menu-head">
+      <div class="centre flexbox">
+        <button type="button" id="btn-menu-head">
           <img src="img/LogoHeader.png" alt="Nautilus 40 10">
         </button>
+        <button type="button" id="btn-logout">Salir</button>
       </div>
     </header>
 
     <section id="login">
       <form>
         <h1>SIGN IN</h1>
-        <label for="password">Contraseña:</label>
-        <input type="password" name="password" id="password" placeholder="Contraseña">
-        <p class="error ocultar">Contraseña incorrecta</p>
-        <button type="submit" class="submit-btn">Log in</button>
+        <button type="submit" class="google-signin">
+          <img src="img/buttons/google.png"/>
+          <span>Sign in with Google</span>
+        </button>
       </form>
     </section>
 
@@ -91,13 +92,14 @@
 
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="js/firebase.js"></script>
     <script src="js/Season.js"></script>
     <script src="js/Router.js"></script>
     <script src="js/Login.js"></script>
     <script src="js/FormCheckout.js"></script>
     <script src="js/QuestionInterface.js"></script>
-    <script src="js/ScoutingForm.js"></script>
+    <script src="js/scouting-forms/ScoutingForm.js"></script>
     <script src="js/match-form.js"></script>
     <script src="js/pit-form.js"></script>
     <script src="js/Results.js"></script>

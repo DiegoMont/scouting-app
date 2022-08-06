@@ -10,7 +10,6 @@ class MatchScoutingForm extends ScoutingForm {
         const allianceSelection = new RadioWithText('Allianza', 'alliance-color');
         allianceSelection.addInput({id: "blue-alliance", value: "Azul"});
         allianceSelection.addInput({id: "red-alliance", value: "Roja"});
-        this.sections.generalInfo.addQuestion(new ScoutName());
         this.sections.generalInfo.addQuestion(allianceSelection);
         this.collectionLabel = 'matches';
     }

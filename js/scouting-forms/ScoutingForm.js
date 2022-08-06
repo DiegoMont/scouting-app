@@ -87,6 +87,7 @@ class ScoutingForm {
                     scoutingData[key] = input[1];
             }
             scoutingData['createdAt'] = Date.now();
+            scoutingData['createdBy'] = auth.currentUser.displayName;
             const docId = pointerToThis.getCompositeKey(scoutingData);
             const firebaseDoc = db.collection(`${Season.SEASON_NAME}-${pointerToThis.collectionLabel}`).doc(docId);
             firebaseDoc.set(scoutingData).then(() => {
