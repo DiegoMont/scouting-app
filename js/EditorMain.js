@@ -1,3 +1,4 @@
+const router = new FormEditorRouter();
 const loginForm = document.querySelector('#login form');
 
 

@@ -1,4 +1,4 @@
-const router = new Router();
+const router = new AppRouter();
 const loginForm = document.querySelector('#login form');
 const matchForm = new MatchScoutingForm('#scouting-match form');
 const pitForm = new PitScoutingForm('#scouting-pit form');

@@ -1,7 +1,3 @@
-const PASS = '';
-const AUTH_KEY = 'bNJqFAQfrW';
-const AUTH_VALUE = 'TuUaweAjxK';
-
 const logoutBtn = document.querySelector('#btn-logout');
 
 const addLoginFormHandler = function() {
@@ -15,7 +11,6 @@ const addLoginFormHandler = function() {
 }
 
 const handleAuthStatus = function(user) {
-    console.log(user);
     if(user) {
         router.displayPage(router.pages.menu);
         logoutBtn.style.visibility = 'visible';
