@@ -84,8 +84,9 @@ class Season {
     matchForm;
     pitForm;
 
-    constructor(seasonName) {
+    constructor(seasonName, regionals) {
         this.SEASON_NAME = seasonName;
+        this.REGIONALES = regionals;
         this.matchForm = new MatchScoutingForm('#scouting-match form', this.REGIONALES);
         this.pitForm = new PitScoutingForm('#scouting-pit form', this.REGIONALES);
     }
