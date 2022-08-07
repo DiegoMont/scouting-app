@@ -4,6 +4,7 @@ class Router {
 
     constructor() {
         this.pages = {
+            loading: {htmlContainer: document.getElementById('loading-wheel')},
             login: {htmlContainer: document.getElementById('login')},
             menu: {htmlContainer: document.getElementById('menu')}
         }
