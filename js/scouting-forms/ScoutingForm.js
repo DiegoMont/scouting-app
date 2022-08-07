@@ -7,13 +7,12 @@ class ScoutingForm {
     submitBtn;
     collectionLabel;
 
-    constructor(formQuerySelector, formType, sectionDetails){
+    constructor(formQuerySelector, formType, sectionDetails, regionals){
         this.formElement = document.querySelector(formQuerySelector);
         this.formType = formType;
         this.setErrorFooter();
         this.setSubmitBtn();
-        this.setSectionsAndQuestions(sectionDetails);
-        this.addFormHandler();
+        this.setSectionsAndQuestions(sectionDetails, regionals);
     }
 
     renderSections(){
@@ -45,11 +44,11 @@ class ScoutingForm {
         this.submitBtn.innerText = 'Enviar';
     }
 
-    setSectionsAndQuestions(sectionDetails){
+    setSectionsAndQuestions(sectionDetails, regionals){
         this.sections = {};
         this.sections.generalInfo = new ScoutingFormSection('info-match');
         this.addFormSpecificSections(sectionDetails);
-        this.sections.generalInfo.addQuestion(new RegionalSelector(`regional-${this.formType}`));
+        this.sections.generalInfo.addQuestion(new RegionalSelector(`regional-${this.formType}`, regionals));
         this.sections.generalInfo.addQuestion(new NumericText('Equipo', `team-number-${this.formType}`, '4010', 1000, 30000, 'El número de equipo no es válido'));
         this.sections.comments = new ScoutingFormSection('comments-submit');
         this.sections.comments.addQuestion(new BigTextArea('Comentarios', `comments-${this.formType}`), 0);

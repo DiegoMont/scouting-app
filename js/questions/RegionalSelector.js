@@ -1,7 +1,10 @@
 class RegionalSelector extends Question {
 
-    constructor(id){
+    regionals;
+
+    constructor(id, regionals){
         super('', 'regional', '');
+        this.regionals = regionals;
         this.questionContainer = document.createElement('div');
         this.inputs[0] = this.getSelect(id);
         const label = this.getLabel(id);
@@ -24,7 +27,7 @@ class RegionalSelector extends Question {
         const select = document.createElement('select');
         select.name = this.name;
         select.id = id;
-        for (const regional of Season.REGIONALES) {
+        for (const regional of this.regionals) {
             const regionalOption = document.createElement('option');
             regionalOption.value = regional;
             regionalOption.innerText = regional;

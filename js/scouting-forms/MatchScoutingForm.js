@@ -1,11 +1,12 @@
 class MatchScoutingForm extends ScoutingForm {
 
-    constructor(formQuerySelector){
+    constructor(formQuerySelector, regionals){
         super(formQuerySelector,
              'match',
               [{sectionName:'autonomous', sectionTitle:'Autonomous', sectionClass: 'autonomous-info' },
                {sectionName:'teleop', sectionTitle:'Driver-Controlled', sectionClass: 'teleop-info' } 
-            ]);
+            ],
+            regionals);
         this.sections.generalInfo.addQuestion(new NumericText('Match', 'match-number', '1', 1, 99, 'El número de match no es válido'));
         const allianceSelection = new RadioWithText('Allianza', 'alliance-color');
         allianceSelection.addInput({id: "blue-alliance", value: "Azul"});

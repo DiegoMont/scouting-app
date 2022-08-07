@@ -1,7 +1,7 @@
 const router = new AppRouter();
 const loginForm = document.querySelector('#login form');
-const matchForm = new MatchScoutingForm('#scouting-match form');
-const pitForm = new PitScoutingForm('#scouting-pit form');
+const matchForm = new MatchScoutingForm('#scouting-match form', ['Monterrey']);
+const pitForm = new PitScoutingForm('#scouting-pit form', ['Monterrey']);
 const checkoutPage = new FormCheckout(router);
 
 
@@ -9,6 +9,8 @@ addListenersToBtns();
 addLoginFormHandler();
 createMatchForm();
 createPitForm();
+matchForm.addFormHandler();
+pitForm.addFormHandler();
 formatResultTables();
 auth.onAuthStateChanged(handleAuthStatus);
 logoutBtn.addEventListener('click', () => auth.signOut())

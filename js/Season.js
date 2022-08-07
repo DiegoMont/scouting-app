@@ -79,8 +79,14 @@ const TEAM_NAMES = {
 };
 
 class Season {
-    static SEASON_NAME = '';
-    static REGIONALES = [
-        'Monterrey'
-    ];
+    SEASON_NAME;
+    REGIONALES;
+    matchForm;
+    pitForm;
+
+    constructor(seasonName) {
+        this.SEASON_NAME = seasonName;
+        this.matchForm = new MatchScoutingForm('#scouting-match form', this.REGIONALES);
+        this.pitForm = new PitScoutingForm('#scouting-pit form', this.REGIONALES);
+    }
 }
