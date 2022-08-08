@@ -16,7 +16,15 @@ class SeasonDashboardController {
             updateSeasonForm.reset();
             router.displayPage(router.pages.menu);
         });
-        this.updateSeasonForm.addEventListener('submit', this.handleSeasonUpdate);
+        const auxPointer = this;
+        this.updateSeasonForm.addEventListener('submit', e => {
+            e.preventDefault();
+            if(auxPointer.seasonDataIsValid()) {
+                router.displayPage(router.pages.loading);
+                const formData = new FormData(e.target);
+                this.writeSeason(formData);
+            }
+        });
         this.renderDashboard();
     }
 
@@ -32,15 +40,6 @@ class SeasonDashboardController {
             if(e.target.value.length > 0 && e.target === lastEventInput)
                 this.addEventInput('');
         });
-    }
-
-    handleSeasonUpdate(e) {
-        e.preventDefault();
-        if(seasonDataIsValid()) {
-            router.displayPage(router.pages.loading);
-            const formData = new FormData(e.target);
-            this.writeSeason(formData);
-        }
     }
 
     renderDashboard() {
@@ -60,13 +59,26 @@ class SeasonDashboardController {
         let isDataValid = true;
         const seasonNameError = document.querySelector('#season-name-error');
         const seasonEventsError = document.querySelector('#events-lists-error');
-        if(updateSeasonForm['season-name'].value.length < 4) {
+        if(this.updateSeasonForm['season-name'].value.length < 3) {
             seasonNameError.innerText = 'El nombre de la temporada debe ser más grande';
             seasonNameError.classList.remove('ocultar');
             isDataValid = false;
         } else
-            seasonNameError.classList.remove('ocultar');
-        console.log(updateSeasonForm['regional[]']);
+            seasonNameError.classList.add('ocultar');
+        if(this.eventInputsStack.length == 1) {
+            seasonEventsError.innerText = 'Ingresa al menos un regional';
+            seasonEventsError.classList.remove('ocultar');
+            isDataValid = false;
+        } else for(let i = this.eventInputsStack.length-2; i > -1; i--) {
+            const regional = this.eventInputsStack[i].value;
+            seasonEventsError.classList.add('ocultar');
+            if(regional.length < 3) {
+                seasonEventsError.innerText = 'Los regionales deben tener al menos 3 caracteres';
+                seasonEventsError.classList.remove('ocultar');
+                isDataValid = false;
+                break;
+            }
+        }
         return isDataValid;
     }
 
