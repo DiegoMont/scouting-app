@@ -1,4 +1,12 @@
 function controlDashboard() {
+    const updateSeasonForm = document.querySelector('#edit-season form');
+    document.querySelector('#new-season').addEventListener('click', () => {
+        router.displayPage(router.pages.editSeason);
+    });
+    document.querySelector('#edit-season button.cancel-btn').addEventListener('click', () => {
+        updateSeasonForm.reset();
+        router.displayPage(router.pages.menu);
+    });
     renderDashboard();
 }
 

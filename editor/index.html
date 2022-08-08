@@ -6,7 +6,9 @@
     <title>Scouting</title>
     <link rel="stylesheet" type="text/css" href="../css/reset.css">
     <link rel="stylesheet" type="text/css" href="../css/general.css">
-    <link rel="stylesheet" type="text/css" href="css/estilos-loading.css">
+    <link rel="stylesheet" type="text/css" href="../css/estilos-edit-season.css">
+    <link rel="stylesheet" type="text/css" href="../css/estilos-encuestas.css">
+    <link rel="stylesheet" type="text/css" href="../css/estilos-loading.css">
     <link rel="stylesheet" type="text/css" href="../css/estilos-login.css">
     <link rel="stylesheet" type="text/css" href="../css/estilos-seasons-dashboard.css">
     <link rel="icon" type="image/png" href="../img/nautilus.png">
@@ -33,8 +35,25 @@
 
     <section id="menu">
       <div class="centre">
-        <button type="button" class="btn">Nueva temporada</button>
+        <button type="button" class="btn" id="new-season">Nueva temporada</button>
         <div class="season-cards"></div>
+      </div>
+    </section>
+
+    <section id="edit-season">
+      <div class="centre">
+        <form>
+          <input type="hidden" name="season-id">
+          <label for="season-name">Temporada</label>
+          <input type="text" name="season-name" id="season-name">
+          <p>Eventos</p>
+          <div class="events-list">
+            <input type="text" name="" id="" value="Monterrey">
+            <input type="text" name="" id="">
+          </div>
+          <button type="submit" class="submit-btn">Guardar</button>
+          <button type="button" class="cancel-btn">Cancelar</button>
+        </form>
       </div>
     </section>
 
