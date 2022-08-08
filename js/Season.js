@@ -91,3 +91,17 @@ class Season {
         this.pitForm = new PitScoutingForm('#scouting-pit form', this.REGIONALES);
     }
 }
+
+class SeasonRepository {
+    toFirestore(season) {
+        return {
+            SEASON_NAME: season.SEASON_NAME,
+            REGIONALES: season.REGIONALES
+        };
+    }
+
+    fromFirestore(firestoreSeason) {
+        const season = new Season(firestoreSeason.SEASON_NAME, firestoreSeason.REGIONALES);
+        return season;
+    }
+}
