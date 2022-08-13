@@ -56,8 +56,11 @@ class SeasonDashboardController {
         const regionals = seasonData.getAll('regional[]');
         regionals.pop();
         const newSeason = new Season(seasonName, regionals);
-        console.log(newSeason);
-        // TODO: Upload season to DB
+        const seasonRepository = new SeasonRepository();
+        seasonRepository.saveSeason(newSeason).then(() => {
+            this.updateSeasonForm.reset();
+            router.displayPage(router.pages.menu);
+        });
     }
 
     seasonDataIsValid() {

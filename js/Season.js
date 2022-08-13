@@ -93,6 +93,11 @@ class Season {
 }
 
 class SeasonRepository {
+
+    saveSeason(season) {
+        return db.collection('seasons').add(this.toFirestore(season));
+    }
+
     toFirestore(season) {
         return {
             SEASON_NAME: season.SEASON_NAME,
