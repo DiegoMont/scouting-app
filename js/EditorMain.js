@@ -15,5 +15,7 @@ seasonDashboard.controlDashboard();
 
 
 function addListenersToBtns() {
-    
+    document.getElementById('btn-menu-head').addEventListener('click', function() {
+        router.displayPage(router.pages.menu);
+    });
 }
