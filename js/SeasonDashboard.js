@@ -33,6 +33,7 @@ class SeasonDashboardController {
         input.type = 'text';
         input.name = 'regional[]';
         input.value = location;
+        input.placeholder = 'Monterrey';
         this.eventInputsStack.push(input);
         document.querySelector('.events-list').appendChild(input);
         input.addEventListener('input', e => {
@@ -51,8 +52,12 @@ class SeasonDashboardController {
     }
 
     writeSeason(seasonData) {
-        console.log(seasonData.get('season-name'));
-        console.log(seasonData.get(''));
+        const seasonName = seasonData.get('season-name');
+        const regionals = seasonData.getAll('regional[]');
+        regionals.pop();
+        const newSeason = new Season(seasonName, regionals);
+        console.log(newSeason);
+        // TODO: Upload season to DB
     }
 
     seasonDataIsValid() {
