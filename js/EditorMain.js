@@ -1,10 +1,7 @@
 const router = new FormEditorRouter();
 const loginForm = document.querySelector('#login form');
 const seasonDashboard = new SeasonDashboardController('#edit-season form');
-const seasons = [
-    new Season('Freight Frenzy', ['Monterrey']),
-    new Season('Rapid React', ['Monterrey'])
-]
+const seasons = {};
 
 
 addListenersToBtns();

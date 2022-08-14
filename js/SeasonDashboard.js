@@ -25,7 +25,17 @@ class SeasonDashboardController {
                 this.writeSeason(formData);
             }
         });
-        this.renderDashboard();
+        db.collection('seasons').onSnapshot(snapshot => {
+            const changes = snapshot.docChanges();
+            changes.forEach(change => {
+                const seasonRepository = new SeasonRepository();
+                if(change.type == 'added' || change.type == 'modified') {
+                    const season = seasonRepository.fromFirestore(change.doc);
+                    seasons[season.id] = season;
+                    this.renderDashboard();
+                }
+            })
+        });
     }
 
     addEventInput(location) {
@@ -45,7 +55,9 @@ class SeasonDashboardController {
 
     renderDashboard() {
         const cardContainer = document.querySelector('#menu .season-cards');
-        for(const season of seasons) {
+        cardContainer.innerHTML = '';
+        for (const id in seasons) {
+            const season = seasons[id];
             const card = this.getSeasonCard(season);
             cardContainer.appendChild(card);
         }

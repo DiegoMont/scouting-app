@@ -83,8 +83,10 @@ class Season {
     REGIONALES;
     matchForm;
     pitForm;
+    id;
 
     constructor(seasonName, regionals) {
+        this.id = null;
         this.SEASON_NAME = seasonName;
         this.REGIONALES = regionals;
         this.matchForm = new MatchScoutingForm('#scouting-match form', this.REGIONALES);
@@ -95,6 +97,8 @@ class Season {
 class SeasonRepository {
 
     saveSeason(season) {
+        season.createdAt = Date.now();
+        season.createdBy = auth.currentUser.displayName;
         return db.collection('seasons').add(this.toFirestore(season));
     }
 
@@ -105,8 +109,10 @@ class SeasonRepository {
         };
     }
 
-    fromFirestore(firestoreSeason) {
+    fromFirestore(doc) {
+        const firestoreSeason = doc.data()
         const season = new Season(firestoreSeason.SEASON_NAME, firestoreSeason.REGIONALES);
+        season.id = doc.id;
         return season;
     }
 }
