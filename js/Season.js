@@ -103,10 +103,25 @@ class SeasonRepository {
     }
 
     toFirestore(season) {
-        return {
+        const seasonRawObject = {
             SEASON_NAME: season.SEASON_NAME,
-            REGIONALES: season.REGIONALES
+            REGIONALES: season.REGIONALES,
+            matchForm: {},
+            pitForm: {}
         };
+        seasonRawObject.matchForm.autonomous = this.getSerializedQuestions(season.matchForm.sections.autonomous);
+        seasonRawObject.matchForm.teleop = this.getSerializedQuestions(season.matchForm.sections.teleop);
+        seasonRawObject.pitForm.engineering = this.getSerializedQuestions(season.pitForm.sections.engineering);
+        seasonRawObject.pitForm.team = this.getSerializedQuestions(season.pitForm.sections.team);
+        return seasonRawObject;
+    }
+
+    getSerializedQuestions(formSection) {
+        const questions = new Array();
+        for (const question of formSection.questions)
+            questions.push(question.toFirestore());
+        console.log(questions);
+        return questions;
     }
 
     fromFirestore(doc) {
