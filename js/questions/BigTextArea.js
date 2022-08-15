@@ -18,6 +18,13 @@ class BigTextArea extends Question {
         this.questionContainer.appendChild(input);
     }
 
+    toFirestore() {
+        const questionObject = super.toFirebase();
+        questionObject.questionClass = 'BigTextArea';
+        questionObject.minLength = this.minValueLength;
+        return questionObject;
+    }
+
     getInput(name){
         const input = document.createElement('textarea');
         input.name = name;
