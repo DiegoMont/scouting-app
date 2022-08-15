@@ -1,13 +1,24 @@
 class RadioWithText extends Question {
+
+    inputData;
+
     constructor(question, name, error='Debes seleccionar una opción'){
         super(question, name, error);
         this.questionContainer = document.createElement('div');
         this.questionContainer.classList.add('checkbox-texto');
+        this.inputData = new Array();
+    }
+
+    toFirestore() {
+        const questionObject = super.toFirestore();
+        questionObject.inputData = this.inputData;
+        return questionObject;
     }
 
     addInput(inputData){
         const input = this.getInput(inputData);
         const label = this.getLabel(inputData);
+        this.inputData.push(inputData);
         this.inputs.push(input);
         this.questionContainer.appendChild(input);
         this.questionContainer.appendChild(label);
@@ -60,6 +71,12 @@ class FieldZones extends CheckboxWithText {
         super(question, name, error);
         this.setFieldImg(fieldMap);
         this.addInputs(zones);
+    }
+
+    toFirestore() {
+        const questionObject = super.toFirestore();
+        questionObject.fieldImg = this.fieldImg.src;
+        return questionObject;
     }
 
     addToContainer(container){
