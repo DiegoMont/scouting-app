@@ -14,6 +14,14 @@ class NumericText extends Question {
         this.questionContainer.appendChild(this.inputs[0]);
     }
 
+    toFirestore() {
+        const questionObject = super.toFirestore();
+        questionObject.placeholder = this.inputs[0].placeholder;
+        questionObject.maxValue = this.maxValue;
+        questionObject.minValue = this.minValue;
+        return questionObject;
+    }
+
     addToContainer(container){
         container.appendChild(this.questionContainer);
         container.appendChild(this.error);
