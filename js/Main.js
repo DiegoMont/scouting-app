@@ -14,6 +14,13 @@ pitForm.addFormHandler();
 formatResultTables();
 auth.onAuthStateChanged(handleAuthStatus);
 logoutBtn.addEventListener('click', () => auth.signOut())
+// Quitar antes de subir a producción
+const repo = new SeasonRepository();
+const season = new Season('Stronghold', ['Monterrey']);
+season.pitForm = pitForm;
+season.matchForm = matchForm;
+repo.toFirestore(season);
+// Quitar antes de subir a producción
 
 
 function addListenersToBtns() {
