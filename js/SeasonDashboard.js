@@ -10,10 +10,11 @@ class SeasonDashboardController {
         document.querySelector('#new-season').addEventListener('click', () => {
             router.displayPage(router.pages.editSeason);
             this.eventInputsStack = Array();
+            document.querySelector('.events-list').innerHTML = '';
             this.addEventInput('');
         });
         document.querySelector('#edit-season button.cancel-btn').addEventListener('click', () => {
-            updateSeasonForm.reset();
+            this.updateSeasonForm.reset();
             router.displayPage(router.pages.menu);
         });
         const auxPointer = this;
@@ -108,12 +109,27 @@ class SeasonDashboardController {
         card.innerHTML = `
         <div class="card-header flexbox">
           <h2>${season.SEASON_NAME}</h2>
-          <button type="button"><img src="../img/pencil.svg" alt="Edit season"></button>
         </div>
         <div>
           <a>Match form</a><br>
           <a>Pit form</a>
         </div>`;
+        const editBtn = document.createElement('button');
+        editBtn.type = 'button';
+        editBtn.value = season.id;
+        editBtn.innerHTML = '<img src="../img/pencil.svg" alt="Edit season">';
+        card.querySelector('.card-header').appendChild(editBtn);
+        editBtn.addEventListener('click', e => {
+            router.displayPage(router.pages.editSeason);
+            this.eventInputsStack = Array();
+            document.querySelector('.events-list').innerHTML = '';
+            const seasonId = e.currentTarget.value;
+            const seasonEvents = seasons[seasonId].REGIONALES;
+            this.updateSeasonForm['season-name'].value = season.SEASON_NAME;
+            for (const event of seasonEvents)
+                this.addEventInput(event);
+            this.addEventInput('');
+        });
         return card;
     }
 }
