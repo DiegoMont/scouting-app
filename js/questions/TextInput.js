@@ -18,6 +18,13 @@ class TextInput extends Question {
         this.questionContainer.appendChild(input);
     }
 
+    toFirestore() {
+        const questionObject = super.toFirestore();
+        questionObject.placeholder = this.inputs[0].placeholder;
+        questionObject.minAnswerLength = this.minValueLength;
+        return questionObject;
+    }
+
     getLabel(questionTxt, name){
         const label = document.createElement('label');
         label.htmlFor = name;
