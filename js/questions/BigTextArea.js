@@ -19,7 +19,7 @@ class BigTextArea extends Question {
     }
 
     toFirestore() {
-        const questionObject = super.toFirebase();
+        const questionObject = super.toFirestore();
         questionObject.questionClass = 'BigTextArea';
         questionObject.minLength = this.minValueLength;
         return questionObject;

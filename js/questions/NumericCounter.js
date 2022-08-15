@@ -1,11 +1,13 @@
 class NumericCounter extends Question {
     minValue;
+    maxValue;
 
     constructor(question, name, minValue, maxValue){
         super(question, name, '');
         this.questionContainer = document.createElement('div');
         this.questionContainer.classList.add('flexbox', 'contador');
         this.minValue = minValue;
+        this.maxValue = maxValue;
         this.setInput();
         const addBtn = this.getButton('aumentar', 'add');
         const substractBtn = this.getButton('restar', 'minus');
@@ -23,6 +25,13 @@ class NumericCounter extends Question {
         this.questionContainer.appendChild(substractBtn);
         this.questionContainer.appendChild(this.inputs[0]);
         this.questionContainer.appendChild(addBtn);
+    }
+
+    toFirestore() {
+        const questionObject = super.toFirestore();
+        questionObject.minValue = this.minValue;
+        questionObject.maxValue = this.maxValue;
+        return questionObject;
     }
 
     getButton(className, imgName){
