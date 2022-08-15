@@ -81,4 +81,14 @@ class Question extends ScoutingFormElement {
     showError(){
         this.error.classList.remove('ocultar');
     }
+
+    toFirestore() {
+        const questionRawObject = {
+            questionClass: this.constructor.name,
+            questionTxt: this.question.innerText,
+            name: this.name,
+            error: this.error.innerText
+        };
+        return questionRawObject;
+    }
 }
