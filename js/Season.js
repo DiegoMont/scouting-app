@@ -99,7 +99,10 @@ class SeasonRepository {
     saveSeason(season) {
         season.createdAt = Date.now();
         season.createdBy = auth.currentUser.displayName;
-        return db.collection('seasons').add(this.toFirestore(season));
+        if(season.id === null)
+            return db.collection('seasons').add(this.toFirestore(season));
+        else
+            return db.collection('seasons').doc(season.id).update(this.toFirestore(season));
     }
 
     toFirestore(season) {
@@ -122,7 +125,6 @@ class SeasonRepository {
         const questions = new Array();
         for (const question of formSection.questions)
             questions.push(question.toFirestore());
-        console.log(questions);
         return questions;
     }
 

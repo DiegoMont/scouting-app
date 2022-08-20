@@ -15,6 +15,7 @@ class SeasonDashboardController {
         });
         document.querySelector('#edit-season button.cancel-btn').addEventListener('click', () => {
             this.updateSeasonForm.reset();
+            this.updateSeasonForm['season-id'].value = '';
             router.displayPage(router.pages.menu);
         });
         const auxPointer = this;
@@ -65,10 +66,13 @@ class SeasonDashboardController {
     }
 
     writeSeason(seasonData) {
+        const seasonId = seasonData.get('season-id');
         const seasonName = seasonData.get('season-name');
         const regionals = seasonData.getAll('regional[]');
         regionals.pop();
         const newSeason = new Season(seasonName, regionals);
+        if(seasonId !== '')
+            newSeason.id = seasonId;
         const seasonRepository = new SeasonRepository();
         seasonRepository.saveSeason(newSeason).then(() => {
             this.updateSeasonForm.reset();
@@ -120,15 +124,16 @@ class SeasonDashboardController {
         editBtn.innerHTML = '<img src="../img/pencil.svg" alt="Edit season">';
         card.querySelector('.card-header').appendChild(editBtn);
         editBtn.addEventListener('click', e => {
-            router.displayPage(router.pages.editSeason);
             this.eventInputsStack = Array();
             document.querySelector('.events-list').innerHTML = '';
             const seasonId = e.currentTarget.value;
             const seasonEvents = seasons[seasonId].REGIONALES;
             this.updateSeasonForm['season-name'].value = season.SEASON_NAME;
+            this.updateSeasonForm['season-id'].value = seasonId;
             for (const event of seasonEvents)
                 this.addEventInput(event);
             this.addEventInput('');
+            router.displayPage(router.pages.editSeason);
         });
         return card;
     }
