@@ -106,6 +106,8 @@ class SeasonRepository {
         const seasonRawObject = {
             SEASON_NAME: season.SEASON_NAME,
             REGIONALES: season.REGIONALES,
+            createdAt: season.createdAt,
+            createdBy: season.createdBy,
             matchForm: {},
             pitForm: {}
         };
