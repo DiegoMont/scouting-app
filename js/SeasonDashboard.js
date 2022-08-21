@@ -114,9 +114,7 @@ class SeasonDashboardController {
         <div class="card-header flexbox">
           <h2>${season.SEASON_NAME}</h2>
         </div>
-        <div>
-          <a>Match form</a><br>
-          <a>Pit form</a>
+        <div class="card-btns">
         </div>`;
         const editBtn = document.createElement('button');
         editBtn.type = 'button';
@@ -135,6 +133,30 @@ class SeasonDashboardController {
             this.addEventInput('');
             router.displayPage(router.pages.editSeason);
         });
+        this.addFormEditBtn('Match form', 'match', season.id, card);
+        this.addFormEditBtn('Pit form', 'pit', season.id, card);
         return card;
+    }
+
+    addFormEditBtn(btnText, scoutingFormType, seasonId, card) {
+        const editBtn = document.createElement('a');
+        editBtn.innerText = btnText;
+        editBtn.value = seasonId;
+        card.querySelector('.card-btns').appendChild(editBtn);
+        this.editFormHandler(editBtn, scoutingFormType);
+    }
+
+    editFormHandler(btn, formType) {
+        btn.addEventListener('click', e => {
+            const seasonId = e.currentTarget.value;
+            const season = seasons[seasonId];
+            if(formType == 'pit')
+                formBuilder.editingForm = season.pitForm;
+            else if(formType == 'match')
+                formBuilder.editingForm = season.matchForm;
+            else
+                return console.error('Cant oper form');
+            formBuilder.openForm();
+        });
     }
 }

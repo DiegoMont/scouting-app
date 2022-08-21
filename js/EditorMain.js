@@ -1,6 +1,7 @@
 const router = new FormEditorRouter();
 const loginForm = document.querySelector('#login form');
 const seasonDashboard = new SeasonDashboardController('#edit-season form');
+const formBuilder = new FormBuilderController();
 const seasons = {};
 
 
