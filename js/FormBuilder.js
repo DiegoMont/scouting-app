@@ -7,9 +7,13 @@ class FormBuilderController {
     }
 
     openForm() {
+        this.renderForm();
+        router.displayPage(router.pages.scoutingFormBuilder);
+    }
+
+    renderForm() {
         this.formElement.innerHTML = '';
         this.editingForm.formElement = this.formElement;
         this.editingForm.renderSections();
-        router.displayPage(router.pages.scoutingFormBuilder);
     }
 }
