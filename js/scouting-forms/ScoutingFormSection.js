@@ -2,14 +2,16 @@ class ScoutingFormSection {
 
     container;
     questions;
+    sectionTitle;
 
     constructor(className, title=''){
         this.questions = new Array();
         this.container = document.createElement('div');
         this.container.classList.add(className, 'form-centre');
-        if(title !== '') {
+        this.sectionTitle = title;
+        if(this.sectionTitle !== '') {
             const sectionTitle = document.createElement('h1');
-            sectionTitle.innerText = title;
+            sectionTitle.innerText = this.sectionTitle;
             this.container.appendChild(sectionTitle);
         }
     }
