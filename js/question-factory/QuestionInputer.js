@@ -1,10 +1,10 @@
 class QuestionInputer {
     questionName;
-    formSetter;
+    questionClass;
 
-    constructor(name, formSetter) {
+    constructor(name, questionClass) {
         this.questionName = name;
-        this.formSetter = formSetter;
+        this.questionClass = questionClass;
     }
 
     renderQuestionEditor(question, editorContainer) {
@@ -16,13 +16,21 @@ class QuestionInputer {
         editorContainer.appendChild(inputContainer);
     }
 
-    addQuestionInputs(question, inputContainer) {
+    formSetter() {
+        throw Error();
+    }
+
+    getNewQuestionInstance() {
+        throw Error();
+    }
+
+    addQuestionInputs(question, inputsContainer) {
         const questionText = this.getLabelAndInput('Pregunta', question.question, 'question-text');
         const questionHtmlName = this.getLabelAndInput('Valor de la propiedad name', question.name, 'html-name');
         const questionError = this.getLabelAndInput('Texto de mensaje de error', question.error, 'error-txt', 'Error');
-        inputContainer.appendChild(questionText);
-        inputContainer.appendChild(questionHtmlName);
-        inputContainer.appendChild(questionError);
+        inputsContainer.appendChild(questionText);
+        inputsContainer.appendChild(questionHtmlName);
+        inputsContainer.appendChild(questionError);
         this.formSetter(question, inputContainer);
     }
 
