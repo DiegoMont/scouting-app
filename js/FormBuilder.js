@@ -42,7 +42,13 @@ class FormBuilderController {
         const inputContainer = document.createElement('div');
         const questionSelect = document.createElement('select');
         questionSelect.classList.add('question-type');
-        // TODO: Add question options
+        for (let i = 0; i < QuestionFactory.length; i++) {
+            const questionType = QuestionFactory[i];
+            const option = document.createElement('option');
+            option.value = i;
+            option.innerText = questionType.questionName;
+            questionSelect.appendChild(option);
+        }
         const addQuestionBtn = document.createElement('button');
         addQuestionBtn.classList.add('text-yellow-btn');
         addQuestionBtn.type = 'button';
