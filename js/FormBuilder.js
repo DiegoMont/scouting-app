@@ -27,13 +27,29 @@ class FormBuilderController {
         this.displaySection(Object.keys(this.editingForm.sections)[2]);
     }
 
-    displaySection(formSection) {
+    displaySection(formSectionKey) {
+        const formSection = this.editingForm.sections[formSectionKey];
         const sectionContainer = document.createElement('div');
         const newQuestionForm = document.createElement('form');
+        const questionBtnsContainer = document.createElement('div');
         newQuestionForm.classList.add('new-question-form', 'flexbox');
+        questionBtnsContainer.classList.add('questions');
         this.questionOrderSection.appendChild(sectionContainer);
         sectionContainer.appendChild(newQuestionForm);
-        this.setupNewQuestionForm(newQuestionForm, formSection);
+        this.setupNewQuestionForm(newQuestionForm, formSectionKey);
+        const instancePtr = this;
+        newQuestionForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const chosenQuestionIndex = e.currentTarget.querySelector('.question-type').value;
+            const questionTemplate = QuestionFactory[chosenQuestionIndex];
+            const question = questionTemplate.getNewQuestionInstance();
+            formSection.addQuestion(question);
+            instancePtr.setQuestionOrderSection();
+        });
+        for(const question of formSection.questions) {
+            this.addQuestionMenu(question, questionBtnsContainer);
+        }
+        sectionContainer.appendChild(questionBtnsContainer);
     }
 
     setupNewQuestionForm(form, sectionKey) {
@@ -51,11 +67,34 @@ class FormBuilderController {
         }
         const addQuestionBtn = document.createElement('button');
         addQuestionBtn.classList.add('text-yellow-btn');
-        addQuestionBtn.type = 'button';
+        addQuestionBtn.type = 'submit';
         addQuestionBtn.innerText = 'Añadir pregunta';
         inputContainer.appendChild(questionSelect);
         inputContainer.appendChild(addQuestionBtn);
         form.appendChild(title);
         form.appendChild(inputContainer);
+    }
+
+    addQuestionMenu(question, container) {
+        const questionMenu = document.createElement('div');
+        questionMenu.className = 'question-menu';
+        const editBtn = document.createElement('button');
+        editBtn.type = 'button';
+        editBtn.classList.add('question-text');
+        editBtn.innerText = question.question.innerText;
+        const deleteBtn = document.createElement('button');
+        deleteBtn.type = 'button';
+        deleteBtn.innerHTML = '<img src="../img/trash.png" alt="Delete question">';
+        const upBtn = document.createElement('button');
+        upBtn.type = 'button';
+        upBtn.innerHTML = '<img class="up-caret" src="../img/caret.png" alt="Put question above">';
+        const downBtn = document.createElement('button');
+        downBtn.type = 'button';
+        downBtn.innerHTML = '<img class="down-caret" src="../img/caret.png" alt="Put question below">';
+        container.appendChild(questionMenu);
+        questionMenu.appendChild(editBtn);
+        questionMenu.appendChild(deleteBtn);
+        questionMenu.appendChild(upBtn);
+        questionMenu.appendChild(downBtn);
     }
 }
