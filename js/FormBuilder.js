@@ -44,7 +44,7 @@ class FormBuilderController {
         questionSelect.classList.add('question-type');
         // TODO: Add question options
         const addQuestionBtn = document.createElement('button');
-        addQuestionBtn.classList.add('add-question-btn');
+        addQuestionBtn.classList.add('text-yellow-btn');
         addQuestionBtn.type = 'button';
         addQuestionBtn.innerText = 'Añadir pregunta';
         inputContainer.appendChild(questionSelect);

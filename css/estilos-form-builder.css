@@ -1,10 +1,16 @@
-.add-question-btn {
+.text-yellow-btn {
     background-color: var(--amarillo);
     color: var(--negro-texto);
     display: inline-block;
+    border: 2px solid var(--amarillo);
     padding: 0.3rem 1rem;
     margin: 0;
     margin-left: 5px;
+}
+
+.text-yellow-btn:hover {
+    background-color: transparent;
+    color: var(--amarillo);
 }
 
 .builder-container {
@@ -20,6 +26,11 @@
 
 .new-question-form {
     justify-content: space-between;
+}
+
+.question-editor-header {
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
 }
 
 .question-menu {
@@ -43,6 +54,21 @@
 .question-text {
     width: 100%;
     text-align: left;
+}
+
+.inputs label {
+    margin-top: 0.5rem;
+}
+
+.inputs input[type=text] {
+    width: calc(100% - 1rem);
+}
+
+.question-editor-header h3 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    display: inline-block;
+    margin: 0;
 }
 
 .question-menu button {
