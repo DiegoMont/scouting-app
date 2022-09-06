@@ -5,7 +5,8 @@ class BigTextAreaInputer extends QuestionInputer {
 
     formSetter(question, inputsContainer) {
         const minLength = this.getLabelAndInput('Largo mínimo de la respuesta', question.minValueLength, 'min-ans-length', '10');
-        container.appendChild(minLength);
+        inputsContainer.appendChild(minLength[0]);
+        inputsContainer.appendChild(minLength[1]);
     }
 
     getNewQuestionInstance() {

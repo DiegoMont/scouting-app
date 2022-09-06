@@ -45,6 +45,7 @@ class FormBuilderController {
             const question = questionTemplate.getNewQuestionInstance();
             formSection.addQuestion(question);
             instancePtr.setQuestionOrderSection();
+            questionTemplate.renderQuestionEditor(question);
         });
         for(const question of formSection.questions) {
             this.addQuestionMenu(question, questionBtnsContainer);

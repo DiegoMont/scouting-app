@@ -7,13 +7,18 @@ class QuestionInputer {
         this.questionClass = questionClass;
     }
 
-    renderQuestionEditor(question, editorContainer) {
+    renderQuestionEditor(question) {
+        const editorContainer = document.querySelector('#question-editor');
         const headerContent = `<div class="question-editor-header flexbox"><h3>${this.questionName}</h3><button class="text-yellow-btn" type="submit">Actualizar</button></div>`;
         editorContainer.innerHTML = headerContent;
         const inputContainer = document.createElement('div');
         inputContainer.classList.add('inputs');
-        this.addQuestionInputs(question, editorContainer);
+        this.addQuestionInputs(question, inputContainer);
         editorContainer.appendChild(inputContainer);
+        editorContainer.addEventListener('click', function(e) {
+            e.preventDefault();
+            // TODO: Update question with info
+        });
     }
 
     formSetter() {
@@ -25,13 +30,16 @@ class QuestionInputer {
     }
 
     addQuestionInputs(question, inputsContainer) {
-        const questionText = this.getLabelAndInput('Pregunta', question.question, 'question-text');
+        const questionText = this.getLabelAndInput('Pregunta', question.question.innerText, 'question-text');
         const questionHtmlName = this.getLabelAndInput('Valor de la propiedad name', question.name, 'html-name');
-        const questionError = this.getLabelAndInput('Texto de mensaje de error', question.error, 'error-txt', 'Error');
-        inputsContainer.appendChild(questionText);
-        inputsContainer.appendChild(questionHtmlName);
-        inputsContainer.appendChild(questionError);
-        this.formSetter(question, inputContainer);
+        const questionError = this.getLabelAndInput('Texto de mensaje de error', question.error.innerText, 'error-txt', 'Error');
+        inputsContainer.appendChild(questionText[0]);
+        inputsContainer.appendChild(questionText[1]);
+        inputsContainer.appendChild(questionHtmlName[0]);
+        inputsContainer.appendChild(questionHtmlName[1]);
+        inputsContainer.appendChild(questionError[0]);
+        inputsContainer.appendChild(questionError[1]);
+        this.formSetter(question, inputsContainer);
     }
 
     getLabelAndInput(labelText, value, id, placeholder) {
