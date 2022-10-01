@@ -4,14 +4,11 @@ class NumericText extends Question {
     minValue;
 
     constructor(question, name, placeholder, minValue, maxValue, error='Valor no válido'){
-        super('', name, error);
+        super(question, name, error);
         this.maxValue = maxValue;
         this.minValue = minValue;
         this.questionContainer = document.createElement('div');
         this.inputs[0] = this.getInput(placeholder);
-        const label = this.getLabel(question);
-        this.questionContainer.appendChild(label);
-        this.questionContainer.appendChild(this.inputs[0]);
     }
 
     toFirestore() {
@@ -23,6 +20,10 @@ class NumericText extends Question {
     }
 
     addToContainer(container){
+        this.questionContainer.innerHTML = '';
+        const label = this.getLabel(this.question.innerText);
+        this.questionContainer.appendChild(label);
+        this.questionContainer.appendChild(this.inputs[0]);
         container.appendChild(this.questionContainer);
         container.appendChild(this.error);
     }

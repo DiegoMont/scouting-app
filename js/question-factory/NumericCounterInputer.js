@@ -5,7 +5,7 @@ class NumericCounterInputer extends QuestionInputer {
 
     formSetter(question, inputsContainer) {
         this.addQuestionPropertyInput(inputsContainer, 'Límite menor del contador', question.minValue, 'counter-min-val', 0);
-        this.addQuestionPropertyInput(inputsContainer, 'Límite máximo del contador', question.maxValue, 10);
+        this.addQuestionPropertyInput(inputsContainer, 'Límite máximo del contador', question.maxValue, 'counter-max-val', 10);
     }
 
     getNewQuestionInstance() {
@@ -13,6 +13,7 @@ class NumericCounterInputer extends QuestionInputer {
     }
 
     updateQuestionProperties(question, newData) {
-        question.minValueLength = newData.get('min-ans-length');
+        question.minValue = newData.get('counter-min-val');
+        question.maxValue = newData.get('counter-max-val');
     }
 }
