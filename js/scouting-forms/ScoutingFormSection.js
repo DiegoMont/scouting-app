@@ -1,19 +1,17 @@
 class ScoutingFormSection {
 
+    className;
     container;
     questions;
     sectionTitle;
+    title;
 
     constructor(className, title=''){
         this.questions = new Array();
+        this.className = className;
+        this.title = title;
         this.container = document.createElement('div');
-        this.container.classList.add(className, 'form-centre');
-        this.sectionTitle = title;
-        if(this.sectionTitle !== '') {
-            const sectionTitle = document.createElement('h1');
-            sectionTitle.innerText = this.sectionTitle;
-            this.container.appendChild(sectionTitle);
-        }
+        this.renderSectionView();
     }
 
     addQuestion(question){
@@ -22,7 +20,19 @@ class ScoutingFormSection {
     }
 
     renderQuestions(){
+        this.renderSectionView();
         for (const question of this.questions)
             question.addToContainer(this.container);
+    }
+
+    renderSectionView() {
+        this.container.innerHTML = '';
+        this.container.classList.add(this.className, 'form-centre');
+        this.sectionTitle = this.title;
+        if(this.sectionTitle !== '') {
+            const sectionTitle = document.createElement('h1');
+            sectionTitle.innerText = this.sectionTitle;
+            this.container.appendChild(sectionTitle);
+        }
     }
 }
