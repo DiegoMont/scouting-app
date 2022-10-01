@@ -15,9 +15,15 @@ class QuestionInputer {
         inputContainer.classList.add('inputs');
         this.addQuestionInputs(question, inputContainer);
         editorContainer.appendChild(inputContainer);
-        editorContainer.addEventListener('click', function(e) {
+        const aux = this;
+        editorContainer.addEventListener('submit', function(e) {
             e.preventDefault();
-            // TODO: Update question with info
+            const questionNewValues = new FormData(e.target);
+            question.question = questionNewValues.get('question-text');
+            question.name = questionNewValues.get('html-name');
+            question.error = questionNewValues.get('error-txt');
+            aux.updateQuestionProperties(question, questionNewValues);
+            formBuilder.renderForm();
         });
     }
 
@@ -26,6 +32,10 @@ class QuestionInputer {
     }
 
     getNewQuestionInstance() {
+        throw Error();
+    }
+
+    updateQuestionProperties(question, newData) {
         throw Error();
     }
 

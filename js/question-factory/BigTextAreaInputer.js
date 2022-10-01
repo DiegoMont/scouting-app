@@ -12,4 +12,8 @@ class BigTextAreaInputer extends QuestionInputer {
     getNewQuestionInstance() {
         return new BigTextArea('', '', 5);
     }
+
+    updateQuestionProperties(question, newData) {
+        question.minValueLength = newData.get('min-ans-length');
+    }
 }
