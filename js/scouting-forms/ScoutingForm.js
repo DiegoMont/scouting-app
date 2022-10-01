@@ -100,6 +100,24 @@ class ScoutingForm {
         });
     }
 
+    addValidationOnlyHandler() {
+        const pointerToThis = this;
+        this.formElement.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let areAllQuestionsValid = true;
+            pointerToThis.errorFooter.classList.add('ocultar');
+            for (const sectionName in pointerToThis.sections){
+                const section = pointerToThis.sections[sectionName];
+                for(const sectionQuestion of section.questions){
+                    const isQuestionValid = sectionQuestion.validate();
+                    areAllQuestionsValid = areAllQuestionsValid && isQuestionValid;
+                }
+            }
+            if(!areAllQuestionsValid)
+                pointerToThis.errorFooter.classList.remove('ocultar');
+        });
+    }
+
     getCompositeKey(scoutingData){
         return '';
     }

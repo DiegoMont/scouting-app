@@ -10,6 +10,7 @@ class FormBuilderController {
 
     openForm() {
         this.renderForm();
+        this.editingForm.addValidationOnlyHandler();
         router.displayPage(router.pages.scoutingFormBuilder);
     }
 
@@ -22,7 +23,6 @@ class FormBuilderController {
 
     setQuestionOrderSection() {
         this.questionOrderSection.innerHTML = '';
-        console.log(Object.keys(this.editingForm.sections));
         this.displaySection(Object.keys(this.editingForm.sections)[1]);
         this.displaySection(Object.keys(this.editingForm.sections)[2]);
     }
