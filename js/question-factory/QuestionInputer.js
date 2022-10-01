@@ -52,6 +52,12 @@ class QuestionInputer {
         this.formSetter(question, inputsContainer);
     }
 
+    addQuestionPropertyInput(inputsContainer, labelText, value, id, placeholder) {
+        const labelAndInput = this.getLabelAndInput(labelText, value, id, placeholder);
+        inputsContainer.appendChild(labelAndInput[0]);
+        inputsContainer.appendChild(labelAndInput[1]);
+    }
+
     getLabelAndInput(labelText, value, id, placeholder) {
         const label = document.createElement('label');
         label.htmlFor = id;

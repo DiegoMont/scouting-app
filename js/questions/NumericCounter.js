@@ -39,7 +39,7 @@ class NumericCounter extends Question {
         btn.classList.add('btn-symbol', className);
         btn.type = 'button';
         const img = document.createElement('img');
-        img.src = `img/${imgName}.svg`;
+        img.src = `${URL}/img/${imgName}.svg`;
         btn.appendChild(img);
         return btn;
     }
