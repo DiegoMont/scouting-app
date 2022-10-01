@@ -24,6 +24,11 @@
     transform: rotate(180deg);
 }
 
+.inputs {
+    overflow-y: auto;
+    height: calc(40vh - 8.1rem);
+}
+
 .new-question-form {
     justify-content: space-between;
 }
