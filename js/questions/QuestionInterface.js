@@ -42,6 +42,10 @@ class Question extends ScoutingFormElement {
         return this._inputs;
     }
 
+    set inputs(newInputs) {
+        this._inputs = newInputs
+    }
+
     get question(){
         return this._question;
     }
