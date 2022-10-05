@@ -5,11 +5,10 @@ class Question {
     _name
     _errorMessages
 
-    constructor(text, name, erroMsg) {
+    constructor(text, name) {
         this.text = text
         this.name = name
-        this.errorMessages = new Array()
-        this.errorMessages.push(erroMsg)
+        this.errorMessages = {}
     }
 
     get name() {
@@ -23,46 +22,17 @@ class Question {
             throw new InvalidHTMLNameError()
     }
 
-    getErrorMessage(index) {
+    getErrorMessage(key) {
         return this._errorMessages[index]
     }
 
-    addErrorMessage(errorMsg) {
+    addErrorMessage(key, errorMsg) {
         if(errorMsg == undefined || errorMsg.length == 0)
             throw new EmptyErrorMessageError()
-        this.errorMessages.push(errorMsg)
+        this.errorMessages[key] = errorMsg
     }
 
-    isValid() {
-        return false
-    }
-}
-
-class SingleInputQuestion extends Question {
-    _id
-    placeholder
-    value
-
-    constructor(text, name, erroMsg) {
-        super(text, name, erroMsg)
-    }
-}
-
-class MultipleInputsQuestion extends Question {
-    inputs
-
-    constructor(text, name, erroMsg) {
-        super(text, name, erroMsg)
-    }
-
-    addInput(data) {
-        try {
-            const isValidHtmlId = Question.HTML_NAME_REGEX.test(data.id)
-            const isValidValue = data.value.length > 0
-            if(!isValidHtmlId || !isValidValue)
-                throw new InvalidInputDataError()
-        } catch (error) {
-            throw new InvalidInputDataError()
-        }
+    getError() {
+        throw new Error("Not implemented")
     }
 }
