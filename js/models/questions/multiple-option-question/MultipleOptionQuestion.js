@@ -1,4 +1,4 @@
-class MultipleInputsQuestion extends Question {
+class MultipleOptionQuestion extends Question {
     inputs
 
     constructor(text, name) {
