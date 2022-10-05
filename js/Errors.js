@@ -9,3 +9,9 @@ class EmptyErrorMessageError extends Error {
         super("The error message can't be an empty string")
     }
 }
+
+class InvalidInputDataError extends Error {
+    constructor() {
+        super("There is missing information to create the input")
+    }
+}

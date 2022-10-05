@@ -1,4 +1,6 @@
 class Question {
+    static HTML_NAME_REGEX = new RegExp(/^[-A-Za-z\d_]+$/)
+
     text
     _name
     _errorMessages
@@ -15,8 +17,7 @@ class Question {
     }
 
     set name(name) {
-        const validHTMLNameRegex = new RegExp(/^[-A-Za-z\d_]+$/)
-        if(validHTMLNameRegex.test(name))
+        if(Question.HTML_NAME_REGEX.test(name))
             this._name = name
         else
             throw new InvalidHTMLNameError()
@@ -30,5 +31,38 @@ class Question {
         if(errorMsg == undefined || errorMsg.length == 0)
             throw new EmptyErrorMessageError()
         this.errorMessages.push(errorMsg)
+    }
+
+    isValid() {
+        return false
+    }
+}
+
+class SingleInputQuestion extends Question {
+    _id
+    placeholder
+    value
+
+    constructor(text, name, erroMsg) {
+        super(text, name, erroMsg)
+    }
+}
+
+class MultipleInputsQuestion extends Question {
+    inputs
+
+    constructor(text, name, erroMsg) {
+        super(text, name, erroMsg)
+    }
+
+    addInput(data) {
+        try {
+            const isValidHtmlId = Question.HTML_NAME_REGEX.test(data.id)
+            const isValidValue = data.value.length > 0
+            if(!isValidHtmlId || !isValidValue)
+                throw new InvalidInputDataError()
+        } catch (error) {
+            throw new InvalidInputDataError()
+        }
     }
 }
