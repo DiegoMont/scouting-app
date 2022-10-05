@@ -23,7 +23,7 @@ class Question {
     }
 
     getErrorMessage(key) {
-        return this._errorMessages[index]
+        return this._errorMessages[key]
     }
 
     addErrorMessage(key, errorMsg) {
