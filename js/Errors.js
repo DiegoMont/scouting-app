@@ -15,3 +15,9 @@ class InvalidInputDataError extends Error {
         super("There is missing information to create the input")
     }
 }
+
+class PossibleTooLargeTextError extends Error {
+    constructor() {
+        super("An answer with this length could cause visualization problems, it's better to use a TextQuestion instead")
+    }
+}
