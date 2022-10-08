@@ -13,12 +13,12 @@ class NumericTextQuestion extends CounterQuestion {
         this.addErrorMessage('max-limit', error)
     }
 
-    getError() {
+    /* getError() {
         if(this.value < this.minValueLimit)
             return this.getErrorMessage('min-limit')
         else if(this.value > this.maxValueLimit)
             return this.getErrorMessage('max-limit')
         else
             return null
-    }
+    } */
 }

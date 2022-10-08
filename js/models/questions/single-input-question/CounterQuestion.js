@@ -5,8 +5,4 @@ class CounterQuestion extends SingleInputQuestion {
     constructor(text, name) {
         super(text, name)
     }
-
-    getError() {
-        return null
-    }
 }

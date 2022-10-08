@@ -31,8 +31,4 @@ class Question {
             throw new EmptyErrorMessageError()
         this.errorMessages[key] = errorMsg
     }
-
-    getError() {
-        throw new Error("Not implemented")
-    }
 }

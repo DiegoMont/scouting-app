@@ -16,12 +16,12 @@ class TextQuestion extends SingleInputQuestion {
         this.addErrorMessage('min-length', error)
     }
 
-    getError() {
+    /* getError() {
         if(this.value.length > this.maxTextLength)
             return this.getErrorMessage('max-length')
         else if(this.value.length < this.minTextLength)
             return this.getErrorMessage('min-length')
         else
             return null
-    }
+    } */
 }

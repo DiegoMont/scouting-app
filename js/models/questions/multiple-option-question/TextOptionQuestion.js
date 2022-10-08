@@ -12,8 +12,4 @@ class TextOptionQuestion extends MultipleOptionQuestion {
             throw new InvalidInputDataError()
         }
     }
-
-    getError() {
-        return null
-    }
 }   
