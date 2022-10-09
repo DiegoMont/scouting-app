@@ -8,7 +8,7 @@ class Season {
     constructor(seasonName, events) {
         this.name = seasonName
         this.events= events
-        this.matchForm = new MatchScoutingForm()
-        this.pitForm = new PitScoutingForm()
+        this.matchForm = new MatchScoutingForm(this.events)
+        this.pitForm = new PitScoutingForm(this.events)
     }
 }
