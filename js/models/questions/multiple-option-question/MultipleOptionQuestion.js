@@ -3,6 +3,7 @@ class MultipleOptionQuestion extends Question {
 
     constructor(text, name) {
         super(text, name)
+        this.options = []
     }
 
     addOption(data) {
