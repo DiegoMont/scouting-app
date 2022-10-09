@@ -1,18 +1,18 @@
 class MultipleOptionQuestion extends Question {
-    inputs
+    options
 
     constructor(text, name) {
         super(text, name)
     }
 
-    addInput(data) {
+    addOption(data) {
         try {
             const isValidHtmlId = Question.HTML_NAME_REGEX.test(data.id)
             const isValidValue = data.value.length > 0
             if(!isValidHtmlId || !isValidValue)
-                throw new InvalidInputDataError()
+                throw new InvalidOptionDataError()
         } catch (error) {
-            throw new InvalidInputDataError()
+            throw new InvalidOptionDataError()
         }
     }
 }

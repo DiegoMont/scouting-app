@@ -10,9 +10,9 @@ class EmptyErrorMessageError extends Error {
     }
 }
 
-class InvalidInputDataError extends Error {
+class InvalidOptionDataError extends Error {
     constructor() {
-        super("There is missing information to create the input")
+        super("There is missing information to create the option for the question")
     }
 }
 

@@ -3,13 +3,10 @@ class TextOptionQuestion extends MultipleOptionQuestion {
         super(text, name)
     }
 
-    addInput(data) {
-        try {
-            const isValidOptionText = data.optionText.length > 100
-            if(!isValidOptionText)
-                throw new InvalidInputDataError()
-        } catch (error) {
-            throw new InvalidInputDataError()
-        }
+    addOption(data) {
+        super.addOption(data)
+        if(!data.optionText)
+            throw new InvalidOptionDataError()
+        this.options.push(data)
     }
 }   

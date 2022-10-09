@@ -3,12 +3,10 @@ class ImageOptionQuestion extends MultipleOptionQuestion {
         super(text, name)
     }
 
-    addInput(data) {
-        try {
-            if(!data.image)
-                throw new InvalidInputDataError()
-        } catch (error) {
-            throw new InvalidInputDataError()
-        }
+    addOption(data) {
+        super.addOption(data)
+        if(!data.image)
+            throw new InvalidOptionDataError()
+        this.options.push(data)
     }
 }
