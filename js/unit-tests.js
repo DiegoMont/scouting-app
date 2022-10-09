@@ -17,3 +17,5 @@ try {
     emptyErrorMsgError = e
 }
 console.assert(emptyErrorMsgError instanceof EmptyErrorMessageError)
+
+const powerPlay = new Season('Power Play', ['Monterrey', 'Fresno', 'Toluca'])
