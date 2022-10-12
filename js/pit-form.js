@@ -44,12 +44,15 @@ function createPitForm() {
 
     const allyNeeds = new BigTextArea('Qué buscan en una alianza?', 'ally-needs', 10);
 
+    const robotTransportation = new BigTextArea('Cómo transportan el robot a los regionales?', 'robot-transport', 10);
+
     pitForm.sections.engineering.addQuestion(cargoCapacity);
     pitForm.sections.engineering.addQuestion(intake);
     pitForm.sections.engineering.addQuestion(chasis);
     pitForm.sections.engineering.addQuestion(matchFocus);
     pitForm.sections.engineering.addQuestion(vision);
     pitForm.sections.engineering.addQuestion(allyNeeds);
+    pitForm.sections.engineering.addQuestion(robotTransportation);
 
     const projects = new BigTextArea('Cuál es su proyecto social de mayor impacto?', 'proyecto-social', 3);
 
