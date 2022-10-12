@@ -79,10 +79,9 @@ const TEAM_NAMES = {
 };
 
 class Season {
-    static SEASON_NAME = 'rapid-react';
+    static SEASON_NAME = 'frf-2022';
     static REGIONALES = [
-        'Fresno',
-        'Monterrey'
+        'FRF'
     ];
     static MAX_CARGO_PER_HUB = 50;
 }

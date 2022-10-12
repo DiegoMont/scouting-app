@@ -45,13 +45,22 @@ function createMatchForm() {
         value: 'Se cayó en el intento'
     });
 
+    const fouls = new NumericCounter('Fouls', 'fouls', 0, 50);
+
+    const desconection = new TrueFalseButtons('Se desconectó durante el match?', 'desconection', 'Se desconectó durante el match', 'No hubo desconexiones');
+
+    const hangingTime = new Slider('Cuánto tiempo se tarda en colgar', 'hanging-time', 0, 120, 5);
+
     matchForm.sections.teleop.addQuestion(upperCargoLaunchPad);
     matchForm.sections.teleop.addQuestion(upperCargoTarmac);
     matchForm.sections.teleop.addQuestion(upperCargoOther);
     matchForm.sections.teleop.addQuestion(lowerCargoLaunchPad);
     matchForm.sections.teleop.addQuestion(lowerCargoTarmac);
+    matchForm.sections.teleop.addQuestion(fouls);
     matchForm.sections.teleop.addQuestion(launchingZones);
+    matchForm.sections.teleop.addQuestion(hangingTime);
     matchForm.sections.teleop.addQuestion(hangar);
+    matchForm.sections.teleop.addQuestion(desconection);
     // Add your code above
     matchForm.renderSections();
 }
