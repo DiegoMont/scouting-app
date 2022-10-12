@@ -154,6 +154,43 @@ class NumericText extends Question {
 }
 
 
+class Slider extends Question {
+    maxValue;
+    minValue;
+    step;
+
+    constructor(question, name, minValue, maxValue, step){
+        super(question, name, '');
+        this.maxValue = maxValue;
+        this.minValue = minValue;
+        this.step = step;
+        this.setQuestion();
+    }
+
+    setQuestion() {
+        this.questionContainer = document.createElement('div');
+        const input = document.createElement('input')
+        input.type = 'range';
+        input.name = this.name;
+        input.min = this.minValue;
+        input.max = this.maxValue;
+        input.step = this.step
+        input.value = this.minValue;
+        const valueIndicator = document.createElement('p');
+        valueIndicator.innerHTML = input.value;
+        this.questionContainer.appendChild(valueIndicator);
+        this.questionContainer.appendChild(input);
+        input.addEventListener('input', function() {
+            valueIndicator.innerText = input.value;
+        });
+    }
+
+    validate() {
+        return true;
+    }
+}
+
+
 class RadioWithImages extends Question {
     constructor(question, name, error='Debes seleccionar una opción'){
         super(question, name, error);
