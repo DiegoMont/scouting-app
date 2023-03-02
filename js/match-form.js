@@ -4,7 +4,7 @@ function createMatchForm() {
     const autoGamePiecesLow = new NumericCounter("Game pieces in low row", "auto-low-pieces", 0, 30);
     const autoGamePiecesMiddle = new NumericCounter("Game pieces in middle row", "auto-middle-pieces", 0, 30)
     const autoGamePiecesHigh = new NumericCounter("Game pieces in high row", "auto-high-pieces", 0, 30)
-    const autonomousEnd = new RadioWithText("Al finalizar cómo quedó el robot en relación al Charging Station:");
+    const autonomousEnd = new RadioWithText("Al finalizar cómo quedó el robot en relación al Charging Station:", "auto-charging-station");
     autonomousEnd.addInput({
         value: "Docked",
         id: "auto-docked"
@@ -24,7 +24,7 @@ function createMatchForm() {
     const fouls = new NumericCounter('Fouls', 'fouls', 0, 50);
     const launchingZones = new FieldZones("Cancha", 'launching-zones', ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'No aplica'], 'img/cancha.jpg');
     const coopertitionBonus = new TrueFalseButtons("El robot cooperó para conseguir el Coopertition Bonus", "coopertition-bonus", "Cooperó", "No cooperó", "Ingresa información del Coopertition Bonus")
-    const parking = new RadioWithText("Al finalizar cómo quedó el robot:");
+    const parking = new RadioWithText("Al finalizar cómo quedó el robot:", "parking");
     parking.addInput({
         value: "Docked",
         id: "end-docked"
