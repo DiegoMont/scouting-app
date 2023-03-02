@@ -22,6 +22,7 @@ function createMatchForm() {
     const gamePiecesHigh = new NumericCounter("Game pieces in high row", "teleop-high-pieces", 0, 30)
     const links = new NumericCounter("Formed links", "links", 0, 9)
     const fouls = new NumericCounter('Fouls', 'fouls', 0, 50);
+    const launchingZones = new FieldZones("Cancha", 'launching-zones', ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'No aplica'], 'img/cancha.jpg');
     const coopertitionBonus = new TrueFalseButtons("El robot cooperó para conseguir el Coopertition Bonus", "coopertition-bonus", "Cooperó", "No cooperó", "Ingresa información del Coopertition Bonus")
     const parking = new RadioWithText("Al finalizar cómo quedó el robot:");
     parking.addInput({
@@ -50,6 +51,7 @@ function createMatchForm() {
     matchForm.sections.teleop.addQuestion(gamePiecesMiddle);
     matchForm.sections.teleop.addQuestion(gamePiecesHigh);
     matchForm.sections.teleop.addQuestion(links);
+    matchForm.sections.teleop.addQuestion(launchingZones);
     matchForm.sections.teleop.addQuestion(fouls);
     matchForm.sections.teleop.addQuestion(coopertitionBonus);
     matchForm.sections.teleop.addQuestion(parking);
