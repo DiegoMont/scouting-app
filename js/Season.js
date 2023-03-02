@@ -79,8 +79,10 @@ const TEAM_NAMES = {
 };
 
 class Season {
-    static SEASON_NAME = '';
+    static SEASON_NAME = 'charged-up';
     static REGIONALES = [
-        'Monterrey'
+        'Monterrey',
+        'Puebla',
+        'Central Valley'
     ];
 }
