@@ -1,7 +1,7 @@
 class SpanishText {
     formCheckoutError1 = 'Se ha guardado exitosamente. Gracias!';
     numericStatsTitle1 = 'Promedio';
-    questionError1 = 'Ingresa más información';
+    questionError1 = 'Escribe una desripción más detallada';
     questionError2 = 'Resume la información un poco más';
     questionError3 = 'Valor no válido';
     questionError4 = 'Debes seleccionar una opción';
