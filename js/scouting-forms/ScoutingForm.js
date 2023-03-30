@@ -35,14 +35,14 @@ class ScoutingForm {
     setErrorFooter(){
         this.errorFooter = document.createElement('p');
         this.errorFooter.classList.add('ocultar', 'error');
-        this.errorFooter.innerText = "Hay errores en algunas preguntas";
+        this.errorFooter.innerText = language.scoutingFormError1;
     }
 
     setSubmitBtn(){
         this.submitBtn = document.createElement('button');
         this.submitBtn.type = 'submit';
         this.submitBtn.classList.add('submit-btn');
-        this.submitBtn.innerText = 'Enviar';
+        this.submitBtn.innerText = language.scoutingFormBtn1;
     }
 
     setSectionsAndQuestions(sectionDetails){
@@ -50,9 +50,9 @@ class ScoutingForm {
         this.sections.generalInfo = new ScoutingFormSection('info-match');
         this.addFormSpecificSections(sectionDetails);
         this.sections.generalInfo.addQuestion(new RegionalSelector(`regional-${this.formType}`));
-        this.sections.generalInfo.addQuestion(new NumericText('Equipo', `team-number-${this.formType}`, '4010', 1000, 30000, 'El número de equipo no es válido'));
+        this.sections.generalInfo.addQuestion(new NumericText(language.scoutingFormQuestion1, `team-number-${this.formType}`, '4010', 1000, 30000, language.scoutingFormError2));
         this.sections.comments = new ScoutingFormSection('comments-submit');
-        this.sections.comments.addQuestion(new BigTextArea('Comentarios', `comments-${this.formType}`), 0);
+        this.sections.comments.addQuestion(new BigTextArea(language.scoutingFormQuestion2, `comments-${this.formType}`), 0);
         
     }
 

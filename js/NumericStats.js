@@ -26,7 +26,7 @@ class NumericStats {
         const table = document.createElement('table');
         table.innerHTML = `
         <tr><th colspan="3">${title}</th></tr>
-        <tr><td>Promedio</td><td>Max</td><td>Min</td></tr>
+        <tr><td>${language.numericStatsTitle1}</td><td>Max</td><td>Min</td></tr>
         <tr>
         <td>${this.average.toFixed(2)}</td>
         <td>${this.max}</td>

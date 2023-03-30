@@ -1,14 +1,16 @@
 class BigTextArea extends Question {
 
-    maxValueLength;
-    minValueLength;
-    errorMinLength;
+    maxWordsLimit;
+    minWordsLimit;
+    errorMinWords;
+    wordLimitExceededMsg;
 
-    constructor(question, name, minLength, error='Ingresa más información'){
+    constructor(question, name, minWordsLimit, error=language.questionError1){
         super('', name, error);
-        this.minValueLength = minLength;
-        this.errorMinLength = error;
-        this.maxValueLength = 300;
+        this.wordLimitExceededMsg = language.questionError2;
+        this.minWordsLimit = minWordsLimit;
+        this.errorMinWords = error;
+        this.maxWordsLimit = 100;
         this.questionContainer = document.createElement('div');
         this.questionContainer.classList.add('big-text-question');
         const input = this.getInput(name);
@@ -33,16 +35,22 @@ class BigTextArea extends Question {
     }
 
     validate(){
-        const textLength = this.inputs[0].value.length;
-        if(textLength < this.minValueLength)
-            this.error.innerText = this.errorMinLength;
-        else if(textLength > this.maxValueLength)
-            this.error.innerText = 'Resume la información un poco más';
+        const wordCount = this.countWords(this.inputs[0].value)
+        if(wordCount < this.minWordsLimit)
+            this.error.innerText = this.errorMinWords;
+        else if(wordCount > this.maxWordsLimit)
+            this.error.innerText = this.wordLimitExceededMsg;
         else {
             this.hideError();
             return true;
         }
         this.showError();
         return false;
+    }
+
+    countWords(text) {
+        const words = text.split(' ');
+        let wordCount = words.length
+        return wordCount
     }
 }

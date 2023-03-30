@@ -2,8 +2,8 @@ class PitScoutingForm extends ScoutingForm {
     constructor(formQuerySelector){
         super(formQuerySelector,
              'pit',
-             [{sectionName:'engineering', sectionTitle:'Ingeniería', sectionClass: 'autonomous-info' },
-               {sectionName:'team', sectionTitle:'Finanzas y comunicación', sectionClass: 'teleop-info' } 
+             [{sectionName:'engineering', sectionTitle: language.scoutingFormSectionTitle1, sectionClass: 'autonomous-info' },
+               {sectionName:'team', sectionTitle: language.scoutingFormSectionTitle2, sectionClass: 'teleop-info' } 
             ]);
         this.collectionLabel = 'teams';
     }

@@ -1,3 +1,12 @@
+class Season {
+    static SEASON_NAME = '';
+    static REGIONALES = [
+        'Monterrey'
+    ];
+}
+
+language = new SpanishText();
+
 const TEAM_NAMES = {
     2283: 'Panteras',
     3354: 'TecDroid',
@@ -77,10 +86,3 @@ const TEAM_NAMES = {
     7589: 'Lishan Blue Magpie',
     8768: 'CTEC Titans'
 };
-
-class Season {
-    static SEASON_NAME = '';
-    static REGIONALES = [
-        'Monterrey'
-    ];
-}

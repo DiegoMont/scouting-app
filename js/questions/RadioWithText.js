@@ -1,5 +1,5 @@
 class RadioWithText extends Question {
-    constructor(question, name, error='Debes seleccionar una opción'){
+    constructor(question, name, error=language.questionError4){
         super(question, name, error);
         this.questionContainer = document.createElement('div');
         this.questionContainer.classList.add('checkbox-texto');
@@ -41,7 +41,7 @@ class RadioWithText extends Question {
 }
 
 class CheckboxWithText extends RadioWithText {
-    constructor(question, name, error='Debes seleccionar al menos una opción'){
+    constructor(question, name, error=language.questionError5){
         super(question, name + '[]', error);
     }
 
@@ -56,7 +56,7 @@ class FieldZones extends CheckboxWithText {
 
     fieldImg;
 
-    constructor(question, name, zones, fieldMap, error='Elige al menos una zona'){
+    constructor(question, name, zones, fieldMap, error=language.questionError6){
         super(question, name, error);
         this.setFieldImg(fieldMap);
         this.addInputs(zones);
