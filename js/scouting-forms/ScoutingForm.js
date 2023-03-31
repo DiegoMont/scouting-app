@@ -76,6 +76,8 @@ class ScoutingForm {
             router.displayPage(router.pages.loading);
             const submittedForm = new FormData(e.target);
             const scoutingData = {};
+            console.log(submittedForm['robot-pic']);
+            console.log(submittedForm);
             for (const input of submittedForm.entries()){
                 const key = input[0];
                 const keyLastChar = key.charAt(key.length-1);
@@ -88,6 +90,8 @@ class ScoutingForm {
             }
             scoutingData['createdAt'] = Date.now();
             scoutingData['createdBy'] = auth.currentUser.displayName;
+            console.log(scoutingData);
+            return;
             const docId = pointerToThis.getCompositeKey(scoutingData);
             const firebaseDoc = db.collection(`${Season.SEASON_NAME}-${pointerToThis.collectionLabel}`).doc(docId);
             firebaseDoc.set(scoutingData).then(() => {

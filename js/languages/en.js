@@ -8,6 +8,7 @@ class EnglishText {
     questionError5 = 'Pick at least one option';
     questionError6 = 'Pick at least one field zone';
     questionError7 = 'The answer is too short. Be more descriptive';
+    questionError8 = '';
     scoutingFormBtn1 = 'Send';
     scoutingFormError1 = 'Some questions have errors';
     scoutingFormError2 = 'Not a valid team number';
