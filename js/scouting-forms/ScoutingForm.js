@@ -1,5 +1,7 @@
 class ScoutingForm {
 
+    MAX_IMAGE_DIMENSION = 500;
+
     errorFooter;
     formElement;
     formType;
@@ -7,7 +9,10 @@ class ScoutingForm {
     submitBtn;
     collectionLabel;
 
+    teamNumberInputName;
+
     constructor(formQuerySelector, formType, sectionDetails){
+        this.teamNumberInputName = `team-number-${formType}`;
         this.formElement = document.querySelector(formQuerySelector);
         this.formType = formType;
         this.setErrorFooter();
@@ -50,7 +55,7 @@ class ScoutingForm {
         this.sections.generalInfo = new ScoutingFormSection('info-match');
         this.addFormSpecificSections(sectionDetails);
         this.sections.generalInfo.addQuestion(new RegionalSelector(`regional-${this.formType}`));
-        this.sections.generalInfo.addQuestion(new NumericText(language.scoutingFormQuestion1, `team-number-${this.formType}`, '4010', 1000, 30000, language.scoutingFormError2));
+        this.sections.generalInfo.addQuestion(new NumericText(language.scoutingFormQuestion1, this.teamNumberInputName, '4010', 1000, 30000, language.scoutingFormError2));
         this.sections.comments = new ScoutingFormSection('comments-submit');
         this.sections.comments.addQuestion(new BigTextArea(language.scoutingFormQuestion2, `comments-${this.formType}`), 0);
         
@@ -58,7 +63,7 @@ class ScoutingForm {
 
     addFormHandler(){
         const pointerToThis = this;
-        this.formElement.addEventListener('submit', function(e) {
+        this.formElement.addEventListener('submit', async function(e) {
             e.preventDefault();
             let areAllQuestionsValid = true;
             pointerToThis.errorFooter.classList.add('ocultar');
@@ -76,36 +81,86 @@ class ScoutingForm {
             router.displayPage(router.pages.loading);
             const submittedForm = new FormData(e.target);
             const scoutingData = {};
-            console.log(submittedForm['robot-pic']);
-            console.log(submittedForm);
+            const scoutingFiles = {};
             for (const input of submittedForm.entries()){
                 const key = input[0];
                 const keyLastChar = key.charAt(key.length-1);
+                const questionResponse = input[1];
+                if(questionResponse instanceof File) {
+                    scoutingFiles[key] = await pointerToThis.getScaledImage(questionResponse);
+                    continue;
+                }
                 if(keyLastChar === ']') {
                     if(!scoutingData.hasOwnProperty(key))
                         scoutingData[key] = new Array();
-                    scoutingData[key].push(input[1]);
+                    scoutingData[key].push(questionResponse);
                 } else 
-                    scoutingData[key] = input[1];
+                    scoutingData[key] = questionResponse;
             }
             scoutingData['createdAt'] = Date.now();
             scoutingData['createdBy'] = auth.currentUser.displayName;
-            console.log(scoutingData);
-            return;
             const docId = pointerToThis.getCompositeKey(scoutingData);
             const firebaseDoc = db.collection(`${Season.SEASON_NAME}-${pointerToThis.collectionLabel}`).doc(docId);
-            firebaseDoc.set(scoutingData).then(() => {
+            const storageFirstEvent = storage.ref().child(`${Season.SEASON_NAME}-${scoutingData['regional']}`);
+            try {
+                await new Promise((resolve, reject) => {
+                    firebaseDoc.set(scoutingData).then(() => resolve()).catch(error => reject(error));
+                });
+                await new Promise((resolve, reject) => {
+                    // TODO: Fix what happens when more than one file is uploaded
+                    const teamNumber = pointerToThis.getTeamNumber();
+                    const picRef = storageFirstEvent.child(`${teamNumber}.jpg`);
+                    for (const key in scoutingFiles)
+                        picRef.put(scoutingFiles[key]).then(snapshot => resolve()).catch(error => reject(error));
+                });
                 pointerToThis.errorFooter.classList.add('ocultar');
                 e.target.reset();
                 checkoutPage.loadSuccessPage();
-            }).catch(error => {
+            } catch (error) {
                 console.log(error);
                 checkoutPage.loadFailPage();
-            });
+            }
         });
+    }
+
+    getTeamNumber() {
+        const teamNumberInput = document.querySelector(`#${this.teamNumberInputName}`);
+        const teamNumber = teamNumberInput.value;
+        return teamNumber;
     }
 
     getCompositeKey(scoutingData){
         return '';
+    }
+
+    async getScaledImage(imgFile) {
+        return new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(imgFile);
+            fileReader.addEventListener('load', () => {
+                const imageData = fileReader.result;
+                const originalImage = new Image();
+                originalImage.src = imageData;
+                originalImage.addEventListener('load', () => {
+                    const isLandscapeImage = originalImage.width > originalImage.height;
+                    const targetWidth = isLandscapeImage ? this.MAX_IMAGE_DIMENSION: this.MAX_IMAGE_DIMENSION * originalImage.width / originalImage.height;
+                    const targetHeight = isLandscapeImage ? this.MAX_IMAGE_DIMENSION * originalImage.height / originalImage.width: this.MAX_IMAGE_DIMENSION;
+                    const canvas = document.createElement('canvas');
+                    const canvasCtx = canvas.getContext('2d');
+                    canvas.width = targetWidth;
+                    canvas.height = targetHeight;
+                    canvasCtx.drawImage(originalImage, 0, 0, targetWidth, targetHeight);
+                    canvas.toBlob(
+                        blob => {
+                            if(blob)
+                                resolve(blob);
+                            else
+                                reject('Error scaling image');
+                        },
+                        'image/jpeg',
+                        0.7);
+                });
+            });
+        })
     }
 }
