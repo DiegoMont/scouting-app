@@ -6,6 +6,7 @@ const pitTableHeaders = [];
 const resultCardsContainer = document.querySelector('#result-cards');
 const matchTableBody = document.querySelector('#match-table tbody');
 const pitTableBody = document.querySelector('#pit-table tbody');
+const TEAM_NAMES = {}
 
 const formatResultTables = function() {
     setHeadersFromForm(matchForm, matchTableHeaders);
@@ -21,6 +22,13 @@ const fetchResults = function() {
         return;
     addChangeListener();
     resultsListenerAdded = true;
+    db.collection('frc-teams').orderBy('name').onSnapshot(snapshot => {
+        for (const teamDoc of snapshot.docs) {
+            const teamNumber = teamDoc.id;
+            const teamName = teamDoc.get('name');
+            TEAM_NAMES[teamNumber] = teamName;
+        }
+    });
 }
 
 const addChangeListener = function() {
