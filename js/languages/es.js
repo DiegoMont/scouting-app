@@ -8,7 +8,8 @@ class SpanishText {
     questionError5 = 'Debes seleccionar al menos una opción';
     questionError6 = 'Elige al menos una zona';
     questionError7 = 'Esta respuesta es muy corta';
-    questionError8 = '';
+    questionError8 = 'Sube una foto';
+    questionText1 = 'Toma una foto o sube una imagen';
     scoutingFormBtn1 = 'Enviar';
     scoutingFormError1 = 'Hay errores en algunas preguntas';
     scoutingFormError2 = 'El número de equipo no es válido';
