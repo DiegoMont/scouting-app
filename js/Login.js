@@ -15,7 +15,6 @@ const addLoginFormHandler = function() {
 }
 
 const handleAuthStatus = function(user) {
-    console.log(user);
     if(user) {
         router.displayPage(router.pages.menu);
         logoutBtn.style.visibility = 'visible';
