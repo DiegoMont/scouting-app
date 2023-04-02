@@ -35,7 +35,7 @@ class BigTextArea extends Question {
     }
 
     validate(){
-        const wordCount = this.countWords(this.inputs[0].value)
+        const wordCount = this.countWords(this.inputs[0].value);
         if(wordCount < this.minWordsLimit)
             this.error.innerText = this.errorMinWords;
         else if(wordCount > this.maxWordsLimit)
@@ -46,11 +46,5 @@ class BigTextArea extends Question {
         }
         this.showError();
         return false;
-    }
-
-    countWords(text) {
-        const words = text.split(' ');
-        let wordCount = words.length
-        return wordCount
     }
 }
