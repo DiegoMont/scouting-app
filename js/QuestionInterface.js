@@ -81,4 +81,13 @@ class Question extends ScoutingFormElement {
     showError(){
         this.error.classList.remove('ocultar');
     }
+
+    countWords(text) {
+        const cleanedText = text.trim();
+        if(cleanedText === '')
+            return 0;
+        const words = cleanedText.split(' ');
+        let wordCount = words.length
+        return wordCount
+    }
 }

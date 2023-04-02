@@ -1,14 +1,14 @@
 class TextInput extends Question {
 
-    MAX_LENGTH_VALUE = 40;
+    MAX_WORDS_LIMIT = 15;
 
-    minValueLength;
-    errorMinLength;
+    minAnswerWords;
+    errorMinWords;
 
-    constructor(question, name, placeholder, minAnswerLength, error=language.questionError7){
+    constructor(question, name, placeholder, minAnswerWords, error=language.questionError7){
         super('', name, error);
-        this.minValueLength = minAnswerLength;
-        this.errorMinLength = error;
+        this.minAnswerWords = minAnswerWords;
+        this.errorMinWords = error;
         this.questionContainer = document.createElement('div');
         this.questionContainer.classList.add('input-texto');
         const label = this.getLabel(question, name);
@@ -36,9 +36,10 @@ class TextInput extends Question {
 
     validate(){
         const text = this.inputs[0].value;
-        if(text.length < this.minValueLength)
-            this.error.innerText = this.errorMinLength;
-        else if(text.length > this.MAX_LENGTH_VALUE)
+        const wordCount = this.countWords(text);
+        if(wordCount < this.minAnswerWords)
+            this.error.innerText = this.errorMinWords;
+        else if(wordCount > this.MAX_WORDS_LIMIT)
             this.error.innerText = language.questionError2;
         else {
             this.hideError();
