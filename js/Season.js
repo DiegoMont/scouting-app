@@ -1,8 +1,8 @@
 class Season {
-    static SEASON_NAME = '';
+    static SEASON_NAME = 'charged-up-sv';
     static REGIONALES = [
-        'Monterrey'
+        'Silicon Valley'
     ];
 }
 
-language = new SpanishText();
+language = new EnglishText();
