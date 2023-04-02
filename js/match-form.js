@@ -75,6 +75,10 @@ function createMatchForm() {
 
     const cones = new NumericCounter("Cones scored during TeleOp period", "teleop-cones", 0, 40);
 
+    const enterCommunity = new FieldZones("Which area they use to enter to the Community zone?", 'enter-community', ['A', 'B', 'C', 'None'], 'img/charged-up-community.jpg');
+
+    const exitCommunity = new FieldZones("Which area they use to exit from the Community zone?", 'exit-community', ['A', 'B', 'C', 'None'], '');
+
     const endgameStrategy = new BigTextArea("What is the robot strategy during the endgame period?", "endgame-strategy", 5);
 
     const endgamePark = new RadioWithText("Where was the robot parked at the end of the autonomous period?", "endgame-park");
@@ -101,6 +105,8 @@ function createMatchForm() {
     matchForm.sections.teleop.addQuestion(gamePieces);
     matchForm.sections.teleop.addQuestion(cubes);
     matchForm.sections.teleop.addQuestion(cones);
+    matchForm.sections.teleop.addQuestion(enterCommunity);
+    matchForm.sections.teleop.addQuestion(exitCommunity);
     matchForm.sections.teleop.addQuestion(technicalProblems);
     matchForm.sections.teleop.addQuestion(endgamePark);
     matchForm.sections.teleop.addQuestion(teleopStrategy);
