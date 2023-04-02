@@ -63,7 +63,7 @@ function createPitForm() {
 
     const sponsors = new BigTextArea("List the team's sponsors and strategic alliances", 'Sponsors', 3);
 
-    const representativeSponsors = new BigTextArea('Which sponsors or astrategic alliances best represents and/or defines their team?', 'representative-sponsors', 1);
+    const representativeSponsors = new BigTextArea('Which sponsors or strategic alliances best represents and/or defines their team?', 'representative-sponsors', 1);
 
     const funding = new BigTextArea('How do they fund their team?', 'Funding', 10);
 
