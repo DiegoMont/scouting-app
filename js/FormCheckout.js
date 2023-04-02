@@ -1,5 +1,5 @@
 class FormCheckout {
-    SUCCESS_MSG = 'Se ha guardado exitosamente. Gracias!';
+    SUCCESS_MSG = language.formCheckoutError1;
     SUCCESS_IMG = 'img/checkout/bb8.jpg';
 
     FAIL_MSG = 'Error: Unable to save data';

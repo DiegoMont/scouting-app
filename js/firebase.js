@@ -9,3 +9,14 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const auth = firebase.auth();
+const storage = firebase.storage();
+
+if(location.hostname === "localhost") {
+    fetch("http://localhost:5500/firebase.json").then(async res => {
+        const debugConfig = await res.json();
+        const firestorePort = debugConfig.emulators.firestore.port
+        const storagePort = debugConfig.emulators.storage.port
+        db.useEmulator("localhost", firestorePort);
+        storage.useEmulator("localhost", storagePort);
+    })
+}

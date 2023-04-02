@@ -5,7 +5,7 @@ class TextInput extends Question {
     minValueLength;
     errorMinLength;
 
-    constructor(question, name, placeholder, minAnswerLength, error='Esta respuesta es muy corta'){
+    constructor(question, name, placeholder, minAnswerLength, error=language.questionError7){
         super('', name, error);
         this.minValueLength = minAnswerLength;
         this.errorMinLength = error;
@@ -39,7 +39,7 @@ class TextInput extends Question {
         if(text.length < this.minValueLength)
             this.error.innerText = this.errorMinLength;
         else if(text.length > this.MAX_LENGTH_VALUE)
-            this.error.innerText = 'Resume la información un poco más';
+            this.error.innerText = language.questionError2;
         else {
             this.hideError();
             return true;

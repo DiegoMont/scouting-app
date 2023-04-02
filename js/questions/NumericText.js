@@ -3,7 +3,7 @@ class NumericText extends Question {
     maxValue;
     minValue;
 
-    constructor(question, name, placeholder, minValue, maxValue, error='Valor no válido'){
+    constructor(question, name, placeholder, minValue, maxValue, error=language.questionError3){
         super('', name, error);
         this.maxValue = maxValue;
         this.minValue = minValue;
