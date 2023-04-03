@@ -20,6 +20,10 @@ function createMatchForm() {
         value: "Other",
         id: "problem-other"
     })
+    technicalProblems.addInput({
+        value: "None",
+        id: "problem-none"
+    })
 
     const autoStrategy = new BigTextArea("What the robot does in the autonomous period?", "autonomous-strategy", 5);
 
@@ -81,7 +85,7 @@ function createMatchForm() {
 
     const endgameStrategy = new BigTextArea("What is the robot strategy during the endgame period?", "endgame-strategy", 5);
 
-    const endgamePark = new RadioWithText("Where was the robot parked at the end of the autonomous period?", "endgame-park");
+    const endgamePark = new RadioWithText("Where was the robot parked at the end of the match?", "endgame-park");
     endgamePark.addInput({
         value: "Out of the community",
         id: "park-out"
