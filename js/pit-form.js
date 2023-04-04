@@ -54,12 +54,15 @@ function createPitForm() {
 
     const chargingStationBalance = new TextInput('Which sensors do they use to balance the robot on the Charge Station?', 'charge-station-sensors', 'NavX, accelerometer, IMU', 1);
 
+    const robotPic = new MediaUpload('Take a photo of the robot', 'Image');
+
     pitForm.sections.engineering.addQuestion(chasis);
     pitForm.sections.engineering.addQuestion(intake);
     pitForm.sections.engineering.addQuestion(matchFocus);
     pitForm.sections.engineering.addQuestion(vision);
     pitForm.sections.engineering.addQuestion(allyNeeds);
     pitForm.sections.engineering.addQuestion(chargingStationBalance);
+    pitForm.sections.engineering.addQuestion(robotPic);
 
     const sponsors = new BigTextArea("List the team's sponsors and strategic alliances", 'Sponsors', 3);
 
