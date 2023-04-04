@@ -54,7 +54,6 @@ class TeamStats {
             this.communityEntryDensity[i] /= divisor;
         for (let i = 0; i < this.communityExitDensity.length; i++)
             this.communityExitDensity[i] /= divisor;
-        console.log(this.communityEntryDensity);
     }
 
     getCommunityZones(){
