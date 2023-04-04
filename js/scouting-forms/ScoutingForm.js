@@ -101,7 +101,7 @@ class ScoutingForm {
             scoutingData['createdBy'] = auth.currentUser.displayName;
             const docId = pointerToThis.getCompositeKey(scoutingData);
             const firebaseDoc = db.collection(`${Season.SEASON_NAME}-${pointerToThis.collectionLabel}`).doc(docId);
-            const storageFirstEvent = storage.ref().child(`${Season.SEASON_NAME}-${scoutingData['regional']}`);
+            const storageFirstEvent = storage.ref().child(storageDir);
             try {
                 await firebaseDoc.set(scoutingData);
                 // TODO: Fix what happens when more than one file is uploaded
