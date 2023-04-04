@@ -41,6 +41,10 @@
     grid-area: 3 / 2 / 4 / 3;
 }
 
+.robot-img {
+    margin: 1rem 0;
+}
+
 .team-card {
     background-color: var(--negro-claro);
     box-sizing: border-box;

@@ -33,6 +33,7 @@ class TeamStats {
         // Append NumericStats HTML tables to display tables nicely in two columns
         // tableGrid.appendChild(new NumericStats([1, 2, 3]).getHTMLTable('Any title'));
         card.appendChild(this.getCommunityZones());
+        card.appendChild(this.getRobotImage());
         // Card HTML code goes above
         return card;
     }
@@ -74,5 +75,18 @@ class TeamStats {
         <div class="field-density blue-c comm-exit" style="opacity: ${this.communityExitDensity[2]}"></div>
         `;
         return field;
+    }
+
+    getRobotImage() {
+        const storageFirstEvent = storage.ref().child(storageDir);
+        const imgReference = storageFirstEvent.child(`${this.teamNumber}.jpg`);
+        const img = document.createElement('img');
+        img.classList.add('robot-img');
+        imgReference.getDownloadURL().then(url => {
+            img.src = url;
+        }).catch(error => {
+            console.error(error);
+        });
+        return img;
     }
 }
