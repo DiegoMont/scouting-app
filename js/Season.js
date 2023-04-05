@@ -5,4 +5,5 @@ class Season {
     ];
 }
 
-language = new EnglishText();
+const language = new EnglishText();
+const storageDir = Season.SEASON_NAME + Season.REGIONALES[0].toLowerCase().replace(' ', '-');

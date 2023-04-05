@@ -1,11 +1,17 @@
 function createMatchForm() {
     // Add your code below
-    const robotStrategy = new BigTextArea("What is the overall game strategy of the robot?", "strategy", 5);
+    const MIN_WRITTEN_WORDS = 5;
+    const MAX_WRITTEN_WORDS = 75;
+
+    const robotStrategy = new BigTextArea("What is the overall game strategy of the robot?", "strategy", MIN_WRITTEN_WORDS);
     robotStrategy.wordLimitExceededMsg = "The description is too big. Summarize it more!";
+    robotStrategy.maxWordsLimit = MAX_WRITTEN_WORDS;
 
-    const robotStrenghts = new BigTextArea("What are the strenghts of the robot and/or game strategy?", "robot-strengths", 5);
+    const robotStrenghts = new BigTextArea("What are the strenghts of the robot and/or game strategy?", "robot-strengths", MIN_WRITTEN_WORDS);
+    robotStrenghts.maxWordsLimit = MAX_WRITTEN_WORDS;
 
-    const improvementArea = new BigTextArea("What is the improvement area of the robot and/or game strategy?", "strategy-improvement", 5);
+    const improvementArea = new BigTextArea("What is the improvement area of the robot and/or game strategy?", "strategy-improvement", MIN_WRITTEN_WORDS);
+    improvementArea.maxWordsLimit = MAX_WRITTEN_WORDS;
 
     const technicalProblems = new CheckboxWithText("Which problems they suffered during the match?", "technical-problems");
     technicalProblems.addInput({
@@ -25,7 +31,8 @@ function createMatchForm() {
         id: "problem-none"
     })
 
-    const autoStrategy = new BigTextArea("What the robot does in the autonomous period?", "autonomous-strategy", 5);
+    const autoStrategy = new BigTextArea("What the robot does in the autonomous period?", "autonomous-strategy", MIN_WRITTEN_WORDS);
+    autoStrategy.maxWordsLimit = MAX_WRITTEN_WORDS;
 
     const autoTasks = new TrueFalseButtons("Was it successful in completing the tasks it was supposed to perform?", "auto-success", "Yes", "No", "Indicate if the robot succeded accomplishing its autonomous tasks");
 
@@ -47,7 +54,8 @@ function createMatchForm() {
         id: "auto-park-community"
     });
 
-    const teleopStrategy = new BigTextArea("What is the strategy of the robot in the TeleOp period?", "teleop-strategy", 10);
+    const teleopStrategy = new BigTextArea("What is the strategy of the robot in the TeleOp period?", "teleop-strategy", MIN_WRITTEN_WORDS);
+    teleopStrategy.maxWordsLimit = MAX_WRITTEN_WORDS;
 
     const gamePieces = new CheckboxWithText("Where does the robot accommodate each game piece?", "game-pieces-location");
     gamePieces.addInput({
@@ -83,7 +91,8 @@ function createMatchForm() {
 
     const exitCommunity = new FieldZones("Which area they use to exit from the Community zone?", 'exit-community', ['A', 'B', 'C', 'None'], '');
 
-    const endgameStrategy = new BigTextArea("What is the robot strategy during the endgame period?", "endgame-strategy", 5);
+    const endgameStrategy = new BigTextArea("What is the robot strategy during the endgame period?", "endgame-strategy", MIN_WRITTEN_WORDS);
+    endgameStrategy.maxWordsLimit = MAX_WRITTEN_WORDS;
 
     const endgamePark = new RadioWithText("Where was the robot parked at the end of the match?", "endgame-park");
     endgamePark.addInput({
