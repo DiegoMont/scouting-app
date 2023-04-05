@@ -4,6 +4,8 @@ class TeamStats {
 
     name;
     teamNumber;
+    teleopCubes;
+    teleopCones;
 
     constructor(teamInfo, matches) {
         try {
@@ -15,7 +17,7 @@ class TeamStats {
         this.name = TEAM_NAMES[this.teamNumber];
         // Add more initialization code here
         this.setAreaDensity(matches);
-
+        this.countScoredPieces(matches);
     }
 
     getCard(){
@@ -32,6 +34,8 @@ class TeamStats {
         card.appendChild(tableGrid);
         // Append NumericStats HTML tables to display tables nicely in two columns
         // tableGrid.appendChild(new NumericStats([1, 2, 3]).getHTMLTable('Any title'));
+        tableGrid.appendChild(new NumericStats(this.teleopCones).getHTMLTable('Any title'));
+        tableGrid.appendChild(new NumericStats(this.teleopCubes).getHTMLTable('Any title'));
         card.appendChild(this.getCommunityZones());
         card.appendChild(this.getRobotImage());
         // Card HTML code goes above
@@ -55,6 +59,15 @@ class TeamStats {
             this.communityEntryDensity[i] /= divisor;
         for (let i = 0; i < this.communityExitDensity.length; i++)
             this.communityExitDensity[i] /= divisor;
+    }
+
+    countScoredPieces(matches) {
+        this.teleopCubes = [];
+        this.teleopCones = [];
+        for (const match of matches) {
+            this.teleopCubes.push(match['teleop-cubes']);
+            this.teleopCones.push(match['teleop-cones'])
+        }
     }
 
     getCommunityZones(){
