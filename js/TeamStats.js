@@ -97,9 +97,7 @@ class TeamStats {
         img.classList.add('robot-img');
         imgReference.getDownloadURL().then(url => {
             img.src = url;
-        }).catch(error => {
-            console.error(error);
-        });
+        }).catch(error => {});
         return img;
     }
 }

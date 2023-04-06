@@ -87,7 +87,8 @@ class ScoutingForm {
                 const keyLastChar = key.charAt(key.length-1);
                 const questionResponse = input[1];
                 if(questionResponse instanceof File) {
-                    scoutingFiles[key] = await pointerToThis.getScaledImage(questionResponse);
+                    if(questionResponse.size > 0)
+                        scoutingFiles[key] = await pointerToThis.getScaledImage(questionResponse);
                     continue;
                 }
                 if(keyLastChar === ']') {
