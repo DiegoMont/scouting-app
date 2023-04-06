@@ -55,7 +55,7 @@ class ScoutingForm {
         this.sections.generalInfo = new ScoutingFormSection('info-match');
         this.addFormSpecificSections(sectionDetails);
         this.sections.generalInfo.addQuestion(new RegionalSelector(`regional-${this.formType}`));
-        this.sections.generalInfo.addQuestion(new NumericText(language.scoutingFormQuestion1, this.teamNumberInputName, '4010', 1000, 30000, language.scoutingFormError2));
+        this.sections.generalInfo.addQuestion(new NumericText(language.scoutingFormQuestion1, this.teamNumberInputName, '4010', 99, 30000, language.scoutingFormError2));
         this.sections.comments = new ScoutingFormSection('comments-submit');
         this.sections.comments.addQuestion(new BigTextArea(language.scoutingFormQuestion2, `comments-${this.formType}`), 0);
         
