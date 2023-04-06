@@ -1,7 +1,7 @@
 function createPitForm() {
     // Add your code below
 
-    const MIN_WRITTEN_WORDS = 5;
+    const MIN_WRITTEN_WORDS = 2;
     const MAX_WRITTEN_WORDS = 75;
 
     const chasis = new RadioWithImages('Which type of drivetrain does the robot have?', 'Drivetrain');
