@@ -1,5 +1,5 @@
 class Season {
-    static SEASON_NAME = 'charged-up-sv';
+    static SEASON_NAME = 'charged-up-sv-practice';
     static REGIONALES = [
         'Silicon Valley'
     ];
