@@ -37,7 +37,10 @@ function createMatchForm() {
 
     const aim = new NumericCounter("How many times the driver tried to score a game element and failed?", "aim", 0, 50);
 
+    const cicleTime = new NumericText("Time (seconds) it takes between each time it scores a game element. (cycle)", "cicle-time", 5, 0, 100)
+
     matchForm.sections.teleop.addQuestion(cards);
+    matchForm.sections.teleop.addQuestion(cicleTime);
     matchForm.sections.teleop.addQuestion(technicalProblems);
     matchForm.sections.teleop.addQuestion(autoStrategy);
     matchForm.sections.teleop.addQuestion(teleopStrategy);
