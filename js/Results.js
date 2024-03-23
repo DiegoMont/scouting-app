@@ -17,18 +17,21 @@ const formatResultTables = function() {
     document.querySelector('#pit-table thead').appendChild(pitHeaderRow);
 }
 
-const fetchResults = function() {
+const fetchResults = async function() {
     if(resultsListenerAdded)
         return;
+    await new Promise((resolve, _) => {
+        db.collection('frc-teams').orderBy('name').onSnapshot(snapshot => {
+            for (const teamDoc of snapshot.docs) {
+                const teamNumber = teamDoc.id;
+                const teamName = teamDoc.get('name');
+                TEAM_NAMES[teamNumber] = teamName;
+            }
+        });
+        resolve();
+    });
     addChangeListener();
     resultsListenerAdded = true;
-    db.collection('frc-teams').orderBy('name').onSnapshot(snapshot => {
-        for (const teamDoc of snapshot.docs) {
-            const teamNumber = teamDoc.id;
-            const teamName = teamDoc.get('name');
-            TEAM_NAMES[teamNumber] = teamName;
-        }
-    });
 }
 
 const addChangeListener = function() {

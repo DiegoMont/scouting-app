@@ -55,7 +55,7 @@ class ScoutingForm {
         this.sections.generalInfo = new ScoutingFormSection('info-match');
         this.addFormSpecificSections(sectionDetails);
         this.sections.generalInfo.addQuestion(new RegionalSelector(`regional-${this.formType}`));
-        this.sections.generalInfo.addQuestion(new NumericText(language.scoutingFormQuestion1, this.teamNumberInputName, '4010', 1000, 30000, language.scoutingFormError2));
+        this.sections.generalInfo.addQuestion(new NumericText(language.scoutingFormQuestion1, this.teamNumberInputName, '4010', 99, 30000, language.scoutingFormError2));
         this.sections.comments = new ScoutingFormSection('comments-submit');
         this.sections.comments.addQuestion(new BigTextArea(language.scoutingFormQuestion2, `comments-${this.formType}`), 0);
         
@@ -87,7 +87,8 @@ class ScoutingForm {
                 const keyLastChar = key.charAt(key.length-1);
                 const questionResponse = input[1];
                 if(questionResponse instanceof File) {
-                    scoutingFiles[key] = await pointerToThis.getScaledImage(questionResponse);
+                    if(questionResponse.size > 0)
+                        scoutingFiles[key] = await pointerToThis.getScaledImage(questionResponse);
                     continue;
                 }
                 if(keyLastChar === ']') {
@@ -101,23 +102,19 @@ class ScoutingForm {
             scoutingData['createdBy'] = auth.currentUser.displayName;
             const docId = pointerToThis.getCompositeKey(scoutingData);
             const firebaseDoc = db.collection(`${Season.SEASON_NAME}-${pointerToThis.collectionLabel}`).doc(docId);
-            const storageFirstEvent = storage.ref().child(`${Season.SEASON_NAME}-${scoutingData['regional']}`);
+            const storageFirstEvent = storage.ref().child(storageDir);
             try {
-                await new Promise((resolve, reject) => {
-                    firebaseDoc.set(scoutingData).then(() => resolve()).catch(error => reject(error));
-                });
-                await new Promise((resolve, reject) => {
-                    // TODO: Fix what happens when more than one file is uploaded
-                    const teamNumber = pointerToThis.getTeamNumber();
-                    const picRef = storageFirstEvent.child(`${teamNumber}.jpg`);
-                    for (const key in scoutingFiles)
-                        picRef.put(scoutingFiles[key]).then(snapshot => resolve()).catch(error => reject(error));
-                });
+                await firebaseDoc.set(scoutingData);
+                // TODO: Fix what happens when more than one file is uploaded
+                const teamNumber = pointerToThis.getTeamNumber();
+                const picRef = storageFirstEvent.child(`${teamNumber}.jpg`);
+                for (const key in scoutingFiles)
+                    await picRef.put(scoutingFiles[key]);
                 pointerToThis.errorFooter.classList.add('ocultar');
                 e.target.reset();
                 checkoutPage.loadSuccessPage();
             } catch (error) {
-                console.log(error);
+                console.error(error);
                 checkoutPage.loadFailPage();
             }
         });
