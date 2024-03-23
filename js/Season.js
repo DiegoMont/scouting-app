@@ -1,9 +1,9 @@
 class Season {
-    static SEASON_NAME = 'charged-up-sv-practice';
+    static SEASON_NAME = 'crescendo';
     static REGIONALES = [
-        'Silicon Valley'
+        'Colorado'
     ];
 }
 
-const language = new EnglishText();
+language = new SpanishText();
 const storageDir = Season.SEASON_NAME + Season.REGIONALES[0].toLowerCase().replace(' ', '-');
